@@ -2,10 +2,9 @@
 import Link from "next/link";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Keyboard, Scrollbar } from "swiper/modules";
+import { Autoplay, Keyboard } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/scrollbar";
 
 const Testimonials = () => {
   const testimonialData = [
@@ -78,16 +77,15 @@ const Testimonials = () => {
       />
 
       <div className="container">
-        <div className="row align-items-center justify-content-between">
+        <div className="row align-items-start justify-content-between testimonial-row">
           <div className="col-12 col-md-12 col-lg-12 col-xl-4">
-            <div className="about_content">
+            <div className="about_content testimonial-left">
               <h2>Kundenstimmen</h2>
               <p>
                 Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse,
                 echte Stimmen aus Handwerk, E-Commerce und Dienstleistung.
               </p>
               <div className="hero_buttons">
-                {/* Verkaufspsychologie: Ergebnis-orientierter CTA */}
                 <Link className="btns web_btns" href="https://calendly.com/talentsuite" target="_blank" rel="noopener noreferrer">
                   Auch so wachsen? Jetzt Termin sichern
                   <span className="btn_arrows">
@@ -100,17 +98,18 @@ const Testimonials = () => {
           </div>
           <div className="col-12 col-md-12 col-lg-12 col-xl-8">
             <Swiper
-              spaceBetween={30}
+              spaceBetween={20}
               grabCursor={true}
               keyboard={{ enabled: true }}
+              loop={true}
               autoplay={{ delay: 3500, disableOnInteraction: false }}
               breakpoints={{
-                1500: { slidesPerView: 2, slidesPerGroup: 1 },
-                1199: { slidesPerView: 1, slidesPerGroup: 1 },
+                0: { slidesPerView: 1, slidesPerGroup: 1 },
+                768: { slidesPerView: 1, slidesPerGroup: 1 },
+                1200: { slidesPerView: 2, slidesPerGroup: 1 },
               }}
-              scrollbar={true}
-              modules={[Autoplay, Keyboard, Scrollbar]}
-              className="mySwiper"
+              modules={[Autoplay, Keyboard]}
+              className="testimonialSwiper"
             >
               {testimonialData.map((testimonial, index) => (
                 <SwiperSlide key={index}>
@@ -128,7 +127,6 @@ const Testimonials = () => {
                         <span>
                           <i className="bi bi-check-lg"></i>
                         </span>
-                        {/* Fix: Deutsch statt Englisch */}
                         Verifiziert
                       </div>
                     </div>
