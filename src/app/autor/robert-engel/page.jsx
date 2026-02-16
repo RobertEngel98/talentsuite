@@ -277,7 +277,7 @@ const AuthorPage = () => {
                 <p style={{ color: "rgba(255,255,255,0.85)", marginBottom: "1.5rem", maxWidth: "500px", margin: "0 auto 1.5rem" }}>
                   Lass uns gemeinsam herausfinden, wie du mit Performance Recruiting qualifizierte Fachkräfte für dein Unternehmen gewinnst.
                 </p>
-                <a href="https://calendly.com/talentsuite" style={{
+                <a href="https://calendar.app.google/mU29snzEsgqsnMXy8" style={{
                   display: "inline-block", background: "white", color: "#023B5B",
                   padding: "14px 36px", borderRadius: "8px", fontWeight: "700", textDecoration: "none", fontSize: "1.05rem"
                 }}>Jetzt Termin buchen</a>

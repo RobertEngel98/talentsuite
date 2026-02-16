@@ -127,7 +127,7 @@ const BlogArticle = ({
               <div style={{ background: "linear-gradient(135deg, #023B5B 0%, #035a8c 100%)", borderRadius: "16px", padding: "2rem", marginTop: "1.5rem", marginBottom: "2rem", textAlign: "center" }}>
                 <h3 style={{ color: "white", fontSize: "1.4rem", marginBottom: "0.75rem" }}>Bereit für messbare Ergebnisse?</h3>
                 <p style={{ color: "rgba(255,255,255,0.85)", marginBottom: "1.25rem" }}>In einem kostenlosen Erstgespräch analysieren wir deine Situation und zeigen dir konkret, wie wir helfen können.</p>
-                <a href="https://calendly.com/talentsuite" style={{ display: "inline-block", background: "white", color: "#023B5B", padding: "12px 32px", borderRadius: "8px", fontWeight: "700", textDecoration: "none" }}>Jetzt kostenloses Erstgespräch buchen</a>
+                <a href="https://calendar.app.google/mU29snzEsgqsnMXy8" style={{ display: "inline-block", background: "white", color: "#023B5B", padding: "12px 32px", borderRadius: "8px", fontWeight: "700", textDecoration: "none" }}>Jetzt kostenloses Erstgespräch buchen</a>
               </div>
 
               {/* Related Articles */}

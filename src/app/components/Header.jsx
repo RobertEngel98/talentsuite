@@ -70,7 +70,7 @@ export default function Header() {
               </ul>
             </li>
           </ul>
-          <Link href="https://calendly.com/talentsuite" className="btns" aria-label="Erstgespräch vereinbaren">
+          <Link href="https://calendar.app.google/mU29snzEsgqsnMXy8" className="btns" aria-label="Erstgespräch vereinbaren">
             Erstgespräch vereinbaren
           </Link>
         </div>

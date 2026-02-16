@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-const MainSection = ({ title, description, buttonText, buttonLink = "https://calendly.com/talentsuite", imageSrc, imageAlt, trustBadges = true }) => {
+const MainSection = ({ title, description, buttonText, buttonLink = "https://calendar.app.google/mU29snzEsgqsnMXy8", imageSrc, imageAlt, trustBadges = true }) => {
   return (
     <section className="hero-section" aria-label={imageAlt || "Service Hero"}>
       <div className="hero_content container">

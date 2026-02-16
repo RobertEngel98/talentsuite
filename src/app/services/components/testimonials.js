@@ -16,7 +16,7 @@ const Testimonials = ({ title, description, link, linkText, testimonialData }) =
               <h2>{title}</h2>
               <p style={{ maxWidth: "600px" }}>{description}</p>
               <div className="hero_buttons">
-                <Link className="btns web_btns" href={link || "https://calendly.com/talentsuite"} target="_blank" rel="noopener noreferrer">
+                <Link className="btns web_btns" href={link || "https://calendar.app.google/mU29snzEsgqsnMXy8"} target="_blank" rel="noopener noreferrer">
                   {linkText || "Jetzt Termin sichern"}
                   <span className="btn_arrows">
                     <i className="bi bi-telephone"></i>

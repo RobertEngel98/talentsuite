@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Appointment = ({ heading, buttonText, buttonLink = "https://calendly.com/talentsuite" }) => {
+const Appointment = ({ heading, buttonText, buttonLink = "https://calendar.app.google/mU29snzEsgqsnMXy8" }) => {
   return (
     <section className="appointment_section" aria-label="Termin vereinbaren">
       <div className="container">

@@ -17,7 +17,7 @@ const Footer = () => {
           </p>
           <Link
             className="btns web_btns"
-            href="https://calendly.com/talentsuite"
+            href="https://calendar.app.google/mU29snzEsgqsnMXy8"
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: "inline-flex", margin: "0 auto" }}

@@ -116,7 +116,7 @@ const HeroSection = () => {
                 </p>
                 <div className="hero_buttons">
                   {/* Verkaufspsychologie: Ergebnis-orientierter CTA + Risikoumkehr */}
-                  <Link className="btns web_btns" href="https://calendly.com/talentsuite" target="_blank" rel="noopener noreferrer">
+                  <Link className="btns web_btns" href="https://calendar.app.google/mU29snzEsgqsnMXy8" target="_blank" rel="noopener noreferrer">
                     Kostenlose Potenzialanalyse sichern
                     <span className="btn_arrows">
                       <i className="bi bi-arrow-up-right"></i>
