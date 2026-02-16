@@ -1,0 +1,83 @@
+.social_icons a,
+.btns {
+  padding: 10px 32px 10px 10px;
+  background-color: var(--text-color);
+  border: 1px solid var(--text-color);
+  color: var(--primmary-color);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.5s;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: .5px;
+}
+
+.btns:hover {
+  background-color: var(--text-color);
+  border: 1px solid #ffffff2e;
+  color: var(--secondary-color);
+}
+.btns .btn_arrows {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text-color);
+  border-radius: 100px;
+}
+header .btns .btn_arrows {
+  background-color: var(--primmary-color);
+}
+.btns:hover .btn_arrows {
+  background-color: var(--text-color);
+}
+header .btns:hover .btn_arrows {
+  background-color: var(--secondary-color);
+}
+.btns i {
+  transition: all 0.4s;
+  position: absolute;
+  color: var(--secondary-color);
+}
+header .btns i {
+  color: var(--text-color);
+}
+.btns i:first-child {
+  transform: translate(-0px, -0px);
+}
+.btns i:last-child {
+  transform: translate(-30px, 30px);
+}
+.btns:hover i:first-child {
+  transform: translate(30px, -30px);
+}
+.btns:hover i:last-child {
+  transform: translate(-0px, -0px);
+}
+
+/* .hero_buttons */
+.hero_buttons {
+  display: flex;
+  gap: 25px;
+}
+.social_icons a,
+.hero_buttons .web_btns {
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: white;
+  backdrop-filter: blur(50px);
+}
+.hero_buttons .web_btns:first-child {
+  padding: 10px 10px 10px 32px;
+}
+.social_icons a,
+.hero_buttons .web_btns:last-child {
+  background-color: #023b5b2e;
+}
