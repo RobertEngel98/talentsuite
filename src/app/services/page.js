@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import Head from "next/head";
-import MainSection from "../components/mainSection";
-import Steps from "../components/steps";
-import Testimonials from "../components/testimonials";
-import Solution from "../components/solution";
-import Traditional from "../components/traditional";
-import Appointment from "../components/appointment";
+import MainSection from "./components/mainSection";
+import Steps from "./components/steps";
+import Testimonials from "./components/testimonials";
+import Solution from "./components/solution";
+import Traditional from "./components/traditional";
+import Appointment from "./components/appointment";
 
 const contentData = [
   { img: "/assets/review-img.png", name: "Kein konsistentes Markenbild" },
