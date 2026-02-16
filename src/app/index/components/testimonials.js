@@ -37,7 +37,7 @@ const Testimonials = () => {
       role: "Leitung Merchandise & E-Commerce - Iserlohn Roosters",
       from: "Iserlohn",
       to: "Deutschland",
-      img: "/assets/jan.png",
+      img: "/assets/Viktior.png",
       review: "TalentSuite hat unseren Onlineauftritt auf ein neues Level gehoben – von der Shopstruktur bis zur technischen Umsetzung. Das Team versteht es, Marken digital stark und verkaufsfähig zu machen.",
     },
     {
