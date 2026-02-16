@@ -52,7 +52,6 @@ const Testimonials = () => {
 
   return (
     <section className="testimonial_section" aria-label="Kundenstimmen">
-      {/* Schema.org Review Markup */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -77,11 +76,12 @@ const Testimonials = () => {
       />
 
       <div className="container">
-        <div className="row align-items-start justify-content-between testimonial-row">
-          <div className="col-12 col-md-12 col-lg-12 col-xl-4">
-            <div className="about_content testimonial-left">
+        {/* Text + Button centered above */}
+        <div className="row justify-content-center mb-5">
+          <div className="col-12 col-lg-8 text-center">
+            <div className="about_content" style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
               <h2>Kundenstimmen</h2>
-              <p>
+              <p style={{ maxWidth: "600px" }}>
                 Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse,
                 echte Stimmen aus Handwerk, E-Commerce und Dienstleistung.
               </p>
@@ -96,17 +96,22 @@ const Testimonials = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-12 col-lg-12 col-xl-8">
+        </div>
+
+        {/* Swiper full width below */}
+        <div className="row">
+          <div className="col-12">
             <Swiper
               spaceBetween={20}
               grabCursor={true}
               keyboard={{ enabled: true }}
               loop={true}
-              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              speed={800}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
               breakpoints={{
                 0: { slidesPerView: 1, slidesPerGroup: 1 },
-                768: { slidesPerView: 1, slidesPerGroup: 1 },
-                1200: { slidesPerView: 2, slidesPerGroup: 1 },
+                768: { slidesPerView: 2, slidesPerGroup: 1 },
+                1200: { slidesPerView: 3, slidesPerGroup: 1 },
               }}
               modules={[Autoplay, Keyboard]}
               className="testimonialSwiper"
