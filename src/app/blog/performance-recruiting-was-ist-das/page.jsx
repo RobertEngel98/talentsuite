@@ -1,5 +1,6 @@
 "use client";
 import BlogArticle from "../BlogArticle";
+import TldrBox from "../TldrBox";
 
 export default function Article() {
   return (
@@ -10,6 +11,7 @@ export default function Article() {
       metaKeywords="Performance Recruiting, was ist Performance Recruiting, Performance Recruiting Definition, Performance Recruiting Kosten, Social Media Recruiting erklärt"
       canonical="https://talentsuite.io/blog/performance-recruiting-was-ist-das"
       publishDate="2026-02-16"
+      updatedDate="2026-02-17"
       readingTime="8 Min. Lesezeit"
       category="Performance Recruiting"
       relatedArticles={[
@@ -18,6 +20,14 @@ export default function Article() {
         { href: "/blog/social-media-recruiting-leitfaden", title: "Social Media Recruiting Leitfaden", category: "Social Recruiting" },
       ]}
     >
+      <TldrBox items={[
+        "Performance Recruiting nutzt Social-Media-Anzeigen (Meta, TikTok, LinkedIn) statt klassischer Stellenanzeigen",
+        "80% aller Fachkräfte sind nicht aktiv auf Jobsuche – Performance Recruiting erreicht auch passive Kandidaten",
+        "Kosten pro qualifizierter Bewerbung liegen zwischen 15-50 €, deutlich günstiger als Jobbörsen",
+        "Erste Bewerbungen kommen bereits nach 48-72 Stunden, nicht nach Wochen",
+        "Besonders effektiv für Handwerk, Pflege, Gastronomie und gewerbliche Berufe"
+      ]} />
+
       <p><strong>Performance Recruiting</strong> ist eine der effektivsten Methoden der modernen Personalgewinnung. Statt auf klassische Stellenanzeigen und Jobbörsen zu setzen, nutzt Performance Recruiting gezielte Werbeanzeigen auf Social Media Plattformen, um qualifizierte Bewerber:innen zu gewinnen – datenbasiert, messbar und skalierbar.</p>
 
       <p>In diesem Leitfaden erfährst du alles, was du über Performance Recruiting wissen musst: wie es funktioniert, was es kostet, für welche Branchen es geeignet ist und warum es klassischen Recruiting-Methoden in fast allen Bereichen überlegen ist.</p>

@@ -2,17 +2,65 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
+import AuthorBox, { AuthorMini } from "./AuthorBox";
 
-const BlogArticle = ({ title, metaTitle, metaDescription, metaKeywords, canonical, publishDate, readingTime, author, category, children, relatedArticles }) => {
+const BlogArticle = ({ 
+  title, metaTitle, metaDescription, metaKeywords, canonical, 
+  publishDate, updatedDate, readingTime, author, category, 
+  children, relatedArticles, tldr,
+  authorName, authorRole, authorBio, authorCredentials, authorLinkedin
+}) => {
+  
+  const authorData = {
+    "@type": "Person",
+    "name": authorName || "Robert Engel",
+    "jobTitle": authorRole || "Gründer & Geschäftsführer",
+    "url": "https://talentsuite.io/autor/robert-engel",
+    "sameAs": [
+      authorLinkedin || "https://www.linkedin.com/in/robert-engel"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "TalentSuite",
+      "url": "https://talentsuite.io"
+    },
+    "knowsAbout": [
+      "Performance Recruiting",
+      "Social Media Recruiting",
+      "Employer Branding",
+      "Fachkräftegewinnung",
+      "Social Media Marketing",
+      "Personalgewinnung Handwerk"
+    ]
+  };
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": title,
-    "author": { "@type": "Organization", "name": author || "TalentSuite" },
-    "publisher": { "@type": "Organization", "name": "TalentSuite", "url": "https://talentsuite.io" },
+    "author": authorData,
+    "publisher": { 
+      "@type": "Organization", 
+      "name": "TalentSuite", 
+      "url": "https://talentsuite.io",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://talentsuite.io/logo.png"
+      }
+    },
     "datePublished": publishDate || "2026-02-16",
+    "dateModified": updatedDate || publishDate || "2026-02-16",
     "description": metaDescription,
-    "mainEntityOfPage": canonical,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonical
+    },
+    "inLanguage": "de-DE",
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "TalentSuite Blog",
+      "url": "https://talentsuite.io/blog"
+    }
   };
 
   return (
@@ -26,6 +74,9 @@ const BlogArticle = ({ title, metaTitle, metaDescription, metaKeywords, canonica
         <meta property="og:description" content={metaDescription} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonical} />
+        <meta property="article:published_time" content={publishDate || "2026-02-16"} />
+        {updatedDate && <meta property="article:modified_time" content={updatedDate} />}
+        <meta property="article:author" content={authorName || "Robert Engel"} />
       </Head>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
@@ -34,12 +85,22 @@ const BlogArticle = ({ title, metaTitle, metaDescription, metaKeywords, canonica
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8">
-              <div style={{ marginBottom: "1rem", display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+              {/* Category & Reading Time */}
+              <div style={{ marginBottom: "0.75rem", display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
                 {category && <span style={{ background: "rgba(2,59,91,0.15)", color: "#023B5B", padding: "4px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: "600" }}>{category}</span>}
-                {readingTime && <span style={{ opacity: 0.6, fontSize: "0.9rem" }}>{readingTime}</span>}
-                {publishDate && <span style={{ opacity: 0.6, fontSize: "0.9rem" }}>{new Date(publishDate).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "numeric" })}</span>}
+                {readingTime && <span style={{ opacity: 0.6, fontSize: "0.9rem" }}>📖 {readingTime}</span>}
               </div>
-              <h1 style={{ fontSize: "2.2rem", fontWeight: "800", lineHeight: "1.3", marginBottom: "1.5rem" }}>{title}</h1>
+
+              {/* Title */}
+              <h1 style={{ fontSize: "2.2rem", fontWeight: "800", lineHeight: "1.3", marginBottom: "1rem" }}>{title}</h1>
+              
+              {/* Author Mini + Dates */}
+              <AuthorMini 
+                name={authorName || "Robert Engel"} 
+                role={authorRole || "Gründer & Geschäftsführer"} 
+                date={publishDate}
+                updatedDate={updatedDate}
+              />
             </div>
           </div>
         </div>
@@ -53,8 +114,17 @@ const BlogArticle = ({ title, metaTitle, metaDescription, metaKeywords, canonica
                 {children}
               </article>
 
+              {/* Author Box */}
+              <AuthorBox 
+                name={authorName}
+                role={authorRole}
+                bio={authorBio}
+                credentials={authorCredentials}
+                linkedin={authorLinkedin}
+              />
+
               {/* CTA */}
-              <div style={{ background: "linear-gradient(135deg, #023B5B 0%, #035a8c 100%)", borderRadius: "16px", padding: "2rem", marginTop: "3rem", marginBottom: "2rem", textAlign: "center" }}>
+              <div style={{ background: "linear-gradient(135deg, #023B5B 0%, #035a8c 100%)", borderRadius: "16px", padding: "2rem", marginTop: "1.5rem", marginBottom: "2rem", textAlign: "center" }}>
                 <h3 style={{ color: "white", fontSize: "1.4rem", marginBottom: "0.75rem" }}>Bereit für messbare Ergebnisse?</h3>
                 <p style={{ color: "rgba(255,255,255,0.85)", marginBottom: "1.25rem" }}>In einem kostenlosen Erstgespräch analysieren wir deine Situation und zeigen dir konkret, wie wir helfen können.</p>
                 <a href="https://calendly.com/talentsuite" style={{ display: "inline-block", background: "white", color: "#023B5B", padding: "12px 32px", borderRadius: "8px", fontWeight: "700", textDecoration: "none" }}>Jetzt kostenloses Erstgespräch buchen</a>
