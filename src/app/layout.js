@@ -2,9 +2,6 @@
 
 import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/globals.css";
 import "./styles/button.css";
@@ -19,29 +16,10 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700
 const rajdhani = Rajdhani({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-rajdhani", display: "swap" });
 const inter = Inter({ subsets: ["latin"], weight: ["900"], style: ["italic"], variable: "--font-inter", display: "swap" });
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const hideHeader = pathname === "/madeByMe";
   const hideFooter = pathname === "/madeByMe";
-  const wrapperRef = useRef(null);
-  const contentRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      document.body.style.height = "100%";
-      document.documentElement.style.height = "100%";
-      document.body.style.overflow = "hidden";
-      ScrollSmoother.create({
-        wrapper: wrapperRef.current,
-        content: contentRef.current,
-        smooth: 1,
-        effects: true,
-        normalizeScroll: true,
-      });
-    }
-  }, []);
 
   return (
     <html lang="de" className={`${poppins.variable} ${rajdhani.variable} ${inter.variable}`}>
@@ -50,6 +28,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content="TalentSuite ist deine Fullservice-Agentur für Performance Recruiting, Neukundengewinnung, E-Commerce & Social Media. 50+ Unternehmen vertrauen uns. Jetzt kostenlose Potenzialanalyse sichern." />
         <meta name="keywords" content="Performance Recruiting, Personalgewinnung, Social Media Recruiting, Neukundengewinnung, E-Commerce Agentur, Social Media Agentur, Digitalagentur DACH, Fachkräftemangel, Employer Branding" />
         <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://talentsuite.io" />
         <meta name="author" content="TalentSuite - Engel & Mühlhof GbR" />
         {/* Open Graph */}
@@ -93,18 +72,16 @@ export default function RootLayout({ children }) {
         {/* Bootstrap Icons */}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
       </head>
-      <body style={{ height: "100%", overflow: "hidden" }}>
+      <body>
         <CookieConsent />
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7J9WLXF" height="0" width="0" style={{ display: "none", visibility: "hidden" }} title="Google Tag Manager"></iframe>
         </noscript>
-        <div id="smooth-wrapper" ref={wrapperRef} style={{ height: "100%", overflow: "hidden" }}>
-          {!hideHeader && <Header />}
-          <div id="smooth-content" ref={contentRef}>
-            {children}
-            {!hideFooter && <Footer />}
-          </div>
-        </div>
+        {!hideHeader && <Header />}
+        <main>
+          {children}
+        </main>
+        {!hideFooter && <Footer />}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
         {/* DSGVO: GTM nur nach Cookie-Consent */}
         <Script id="gtm-consent-script" strategy="afterInteractive">
