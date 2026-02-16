@@ -1001,6 +1001,24 @@
   align-items: stretch;
 }
 
+
+/* ============================================
+   MOBILE DECORATIVE OVERLAP FIX
+   ============================================ */
+@media (max-width: 991px) {
+  .blur_image,
+  .circle_bdr {
+    display: none !important;
+  }
+  section {
+    position: relative;
+    overflow: hidden;
+  }
+  .about_section .about_content {
+    margin-bottom: 30px;
+  }
+}
+
 /* ============================================
    GLOBAL OVERFLOW PREVENTION
    ============================================ */
