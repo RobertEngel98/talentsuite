@@ -1,39 +1,37 @@
 "use client";
 
-import Image from "next/image";
-
 export default function TrustedBrands() {
   const logos = [
-    "/logos/4D-Elements.svg",
-    "/logos/cre8ify.svg",
-    "/logos/deutsche.svg",
-    "/logos/hk_logo.svg",
-    "/logos/Jonuschies.svg",
-    "/logos/lds.svg",
-    "/logos/lebenswert.svg",
-    "/logos/Rohrer-Group.svg",
-    "/logos/Schlaf-Platz.svg",
-    "/logos/SP.svg",
-    "/logos/Specht-Immobilien.svg",
-    "/logos/Culture_Station_Logo.svg",
-    "/logos/frangipani-logo-300x158.svg",
-    "/logos/Handyklinik-Iserlohn.svg",
+    { src: "/logos/4D-Elements.svg", alt: "4D Elements" },
+    { src: "/logos/cre8ify.svg", alt: "Cre8ify" },
+    { src: "/logos/deutsche.svg", alt: "Deutsche" },
+    { src: "/logos/hk_logo.svg", alt: "HK Logo" },
+    { src: "/logos/Jonuschies.svg", alt: "Jonuschies" },
+    { src: "/logos/lds.svg", alt: "LDS" },
+    { src: "/logos/lebenswert.svg", alt: "Lebenswert" },
+    { src: "/logos/Rohrer-Group.svg", alt: "Rohrer Group" },
+    { src: "/logos/Schlaf-Platz.svg", alt: "Schlaf-Platz" },
+    { src: "/logos/SP.svg", alt: "SP" },
+    { src: "/logos/Specht-Immobilien.svg", alt: "Specht Immobilien" },
+    { src: "/logos/Culture_Station_Logo.svg", alt: "Culture Station" },
+    { src: "/logos/frangipani-logo-300x158.svg", alt: "Frangipani" },
+    { src: "/logos/Handyklinik-Iserlohn.svg", alt: "Handyklinik Iserlohn" },
   ];
-  const logos1 = [
-    "/logos/happy-buns.svg",
-    "/logos/IEC_Roosters-Logo.svg",
-    "/logos/Just-Virtual-Food-Brands.svg",
-    "/logos/Kundenlogos.svg",
-    "/logos/logo_Hagebaumarkt.svg",
-    "/logos/Logo_UME_RLK.svg",
-    "/logos/MAD_Logo.svg",
-    "/logos/MD_Physio_Logo.svg",
-    "/logos/menges.svg",
-    "/logos/Pizza_logo.svg",
-    "/logos/softwash-logo.svg",
-    "/logos/Volksbank_Logo.svg.svg",
-    "/logos/Volvo_Logo.svg",
-    "/logos/walendzik.svg",
+  const logos2 = [
+    { src: "/logos/happy-buns.svg", alt: "Happy Buns" },
+    { src: "/logos/IEC_Roosters-Logo.svg", alt: "Iserlohn Roosters" },
+    { src: "/logos/Just-Virtual-Food-Brands.svg", alt: "Just Virtual Food Brands" },
+    { src: "/logos/Kundenlogos.svg", alt: "Kundenlogos" },
+    { src: "/logos/logo_Hagebaumarkt.svg", alt: "Hagebaumarkt" },
+    { src: "/logos/Logo_UME_RLK.svg", alt: "UME RLK" },
+    { src: "/logos/MAD_Logo.svg", alt: "MAD" },
+    { src: "/logos/MD_Physio_Logo.svg", alt: "MD Physio" },
+    { src: "/logos/menges.svg", alt: "Menges" },
+    { src: "/logos/Pizza_logo.svg", alt: "Pizza Logo" },
+    { src: "/logos/softwash-logo.svg", alt: "Softwash" },
+    { src: "/logos/Volksbank_Logo.svg.svg", alt: "Volksbank" },
+    { src: "/logos/Volvo_Logo.svg", alt: "Volvo" },
+    { src: "/logos/walendzik.svg", alt: "Walendzik" },
   ];
 
   return (
@@ -43,7 +41,7 @@ export default function TrustedBrands() {
           <div className="col-12 col-md-12 col-lg-10">
             <div className="titles text-center">
               <h2 className="text-center text-white mb-4">Diese Brands setzen auf uns.</h2>
-              <Image src="/assets/btm-bdr.svg" width={100} height={100} className="btm_bdr" alt="Divider" />
+              <img src="/assets/btm-bdr.svg" className="btm_bdr" alt="" aria-hidden="true" />
             </div>
           </div>
           <div className="col-12">
@@ -53,7 +51,7 @@ export default function TrustedBrands() {
                 <div className="scroll-row scroll-left">
                   {[...logos, ...logos].map((logo, index) => (
                     <div key={`top-${index}`} className="scroll-item">
-                      <Image src={logo} alt={`Logo ${index}`} width={100} height={100} />
+                      <img src={logo.src} alt={logo.alt} loading="lazy" />
                     </div>
                   ))}
                 </div>
@@ -62,9 +60,9 @@ export default function TrustedBrands() {
               {/* Bottom Row (scrolls right) */}
               <div className="overflow-hidden py-1 position-relative mt-3">
                 <div className="scroll-row scroll-right">
-                  {[...logos1, ...logos1].map((logo1, index) => (
+                  {[...logos2, ...logos2].map((logo, index) => (
                     <div key={`bottom-${index}`} className="scroll-item">
-                      <Image src={logo1} alt={`Logo ${index}`} width={100} height={100} />
+                      <img src={logo.src} alt={logo.alt} loading="lazy" />
                     </div>
                   ))}
                 </div>
