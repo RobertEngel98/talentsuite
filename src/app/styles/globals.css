@@ -414,10 +414,16 @@ section {
 /* Animation classes */
 .scroll-left {
   animation: scrollLeft 80s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .scroll-right {
   animation: scrollRight 90s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Pause on hover */
@@ -501,9 +507,22 @@ section {
 }
 /* testimonia */
 .testimonial_section .row {
-  gap: 40px;
-  align-items: center;
+  gap: 30px;
+  align-items: stretch;
   flex-wrap: wrap;
+}
+.testimonial-row {
+  align-items: start !important;
+}
+.testimonialSwiper {
+  overflow: visible;
+  padding: 20px 0;
+}
+.testimonialSwiper .swiper-slide {
+  height: auto;
+}
+.testimonialSwiper .swiper-wrapper {
+  align-items: stretch;
 }
 .testimonial_section .swiper-slide {
   margin: 50px 0 50px;
@@ -514,7 +533,8 @@ section {
   padding: 25px 0px 0px 25px !important;
   display: flex;
   overflow: hidden;
-  min-height: 300px;
+  height: 100%;
+  min-height: 320px;
   align-items: end;
   max-width: 100%;
 }
@@ -854,20 +874,24 @@ footer .social_icons {
   justify-content: end;
 }
 footer .social_icons a {
-  width: 48px;
-  height: 48px;
-  padding: 12px !important;
+  width: 50px;
+  height: 50px;
+  padding: 0 !important;
   font-weight: 400;
   white-space: nowrap;
-  border: 1px solid #ffffff17 !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
   box-shadow: inset 0 -18px 84px rgba(226, 232, 255, 0.12) !important;
   backdrop-filter: blur(10px) !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0; /* hide text labels */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0 !important;
   overflow: hidden;
   border-radius: 100px;
+}
+footer .social_icons a i {
+  font-size: 20px !important;
+  color: white !important;
 }
 footer .social_icons a:hover {
   background-color: #023b5b;
@@ -930,7 +954,19 @@ footer .social_icons a:hover {
   height: 8px !important;
 }
 footer .footer_menu {
-  justify-content: start;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+footer .footer_menu a {
+  color: rgba(255,255,255,0.6) !important;
+  font-size: 15px;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+footer .footer_menu a:hover {
+  color: rgba(255,255,255,0.9) !important;
 }
 .social_icons span.btns {
   font-weight: 600;
@@ -1524,18 +1560,21 @@ footer .footer_menu {
    PRE-FOOTER CTA SECTION
    ============================================ */
 .pre-footer-cta-section {
-  padding: 60px 0 0;
+  padding: 80px 0 40px;
   text-align: center;
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .pre-footer-cta {
   background: linear-gradient(135deg, rgba(2, 59, 91, 0.4), rgba(9, 22, 34, 0.8));
   border-radius: 40px;
-  padding: 60px 40px;
+  padding: 80px 60px;
   border: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(30px);
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 .pre-footer-cta h2 {
   margin-bottom: 16px;
@@ -1567,15 +1606,7 @@ footer .footer_menu {
   font-size: 20px !important;
 }
 
-/* Footer menu (not social_icons class) */
-.footer_menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px 20px;
-  list-style: none;
-  padding: 0;
-  justify-content: center;
-}
+/* Footer menu styles consolidated above */
 .footer_menu a {
   color: rgba(255,255,255,0.6);
   font-size: 14px;
