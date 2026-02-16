@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import { Poppins, Rajdhani, Inter } from "next/font/google";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-poppins", display: "swap" });
 const rajdhani = Rajdhani({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-rajdhani", display: "swap" });
@@ -82,6 +83,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         {!hideFooter && <Footer />}
+        <SpeedInsights />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
         {/* DSGVO: GTM nur nach Cookie-Consent */}
         <Script id="gtm-consent-script" strategy="afterInteractive">
