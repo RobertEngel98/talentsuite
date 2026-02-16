@@ -501,9 +501,9 @@ section {
 }
 /* testimonia */
 .testimonial_section .row {
-  gap: 80px;
+  gap: 40px;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .testimonial_section .swiper-slide {
   margin: 50px 0 50px;
@@ -514,8 +514,9 @@ section {
   padding: 25px 0px 0px 25px !important;
   display: flex;
   overflow: hidden;
-  min-height: 350px;
+  min-height: 300px;
   align-items: end;
+  max-width: 100%;
 }
 .swiper-scrollbar-drag {
   background: #ffffff !important;
@@ -853,14 +854,20 @@ footer .social_icons {
   justify-content: end;
 }
 footer .social_icons a {
-  width: auto;
-  height: auto;
-  padding: 12px 20px !important;
+  width: 48px;
+  height: 48px;
+  padding: 12px !important;
   font-weight: 400;
   white-space: nowrap;
   border: 1px solid #ffffff17 !important;
   box-shadow: inset 0 -18px 84px rgba(226, 232, 255, 0.12) !important;
   backdrop-filter: blur(10px) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0; /* hide text labels */
+  overflow: hidden;
+  border-radius: 100px;
 }
 footer .social_icons a:hover {
   background-color: #023b5b;
@@ -889,7 +896,7 @@ footer .social_icons a:hover {
   padding: 0 !important;
   background-color: transparent !important;
   width: 100%;
-  min-width: 400px;
+  min-width: 200px;
   color: var(--text-color);
 }
 .newsletter_box form input::placeholder {
@@ -1512,3 +1519,93 @@ footer .footer_menu {
   margin-top: 2px;
   transition: width 0.3s ease;
 }  */
+
+/* ============================================
+   PRE-FOOTER CTA SECTION
+   ============================================ */
+.pre-footer-cta-section {
+  padding: 60px 0 0;
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+.pre-footer-cta {
+  background: linear-gradient(135deg, rgba(2, 59, 91, 0.4), rgba(9, 22, 34, 0.8));
+  border-radius: 40px;
+  padding: 60px 40px;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(30px);
+  margin-bottom: 40px;
+}
+.pre-footer-cta h2 {
+  margin-bottom: 16px;
+}
+.pre-footer-cta-text {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+}
+.pre-footer-cta-small {
+  font-size: 13px;
+  opacity: 0.4;
+  margin-top: 16px;
+}
+
+/* Footer Social - icon only (no text) */
+.footer-social {
+  flex-direction: row !important;
+  gap: 15px !important;
+}
+.footer-social a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0 !important; /* Hide any text */
+  overflow: hidden;
+}
+.footer-social a i {
+  font-size: 20px !important;
+}
+
+/* Footer menu (not social_icons class) */
+.footer_menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 20px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+.footer_menu a {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.footer_menu a:hover {
+  color: white;
+}
+
+/* Newsletter disclaimer */
+.newsletter-disclaimer {
+  font-size: 12px !important;
+  opacity: 0.35 !important;
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* ============================================
+   DESKTOP TESTIMONIAL FIX - overflow cutoff
+   ============================================ */
+.testimonial_section {
+  overflow: visible !important;
+}
+.testimonial_section .row {
+  overflow: visible !important;
+}
+.testimonial_section .swiper {
+  overflow: visible !important;
+  padding-bottom: 40px;
+}
+.testimonial_section .swiper-wrapper {
+  overflow: visible !important;
+}
