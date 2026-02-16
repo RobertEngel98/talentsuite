@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 
 const processData = [
   {
@@ -28,12 +27,10 @@ const processData = [
 const Process = () => {
   return (
     <section className="process_section" aria-label="Unser Prozess in 4 Schritten">
-      <img src="/assets/step-img1.png" className="process_img" alt="" aria-hidden="true" loading="lazy" />
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-5">
             <div className="titles text-center">
-              {/* SEO: Generischere H2 die alle Services abdeckt */}
               <h2 className="text-white mb-4">In 4 Schritten zu messbarem Wachstum</h2>
               <img src="/assets/btm-bdr.svg" alt="" aria-hidden="true" className="btm_bdr" />
             </div>
@@ -46,7 +43,6 @@ const Process = () => {
               {processData.map((process, index) => (
                 <div key={index} className="process">
                   <div className="process_icon">
-                    {/* SEO: Beschreibende Alt-Texte */}
                     <img src={process.image} alt={`Schritt ${index + 1}: ${process.heading}`} />
                   </div>
                   <h3>{process.heading}</h3>
@@ -57,7 +53,6 @@ const Process = () => {
           </div>
         </div>
       </div>
-      <img src="/assets/step-img2.png" className="process_img" alt="" aria-hidden="true" loading="lazy" />
     </section>
   );
 };
