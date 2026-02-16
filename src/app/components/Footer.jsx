@@ -1,16 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
   const currentYear = new Date().getFullYear();
-
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    alert("Vielen Dank! Du erhältst in Kürze eine Bestätigungsmail (Double-Opt-In).");
-    setEmail("");
-  };
 
   return (
     <>
@@ -45,14 +38,14 @@ const Footer = () => {
         <img src="/assets/circle.png" className="blur_image" alt="" aria-hidden="true" />
         <div className="container">
           <div className="row">
-            {/* Logo + Social in one row */}
+            {/* Logo */}
             <div className="col-12 col-lg-5">
               <Link href="/" aria-label="TalentSuite Startseite">
                 <img src="/logo.png" alt="TalentSuite Logo" className="logo" />
               </Link>
             </div>
+            {/* Social Icons */}
             <div className="col-12 col-lg-7">
-              {/* Social Icons - icon only */}
               <nav className="social_icons" aria-label="Social Media" style={{ flexDirection: "row", justifyContent: "flex-end", gap: "12px", flexWrap: "wrap" }}>
                 <a href="https://www.tiktok.com/@talentsuite" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                   <i className="bi bi-tiktok"></i>
@@ -70,30 +63,6 @@ const Footer = () => {
                   <i className="bi bi-linkedin"></i>
                 </a>
               </nav>
-              {/* Newsletter */}
-              <div className="newsletter_box">
-                <form className="d-flex flex-wrap gap-2" onSubmit={handleNewsletterSubmit}>
-                  <input
-                    type="email"
-                    required
-                    className="form-control"
-                    placeholder="Deine E-Mail-Adresse"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    aria-label="E-Mail-Adresse für Newsletter"
-                  />
-                  <button type="submit" className="btns web_btns">
-                    Anmelden
-                  </button>
-                </form>
-              </div>
-              <p className="newsletter-disclaimer" style={{ fontSize: "13px", opacity: 0.5, marginTop: "10px" }}>
-                Mit der Anmeldung stimmst du unserer{" "}
-                <a href="/datenschutz" style={{ color: "inherit", textDecoration: "underline" }}>
-                  Datenschutzerklärung
-                </a>{" "}
-                zu. Du erhältst eine Bestätigungsmail (Double-Opt-In).
-              </p>
             </div>
 
             {/* Divider */}
