@@ -75,17 +75,6 @@ const SOP = [
   ]},
 ];
 
-function useIsMobile() {
-  const [m, setM] = useState(false);
-  useEffect(() => {
-    const check = () => setM(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-  return m;
-}
-
 const B = "#023B5B", W = "#ffffff", BL = "#E8F4FD", BD = "#cdd8e0", G = "#10B981";
 
 function SopTool() {
