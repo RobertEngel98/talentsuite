@@ -36,6 +36,30 @@ li,
 p {
   color: rgba(255, 255, 255, 0.9) !important;
 }
+/* Override: Onboarding Call Tool uses dark text on white bg */
+#dc h1, #dc h2, #dc h3, #dc h4, #dc h5, #dc h6,
+#dc span, #dc li, #dc p, #dc div, #dc label, #dc button,
+#dc input, #dc textarea, #dc summary, #dc a,
+#dc-login h1, #dc-login h2, #dc-login h3, #dc-login h4,
+#dc-login h5, #dc-login h6, #dc-login span, #dc-login li,
+#dc-login p, #dc-login div, #dc-login label, #dc-login button,
+#dc-login input, #dc-login textarea {
+  color: #023B5B !important;
+}
+#dc [data-dc="copybtn"],
+#dc button[data-dc="pribtn"],
+#dc-login [data-dc="loginbtn"] {
+  color: #ffffff !important;
+}
+#dc [data-dc="ok"] { color: #10B981 !important; }
+#dc [data-dc="cnt"] { color: #8fa8ba !important; }
+#dc [data-dc="hint"] { color: #F59E0B !important; }
+#dc [data-dc="summary"] { color: #4a7a94 !important; }
+#dc pre { color: #e2e8f0 !important; }
+#dc input::placeholder, #dc textarea::placeholder { color: #9cb3c4 !important; }
+#dc-login [data-dc="loginp"] { color: #4a7a94 !important; }
+#dc-login [data-dc="loginerr"] { color: #ef4444 !important; }
+#dc-login input::placeholder { color: #9cb3c4 !important; }
 h1 {
   color: var(--text-color) !important;
   font-size: 64px !important;

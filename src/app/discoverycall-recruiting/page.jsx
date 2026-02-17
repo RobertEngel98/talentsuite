@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import Head from "next/head";
 
 /*
- * PROBLEM: globals.css has:
- *   h3, h4, h5, h6, span, li, p { color: rgba(255,255,255,0.9) !important; }
- *   h1 { color: var(--text-color) !important; }  (--text-color = #fff)
- *   body { background: #091622 !important; color: #fff; }
- *
- * !important on tag selectors beats inline styles.
- * SOLUTION: Use #dc ID selector + tag + !important = highest specificity wins.
+ * NUCLEAR CSS OVERRIDE STRATEGY:
+ * globals.css uses: span, p, h1-h6, li { color: white !important }
+ * 
+ * We inject a <style> tag into <head> with:
+ * #dc#dc#dc span, #dc#dc#dc p, etc. { color: #023B5B !important }
+ * 
+ * Triple-ID = specificity (3,0,1) which always beats (0,0,1) from globals
+ * Both have !important, so specificity decides = we win.
  */
 
 const SOP = [
@@ -46,339 +47,44 @@ const SOP = [
     { key: "ansprache", label: "Du- oder Sie-Form?", type: "chips", opts: ["Du","Sie"] },
     { key: "gendern", label: "Gendern?", type: "chips", opts: ["Ja","Nein"] },
     { key: "logo", label: "Logo vorhanden?", type: "chips", opts: ["Ja – wird zugesendet","Nein"] },
-    { key: "ciFarben", label: "CI-Farben", type: "text", ph: "z.B. #023B5B, Dunkelblau" },
+    { key: "ciFarben", label: "CI-Farben", type: "text", ph: "z.B. #023B5B" },
     { key: "ciFont", label: "CI-Schriftart", type: "text", ph: "z.B. Montserrat" },
     { key: "firmaText", label: "Kurze Unternehmensbeschreibung", type: "textarea", ph: "2–3 Sätze..." },
     { key: "benefits", label: "Mitarbeiter-Benefits", type: "textarea", ph: "Firmenwagen, 30 Tage Urlaub..." },
     { key: "testimonials", label: "Testimonials vorhanden?", type: "chips", opts: ["Schrift","Video","Beides","Nein"] },
-    { key: "maBilder", label: "Bilder von Mitarbeitern?", type: "chips", opts: ["Ja","Stock nutzen","Vor-Ort planen"] },
+    { key: "maBilder", label: "Mitarbeiter-Bilder?", type: "chips", opts: ["Ja","Stock","Vor-Ort planen"] },
     { key: "kontaktBewerber", label: "Ansprechpartner für Bewerber", type: "textarea", ph: "Name:\nE-Mail:\nTelefon:" },
   ]},
   { id: "creatives", icon: "🎨", label: "2.4 Creatives", fields: [
-    { key: "material", label: "Foto-/Videomaterial vorhanden?", type: "chips", opts: ["Fotos","Videos","Beides","Nein"] },
-    { key: "keinMat", label: "Falls nein: Stockfootage oder Vor-Ort?", type: "chips", opts: ["Stockfootage","Vor-Ort","N/A"], cond: "material", condVal: "Nein" },
-    { key: "zertifikate", label: "Zertifikate? (FOCUS, DEKRA etc.)", type: "text", ph: "z.B. Top Arbeitgeber 2025" },
-    { key: "logoHQ", label: "Logo in hoher Auflösung?", type: "chips", opts: ["Erhalten","Angefragt","Noch anfragen"] },
-    { key: "ortCreatives", label: "Standort für Creatives", type: "text", ph: "z.B. Firmengebäude" },
+    { key: "material", label: "Foto-/Videomaterial?", type: "chips", opts: ["Fotos","Videos","Beides","Nein"] },
+    { key: "keinMat", label: "Stockfootage oder Vor-Ort?", type: "chips", opts: ["Stockfootage","Vor-Ort","N/A"], cond: "material", condVal: "Nein" },
+    { key: "zertifikate", label: "Zertifikate?", type: "text", ph: "z.B. Top Arbeitgeber 2025" },
+    { key: "logoHQ", label: "Logo HQ?", type: "chips", opts: ["Erhalten","Angefragt","Noch anfragen"] },
+    { key: "ortCreatives", label: "Standort Creatives", type: "text", ph: "z.B. Firmengebäude" },
   ]},
   { id: "meta", icon: "📱", label: "2.5 Meta Ads", fields: [
-    { key: "fbSeite", label: "Facebook-Seite vorhanden?", type: "chips", opts: ["Ja","Nein – erstellen"] },
-    { key: "fbZugriff", label: "Facebook-Zugriffsrechte?", type: "text", ph: "Name + Rolle" },
-    { key: "fbAnfrage", label: "Zugriffsanfrage TalentSuite", type: "chips", opts: ["Erledigt","Ausstehend"] },
+    { key: "fbSeite", label: "Facebook-Seite?", type: "chips", opts: ["Ja","Nein – erstellen"] },
+    { key: "fbZugriff", label: "FB-Zugriffsrechte?", type: "text", ph: "Name + Rolle" },
+    { key: "fbAnfrage", label: "Zugriffsanfrage", type: "chips", opts: ["Erledigt","Ausstehend"] },
   ]},
-  { id: "google", icon: "🔍", label: "2.6 Google Ads", hint: "Nur bei höher qualifizierten Jobs (Bachelor+).", fields: [
+  { id: "google", icon: "🔍", label: "2.6 Google Ads", hint: "Nur bei Bachelor+ Jobs.", fields: [
     { key: "gRelevant", label: "Google Ads relevant?", type: "chips", opts: ["Ja","Nein"] },
-    { key: "gKonto", label: "Google Ads Konto vorhanden?", type: "chips", opts: ["Ja","Nein – erstellen"], cond: "gRelevant", condVal: "Ja" },
+    { key: "gKonto", label: "Konto vorhanden?", type: "chips", opts: ["Ja","Nein"], cond: "gRelevant", condVal: "Ja" },
     { key: "gZugriff", label: "Zugriffsrechte?", type: "text", ph: "Name", cond: "gRelevant", condVal: "Ja" },
-    { key: "gAnfrage", label: "Zugriffsanfrage", type: "chips", opts: ["Erledigt","Ausstehend"], cond: "gRelevant", condVal: "Ja" },
   ]},
   { id: "bewerbungen", icon: "📨", label: "2.7 Bewerbungen", fields: [
-    { key: "kontaktPerson", label: "Wer ruft Bewerber am selben/nächsten Tag an?", type: "text", ph: "Name + Telefon" },
-    { key: "erstgespraechTS", label: "Erstgespräch durch TalentSuite?", type: "chips", opts: ["Ja (Upsell!)","Nein – Kunde selbst"] },
+    { key: "kontaktPerson", label: "Bewerber-Kontakt?", type: "text", ph: "Name + Telefon" },
+    { key: "erstgespraechTS", label: "Erstgespräch durch TS?", type: "chips", opts: ["Ja (Upsell!)","Nein"] },
   ]},
   { id: "abschluss", icon: "✅", label: "Abschluss", fields: [
-    { key: "paket", label: "Empfohlenes Paket", type: "chips", opts: ["Starter (ab 990€)","Professional (1.490€)","Premium (2.490€)","Enterprise"] },
+    { key: "paket", label: "Paket", type: "chips", opts: ["Starter (990€)","Professional (1.490€)","Premium (2.490€)","Enterprise"] },
     { key: "laufzeit", label: "Laufzeit", type: "chips", opts: ["1 Monat","3 Monate","6 Monate","12 Monate"] },
     { key: "start", label: "Startdatum", type: "text", ph: "z.B. 01.03.2026" },
-    { key: "next", label: "Nächste Schritte", type: "textarea", ph: "Angebot senden, Zugänge anfragen..." },
-    { key: "notizen", label: "Sonstige Notizen", type: "textarea", ph: "Alles Wichtige..." },
+    { key: "next", label: "Nächste Schritte", type: "textarea", ph: "Angebot senden..." },
+    { key: "notizen", label: "Notizen", type: "textarea", ph: "Sonstiges..." },
     { key: "bewertung", label: "Lead-Bewertung", type: "chips", opts: ["🔥 Hot","🟡 Warm","🔵 Kalt","❌ Kein Fit"] },
   ]},
 ];
-
-/* Ultra-specificity CSS: #dc beats any tag-level !important in globals.css */
-const OVERRIDE_CSS = `
-#dc, #dc *, #dc h1, #dc h2, #dc h3, #dc h4, #dc h5, #dc h6,
-#dc p, #dc span, #dc label, #dc div, #dc button, #dc input,
-#dc textarea, #dc summary, #dc a, #dc li, #dc details {
-  color: #023B5B !important;
-  font-family: inherit;
-}
-#dc {
-  background: #f0f4f7 !important;
-  padding: 28px 0 60px !important;
-  min-height: 70vh !important;
-  display: block !important;
-}
-#dc .dc-layout {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 16px;
-  display: flex;
-  gap: 24px;
-}
-
-/* SIDEBAR */
-#dc .dc-side {
-  width: 260px;
-  flex-shrink: 0;
-  background: #ffffff !important;
-  border-radius: 16px;
-  padding: 14px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-  position: sticky;
-  top: 100px;
-  align-self: flex-start;
-}
-#dc .dc-side-title {
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  padding: 6px 10px 14px;
-  border-bottom: 1px solid #e8edf1;
-  margin-bottom: 6px;
-}
-#dc .dc-sb {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: none;
-  background: transparent !important;
-  cursor: pointer;
-  text-align: left;
-  margin-bottom: 2px;
-}
-#dc .dc-sb:hover { background: #f5f8fb !important; }
-#dc .dc-sb-act { background: #E8F4FD !important; }
-#dc .dc-sb-skip { opacity: 0.4; }
-#dc .dc-sb span { font-size: 16px !important; }
-#dc .dc-sb .dc-sb-lbl {
-  display: block !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  color: #023B5B !important;
-}
-#dc .dc-sb-act .dc-sb-lbl { font-weight: 700 !important; }
-#dc .dc-sb .dc-sb-cnt {
-  font-size: 11px !important;
-  color: #8fa8ba !important;
-}
-#dc .dc-sb .dc-sb-cnt.done {
-  color: #10B981 !important;
-  font-weight: 600 !important;
-}
-#dc .dc-sb .dc-sb-ok {
-  color: #10B981 !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-}
-#dc .dc-copy {
-  width: 100%;
-  padding: 13px 16px;
-  border-radius: 10px;
-  border: none;
-  background: #023B5B !important;
-  color: #ffffff !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  cursor: pointer;
-  margin-top: 10px;
-}
-#dc .dc-copy:hover { background: #01294a !important; }
-#dc .dc-copy.copied { background: #10B981 !important; }
-
-/* MAIN CARD */
-#dc .dc-main { flex: 1; min-width: 0; }
-#dc .dc-card {
-  background: #ffffff !important;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-  margin-bottom: 20px;
-}
-#dc .dc-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #e8edf1;
-}
-#dc .dc-head-row { display: flex; align-items: center; gap: 10px; }
-#dc .dc-head h3 {
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  margin: 0 !important;
-  line-height: 1.3 !important;
-}
-#dc .dc-head-hint {
-  font-size: 12px !important;
-  color: #F59E0B !important;
-  font-weight: 500 !important;
-  margin: 4px 0 0 36px !important;
-}
-#dc .dc-skipbtn {
-  padding: 6px 16px;
-  border-radius: 8px;
-  font-size: 12px !important;
-  border: 1.5px solid #cdd8e0;
-  background: #ffffff !important;
-  color: #4a7a94 !important;
-  cursor: pointer;
-}
-
-/* FIELDS */
-#dc .dc-fields { display: flex; flex-direction: column; gap: 18px; }
-#dc .dc-lbl {
-  display: block !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  color: #023B5B !important;
-  margin-bottom: 7px !important;
-}
-#dc .dc-inp, #dc .dc-ta {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1.5px solid #cdd8e0;
-  font-size: 14px !important;
-  outline: none;
-  box-sizing: border-box;
-  background: #ffffff !important;
-  color: #023B5B !important;
-}
-#dc .dc-inp::placeholder, #dc .dc-ta::placeholder { color: #9cb3c4 !important; }
-#dc .dc-inp:focus, #dc .dc-ta:focus { border-color: #023B5B; }
-#dc .dc-inp.filled, #dc .dc-ta.filled { border-color: #023B5B; background: #f8fbff !important; }
-#dc .dc-ta { resize: vertical; }
-
-/* CHIPS */
-#dc .dc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-#dc .dc-chip {
-  padding: 9px 18px;
-  border-radius: 22px;
-  border: 1.5px solid #cdd8e0;
-  background: #ffffff !important;
-  color: #023B5B !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  cursor: pointer;
-}
-#dc .dc-chip:hover { border-color: #023B5B; background: #f8fbff !important; }
-#dc .dc-chip.sel {
-  border: 2px solid #023B5B;
-  background: #E8F4FD !important;
-  font-weight: 700 !important;
-}
-
-/* NAV */
-#dc .dc-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 28px;
-  padding-top: 20px;
-  border-top: 1px solid #e8edf1;
-}
-#dc .dc-outbtn {
-  padding: 11px 24px;
-  border-radius: 10px;
-  border: 1.5px solid #023B5B;
-  background: #ffffff !important;
-  color: #023B5B !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  cursor: pointer;
-}
-#dc .dc-outbtn:disabled { opacity: 0.3; cursor: not-allowed; }
-#dc .dc-pribtn {
-  padding: 11px 28px;
-  border-radius: 10px;
-  border: none;
-  background: #023B5B !important;
-  color: #ffffff !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  cursor: pointer;
-}
-#dc .dc-pribtn:hover { background: #01294a !important; }
-#dc .dc-pribtn.copied { background: #10B981 !important; }
-
-/* PREVIEW */
-#dc .dc-prev summary { font-size: 13px !important; color: #4a7a94 !important; cursor: pointer; padding: 8px 0; }
-#dc .dc-prev pre {
-  background: #0f172a !important;
-  color: #e2e8f0 !important;
-  padding: 20px;
-  border-radius: 12px;
-  font-size: 12px !important;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  max-height: 400px;
-  overflow: auto;
-}
-#dc .dc-skipped { text-align: center; padding: 40px 0; }
-#dc .dc-skipped p { color: #4a7a94 !important; }
-
-/* LOGIN */
-#dc-login {
-  min-height: 60vh !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 60px 20px !important;
-  background: #f0f4f7 !important;
-}
-#dc-login, #dc-login *, #dc-login h2, #dc-login p,
-#dc-login input, #dc-login button, #dc-login div, #dc-login span {
-  color: #023B5B !important;
-}
-#dc-login .dc-lbox {
-  background: #ffffff !important;
-  border-radius: 20px;
-  padding: 48px 40px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.12);
-  max-width: 440px;
-  width: 100%;
-  text-align: center;
-}
-#dc-login .dc-lbox h2 {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  margin-bottom: 8px !important;
-  line-height: 1.3 !important;
-}
-#dc-login .dc-lbox p {
-  font-size: 14px !important;
-  color: #4a7a94 !important;
-  margin-bottom: 28px !important;
-}
-#dc-login .dc-lrow { display: flex; gap: 8px; }
-#dc-login .dc-linp {
-  flex: 1;
-  padding: 14px 18px;
-  border-radius: 12px;
-  border: 2px solid #cdd8e0;
-  font-size: 15px !important;
-  outline: none;
-  color: #023B5B !important;
-  background: #ffffff !important;
-}
-#dc-login .dc-linp:focus { border-color: #023B5B; }
-#dc-login .dc-linp.err { border-color: #ef4444; }
-#dc-login .dc-lgo {
-  padding: 14px 28px;
-  border-radius: 12px;
-  border: none;
-  background: #023B5B !important;
-  color: #ffffff !important;
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  cursor: pointer;
-  white-space: nowrap;
-}
-#dc-login .dc-lerr { font-size: 13px !important; color: #ef4444 !important; margin-top: 8px; }
-
-/* RESPONSIVE */
-@media (max-width: 991px) {
-  #dc .dc-layout { flex-direction: column; }
-  #dc .dc-side { width: 100%; position: static; }
-  #dc .dc-card { padding: 24px 20px; }
-  #dc .dc-head { flex-direction: column; gap: 10px; }
-  #dc-login .dc-lbox { padding: 32px 24px; }
-}
-`;
 
 function SopTool() {
   const [active, setActive] = useState(SOP[0].id);
@@ -386,101 +92,123 @@ function SopTool() {
   const [skip, setSkip] = useState({});
   const [copied, setCopied] = useState(false);
   const u = (k, v) => setD((p) => ({ ...p, [k]: v }));
-
   const prog = (sec) => {
     const vis = sec.fields.filter((f) => !f.cond || d[f.cond] === f.condVal);
     const fill = vis.filter((f) => d[f.key] && d[f.key] !== "");
     return { f: fill.length, t: vis.length };
   };
-
   const genText = () => {
-    let t = `📋 ONBOARDING CALL – ${d.firma || "N/A"}\n━━━━━━━━━━━━━━━━━━━━━━━━━━\nDatum: ${new Date().toLocaleDateString("de-DE")}\n\n`;
+    let t = `📋 ONBOARDING CALL – ${d.firma || "N/A"}\n━━━━━━━━━━━━━━━━━━\nDatum: ${new Date().toLocaleDateString("de-DE")}\n\n`;
     SOP.forEach((sec) => {
       if (skip[sec.id]) return;
       const has = sec.fields.some((f) => d[f.key] && d[f.key] !== "");
       if (!has) return;
-      t += `${sec.icon} ${sec.label.toUpperCase()}\n────────────────────\n`;
+      t += `${sec.icon} ${sec.label.toUpperCase()}\n──────────\n`;
       sec.fields.forEach((f) => {
         if (f.cond && d[f.cond] !== f.condVal) return;
-        if (d[f.key] && d[f.key] !== "") t += `${f.label}: ${d[f.key]}\n`;
+        if (d[f.key]) t += `${f.label}: ${d[f.key]}\n`;
       });
       t += `\n`;
     });
     return t;
   };
-
   const copy = () => { navigator.clipboard.writeText(genText()); setCopied(true); setTimeout(() => setCopied(false), 3000); };
   const sec = SOP.find((s) => s.id === active);
   const idx = SOP.findIndex((s) => s.id === active);
 
+  // Style constants
+  const B = "#023B5B";
+  const W = "#ffffff";
+  const BL = "#E8F4FD";
+  const BD = "#cdd8e0";
+  const G = "#10B981";
+
   return (
-    <div id="dc">
-      <div className="dc-layout">
-        <div className="dc-side">
-          <div className="dc-side-title">📞 Onboarding Call</div>
+    <div id="dc" style={{ background: "#f0f4f7", padding: "28px 0 60px", minHeight: "70vh" }}>
+      <div style={{ maxWidth: 1140, margin: "0 auto", padding: "0 16px", display: "flex", gap: 24 }}>
+        
+        {/* SIDEBAR */}
+        <div style={{ width: 260, flexShrink: 0, background: W, borderRadius: 16, padding: 14, boxShadow: "0 2px 16px rgba(0,0,0,0.06)", position: "sticky", top: 100, alignSelf: "flex-start" }}>
+          <div style={{ fontSize: 15, fontWeight: 700, padding: "6px 10px 14px", borderBottom: "1px solid #e8edf1", marginBottom: 6 }}>📞 Onboarding Call</div>
           {SOP.map((s) => {
             const p = prog(s);
             const isAct = active === s.id;
             const isDone = p.f === p.t && p.t > 0;
             return (
-              <button key={s.id} onClick={() => setActive(s.id)}
-                className={`dc-sb ${isAct ? "dc-sb-act" : ""} ${skip[s.id] ? "dc-sb-skip" : ""}`}>
-                <span>{s.icon}</span>
+              <button key={s.id} onClick={() => setActive(s.id)} style={{
+                display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px",
+                borderRadius: 10, border: "none", background: isAct ? BL : "transparent",
+                cursor: "pointer", textAlign: "left", marginBottom: 2, fontFamily: "inherit",
+                opacity: skip[s.id] ? 0.4 : 1,
+              }}>
+                <div style={{ fontSize: 16, lineHeight: 1 }}>{s.icon}</div>
                 <div style={{ flex: 1 }}>
-                  <span className="dc-sb-lbl">{s.label}</span>
-                  <span className={`dc-sb-cnt ${isDone ? "done" : ""}`}>{skip[s.id] ? "Skip" : `${p.f} / ${p.t}`}</span>
+                  <div data-dc="lbl" style={{ fontSize: 13, fontWeight: isAct ? 700 : 500 }}>{s.label}</div>
+                  <div data-dc="cnt" style={{ fontSize: 11 }}>{skip[s.id] ? "Skip" : `${p.f} / ${p.t}`}</div>
                 </div>
-                {isDone && !skip[s.id] && <span className="dc-sb-ok">✓</span>}
+                {isDone && !skip[s.id] && <div data-dc="ok" style={{ fontSize: 14, fontWeight: 700 }}>✓</div>}
               </button>
             );
           })}
-          <button onClick={copy} className={`dc-copy ${copied ? "copied" : ""}`}>
+          <button onClick={copy} data-dc="copybtn" style={{
+            width: "100%", padding: "13px 16px", borderRadius: 10, border: "none",
+            background: copied ? G : B, fontSize: 13, fontWeight: 700, cursor: "pointer",
+            marginTop: 10, fontFamily: "inherit",
+          }}>
             {copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}
           </button>
         </div>
 
-        <div className="dc-main">
-          <div className="dc-card">
-            <div className="dc-head">
+        {/* MAIN */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ background: W, borderRadius: 16, padding: 32, boxShadow: "0 2px 16px rgba(0,0,0,0.06)", marginBottom: 20 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid #e8edf1" }}>
               <div>
-                <div className="dc-head-row">
-                  <span style={{ fontSize: 26 }}>{sec.icon}</span>
-                  <h3>{sec.label}</h3>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ fontSize: 26 }}>{sec.icon}</div>
+                  <div data-dc="title" style={{ fontSize: 20, fontWeight: 700 }}>{sec.label}</div>
                 </div>
-                {sec.hint && <p className="dc-head-hint">⚠️ {sec.hint}</p>}
+                {sec.hint && <div data-dc="hint" style={{ fontSize: 12, fontWeight: 500, marginTop: 4, marginLeft: 36 }}>{`⚠️ ${sec.hint}`}</div>}
               </div>
               {sec.optional && (
-                <button onClick={() => setSkip((p) => ({ ...p, [active]: !p[active] }))} className="dc-skipbtn">
+                <button onClick={() => setSkip((p) => ({ ...p, [active]: !p[active] }))} style={{ padding: "6px 16px", borderRadius: 8, fontSize: 12, border: `1.5px solid ${BD}`, background: W, cursor: "pointer", fontFamily: "inherit" }}>
                   {skip[active] ? "Aktivieren" : "Überspringen"}
                 </button>
               )}
             </div>
 
             {!skip[active] ? (
-              <div className="dc-fields">
+              <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                 {sec.fields.map((f) => {
                   if (f.cond && d[f.cond] !== f.condVal) return null;
                   if (f.type === "text") return (
                     <div key={f.key}>
-                      <label className="dc-lbl">{f.label}</label>
-                      <input type="text" className={`dc-inp ${d[f.key] ? "filled" : ""}`} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} />
+                      <div data-dc="label" style={{ fontSize: 14, fontWeight: 700, marginBottom: 7 }}>{f.label}</div>
+                      <input type="text" data-dc="input" style={{ width: "100%", padding: "12px 16px", borderRadius: 10, border: `1.5px solid ${d[f.key] ? B : BD}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", background: d[f.key] ? "#f8fbff" : W }} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} />
                     </div>
                   );
                   if (f.type === "textarea") return (
                     <div key={f.key}>
-                      <label className="dc-lbl">{f.label}</label>
-                      <textarea className={`dc-ta ${d[f.key] ? "filled" : ""}`} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} rows={3} />
+                      <div data-dc="label" style={{ fontSize: 14, fontWeight: 700, marginBottom: 7 }}>{f.label}</div>
+                      <textarea data-dc="input" style={{ width: "100%", padding: "12px 16px", borderRadius: 10, border: `1.5px solid ${d[f.key] ? B : BD}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", resize: "vertical", background: d[f.key] ? "#f8fbff" : W }} value={d[f.key] || ""} onChange={(e) => u(f.key, e.target.value)} placeholder={f.ph} rows={3} />
                     </div>
                   );
                   if (f.type === "chips") return (
                     <div key={f.key}>
-                      <label className="dc-lbl">{f.label}</label>
-                      <div className="dc-chips">
-                        {f.opts.map((o) => (
-                          <button key={o} onClick={() => u(f.key, d[f.key] === o ? "" : o)} className={`dc-chip ${d[f.key] === o ? "sel" : ""}`}>
-                            {d[f.key] === o && "✓ "}{o}
-                          </button>
-                        ))}
+                      <div data-dc="label" style={{ fontSize: 14, fontWeight: 700, marginBottom: 7 }}>{f.label}</div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                        {f.opts.map((o) => {
+                          const sel = d[f.key] === o;
+                          return (
+                            <button key={o} data-dc="chip" onClick={() => u(f.key, sel ? "" : o)} style={{
+                              padding: "9px 18px", borderRadius: 22, border: sel ? `2px solid ${B}` : `1.5px solid ${BD}`,
+                              background: sel ? BL : W, fontSize: 13, fontWeight: sel ? 700 : 500,
+                              cursor: "pointer", fontFamily: "inherit",
+                            }}>
+                              {sel && "✓ "}{o}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   );
@@ -488,24 +216,24 @@ function SopTool() {
                 })}
               </div>
             ) : (
-              <div className="dc-skipped">
-                <p>Diese Sektion wurde übersprungen.</p>
-                <button onClick={() => setSkip((p) => ({ ...p, [active]: false }))} className="dc-outbtn">Doch ausfüllen</button>
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <div>Übersprungen</div>
+                <button onClick={() => setSkip((p) => ({ ...p, [active]: false }))} style={{ marginTop: 12, padding: "8px 20px", borderRadius: 8, border: `1.5px solid ${B}`, background: W, cursor: "pointer", fontFamily: "inherit" }}>Doch ausfüllen</button>
               </div>
             )}
 
-            <div className="dc-nav">
-              <button className="dc-outbtn" onClick={() => idx > 0 && setActive(SOP[idx - 1].id)} disabled={idx === 0}>← Zurück</button>
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 28, paddingTop: 20, borderTop: "1px solid #e8edf1" }}>
+              <button onClick={() => idx > 0 && setActive(SOP[idx - 1].id)} disabled={idx === 0} style={{ padding: "11px 24px", borderRadius: 10, border: `1.5px solid ${B}`, background: W, fontSize: 14, fontWeight: 600, cursor: idx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit", opacity: idx === 0 ? 0.3 : 1 }}>← Zurück</button>
               {idx < SOP.length - 1 ? (
-                <button className="dc-pribtn" onClick={() => setActive(SOP[idx + 1].id)}>Weiter →</button>
+                <button data-dc="pribtn" onClick={() => setActive(SOP[idx + 1].id)} style={{ padding: "11px 28px", borderRadius: 10, border: "none", background: B, fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>Weiter →</button>
               ) : (
-                <button className={`dc-pribtn ${copied ? "copied" : ""}`} onClick={copy}>{copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}</button>
+                <button data-dc="pribtn" onClick={copy} style={{ padding: "11px 28px", borderRadius: 10, border: "none", background: copied ? G : B, fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}</button>
               )}
             </div>
           </div>
-          <details className="dc-prev">
-            <summary>📄 Vorschau ClickUp-Text</summary>
-            <pre>{genText()}</pre>
+          <details style={{ marginTop: 12 }}>
+            <summary data-dc="summary" style={{ fontSize: 13, cursor: "pointer", padding: "8px 0" }}>📄 Vorschau ClickUp-Text</summary>
+            <pre style={{ background: "#0f172a", padding: 20, borderRadius: 12, fontSize: 12, lineHeight: 1.7, whiteSpace: "pre-wrap", maxHeight: 400, overflow: "auto" }}>{genText()}</pre>
           </details>
         </div>
       </div>
@@ -529,27 +257,26 @@ export default function DiscoveryCallPage() {
         <title>Onboarding Call Tool | TalentSuite</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <style dangerouslySetInnerHTML={{ __html: OVERRIDE_CSS }} />
 
       {!auth ? (
-        <div id="dc-login">
-          <div className="dc-lbox">
+        <div id="dc-login" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "60px 20px", background: "#f0f4f7" }}>
+          <div style={{ background: "#ffffff", borderRadius: 20, padding: "48px 40px", boxShadow: "0 4px 30px rgba(0,0,0,0.12)", maxWidth: 440, width: "100%", textAlign: "center" }}>
             <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-            <h2>Onboarding Call Tool</h2>
-            <p>Internes Tool für das TalentSuite Team.<br />Bitte Passwort eingeben um fortzufahren.</p>
-            <div className="dc-lrow">
+            <h2 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8 }}>Onboarding Call Tool</h2>
+            <p data-dc="loginp" style={{ fontSize: 14, marginBottom: 28 }}>Internes Tool für das TalentSuite Team.<br />Bitte Passwort eingeben um fortzufahren.</p>
+            <div style={{ display: "flex", gap: 8 }}>
               <input
                 type="password"
-                className={`dc-linp ${err ? "err" : ""}`}
+                style={{ flex: 1, padding: "14px 18px", borderRadius: 12, border: `2px solid ${err ? "#ef4444" : "#cdd8e0"}`, fontSize: 15, outline: "none", background: "#ffffff", fontFamily: "inherit" }}
                 value={pw}
                 onChange={(e) => { setPw(e.target.value); setErr(false); }}
                 onKeyDown={(e) => e.key === "Enter" && login()}
                 placeholder="Passwort eingeben..."
                 autoFocus
               />
-              <button onClick={login} className="dc-lgo">Anmelden →</button>
+              <button data-dc="loginbtn" onClick={login} style={{ padding: "14px 28px", borderRadius: 12, border: "none", background: "#023B5B", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" }}>Anmelden →</button>
             </div>
-            {err && <div className="dc-lerr">Falsches Passwort. Bitte erneut versuchen.</div>}
+            {err && <div data-dc="loginerr" style={{ fontSize: 13, marginTop: 8 }}>Falsches Passwort.</div>}
           </div>
         </div>
       ) : (
