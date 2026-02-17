@@ -106,7 +106,7 @@ const ContentProduktion = () => {
         title={<>Content, der wirkt –<br />nicht nur gefällt.</>}
         description="Wir produzieren Videos, Fotos und Social Media Content, der deine Marke authentisch zeigt und messbare Ergebnisse liefert."
         buttonText="Jetzt Content-Beratung buchen"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         imageSrc="/assets/services-img.png"
         imageAlt="Content Produktion – Video, Foto und Social Media Content"
       />
@@ -128,7 +128,7 @@ const ContentProduktion = () => {
       <Testimonials
         title="Kundenstimmen"
         description="Was unsere Kunden über die Content-Zusammenarbeit sagen – echte Ergebnisse aus verschiedenen Branchen."
-        link="https://calendly.com/talentsuite"
+        link="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         linkText="Auch besseren Content? Jetzt Termin sichern"
         testimonialData={contentTestimonials}
       />
@@ -136,7 +136,7 @@ const ContentProduktion = () => {
       <Appointment
         heading="Lass uns gemeinsam Content produzieren, der deine Marke auf das nächste Level hebt."
         buttonText="Jetzt Termin anfragen"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
       />
     </>
   );

@@ -24,7 +24,7 @@ const About = () => {
                   klare KPIs und echte Performance – statt leere Versprechen.
                 </p>
                 <div className="hero_buttons">
-                  <Link className="btns web_btns" href="https://calendly.com/talentsuite" target="_blank" rel="noopener noreferrer">
+                  <Link className="btns web_btns" href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer">
                     Jetzt kennenlernen
                     <span className="btn_arrows">
                       <i className="bi bi-arrow-up-right"></i>

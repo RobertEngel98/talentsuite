@@ -118,7 +118,7 @@ const PerformanceRecruiting = () => {
         title={<>Dein Recruiting braucht<br />kein Glück –<br />es braucht System.</>}
         description="Wir helfen dir, passende Bewerber:innen zu gewinnen – mit datenbasierten Kampagnen, smarten Funnels und hoher Abschlussquote."
         buttonText="Jetzt Beratungsgespräch buchen"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         imageSrc="/assets/services-img.png"
         imageAlt="Performance Recruiting – Qualifizierte Bewerbungen über Social Media"
       />
@@ -140,7 +140,7 @@ const PerformanceRecruiting = () => {
       <Testimonials
         title="Kundenstimmen"
         description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse, echte Stimmen aus verschiedenen Branchen."
-        link="https://calendly.com/talentsuite"
+        link="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         linkText="Auch so recruitern? Jetzt Termin sichern"
         testimonialData={performanceAcquisitionTestimonials}
       />
@@ -148,7 +148,7 @@ const PerformanceRecruiting = () => {
       <Appointment
         heading="Wir zeigen dir in einem kostenlosen Gespräch, wie dein Unternehmen von Performance Recruiting profitieren kann."
         buttonText="Jetzt Termin buchen"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
       />
     </>
   );

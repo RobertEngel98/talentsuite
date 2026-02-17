@@ -106,7 +106,7 @@ const WebDevelopment = () => {
         title={<>Deine Website ist dein<br />bester Vertriebler –<br />24/7.</>}
         description="Wir entwickeln performante, SEO-optimierte Websites, die Vertrauen schaffen und Besucher in Kunden verwandeln."
         buttonText="Jetzt Web-Beratung buchen"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         imageSrc="/assets/services-img.png"
         imageAlt="Webentwicklung – Moderne Websites mit React und Next.js"
       />
@@ -128,7 +128,7 @@ const WebDevelopment = () => {
       <Testimonials
         title="Kundenstimmen"
         description="Was unsere Kunden über die Web-Zusammenarbeit sagen – echte Ergebnisse aus verschiedenen Branchen."
-        link="https://calendly.com/talentsuite"
+        link="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         linkText="Auch eine bessere Website? Jetzt Termin sichern"
         testimonialData={webDevTestimonials}
       />
@@ -136,7 +136,7 @@ const WebDevelopment = () => {
       <Appointment
         heading="Lass uns gemeinsam eine Website bauen, die Vertrauen schafft und Kunden gewinnt."
         buttonText="Jetzt Termin anfragen"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
       />
     </>
   );

@@ -86,7 +86,7 @@ const Testimonials = () => {
                 echte Stimmen aus Handwerk, E-Commerce und Dienstleistung.
               </p>
               <div className="hero_buttons">
-                <Link className="btns web_btns" href="https://calendly.com/talentsuite" target="_blank" rel="noopener noreferrer">
+                <Link className="btns web_btns" href="https://calendar.app.google/CQpLAnRw8tzQUEQz5" target="_blank" rel="noopener noreferrer">
                   Auch so wachsen? Jetzt Termin sichern
                   <span className="btn_arrows">
                     <i className="bi bi-telephone"></i>

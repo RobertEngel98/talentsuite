@@ -106,7 +106,7 @@ const SocialMediaManagement = () => {
         title={<>Social Media, das konvertiert –<br />mehr Sichtbarkeit,<br />mehr Wirkung.</>}
         description="Wir managen deine Social-Media-Kanäle strategisch, kreativ und datengetrieben – damit aus Reichweite echte Ergebnisse werden."
         buttonText="Jetzt Social-Media-Beratung buchen"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         imageSrc="/assets/services-img.png"
         imageAlt="Social Media Management – Professionelle Betreuung deiner Kanäle"
       />
@@ -128,7 +128,7 @@ const SocialMediaManagement = () => {
       <Testimonials
         title="Kundenstimmen"
         description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse aus dem Social Media Bereich."
-        link="https://calendly.com/talentsuite"
+        link="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
         linkText="Auch mehr Reichweite? Jetzt Termin sichern"
         testimonialData={socialTestimonials}
       />
@@ -136,7 +136,7 @@ const SocialMediaManagement = () => {
       <Appointment
         heading="Lass uns deine Marke in den sozialen Medien sichtbar, spürbar und erfolgreich machen."
         buttonText="Jetzt Strategiegespräch vereinbaren"
-        buttonLink="https://calendly.com/talentsuite"
+        buttonLink="https://calendar.app.google/CQpLAnRw8tzQUEQz5"
       />
     </>
   );
