@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 
+// ⬇️ NACH DEM IMPORT IN N8N: Webhook-Node öffnen → Production URL kopieren → hier einfügen
+const N8N_WEBHOOK_URL = "https://talentsuite.app.n8n.cloud/webhook/discovery-call";
+
 const SOP = [
   { id: "unternehmen", icon: "🏢", label: "2.1 Unternehmen", fields: [
     { key: "firma", label: "Firmenname", type: "text", ph: "z.B. Müller Heizungsbau GmbH" },
@@ -83,6 +86,8 @@ function SopTool() {
   const [d, setD] = useState({});
   const [skip, setSkip] = useState({});
   const [copied, setCopied] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null); // 'success' | 'error' | null
   const u = (k, v) => setD((p) => ({ ...p, [k]: v }));
 
   const prog = (sec) => {
@@ -90,6 +95,7 @@ function SopTool() {
     const fill = vis.filter((f) => d[f.key] && d[f.key] !== "");
     return { f: fill.length, t: vis.length };
   };
+
   const genText = () => {
     let t = `📋 ONBOARDING CALL – ${d.firma || "N/A"}\n━━━━━━━━━━━━━━━━━━\nDatum: ${new Date().toLocaleDateString("de-DE")}\n\n`;
     SOP.forEach((sec) => {
@@ -105,9 +111,127 @@ function SopTool() {
     });
     return t;
   };
-  const copy = () => { navigator.clipboard.writeText(genText()); setCopied(true); setTimeout(() => setCopied(false), 3000); };
+
+  const copy = () => {
+    navigator.clipboard.writeText(genText());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  // ── n8n Webhook: Formulardaten als ClickUp-Doc senden ──
+  const handleSubmitToClickUp = async () => {
+    setSubmitting(true);
+    setSubmitResult(null);
+
+    try {
+      // Alle Formularfelder sammeln (gruppiert nach Sektion)
+      const payload = {
+        lead: {
+          firma: d.firma || "",
+          name: d.ansprechpartner || "",
+          email: d.email || "",
+          telefon: d.telefon || "",
+          branche: d.branche || "",
+          mitarbeiter: d.mitarbeiter || "",
+          konkurrenz: d.konkurrenz || "",
+          usp: d.usp || "",
+          offeneStellen: d.berufsbezeichnung || "",
+        },
+        call: {
+          // Stelleninfo
+          berufsbezeichnung: d.berufsbezeichnung || "",
+          arbeitszeit: d.arbeitszeit || "",
+          standort: d.standort || "",
+          besetzung: d.besetzung || "",
+          aufgaben: d.aufgaben || "",
+          qualifikationen: d.qualifikationen || "",
+          quereinstieg: d.quereinstieg || "",
+          quereinstiegDetail: d.quereinstiegDetail || "",
+          ausschluss: d.ausschluss || "",
+          idealkandidat: d.idealkandidat || "",
+          // Stelle 2
+          beruf2: d.beruf2 || "",
+          zeit2: d.zeit2 || "",
+          ort2: d.ort2 || "",
+          aufg2: d.aufg2 || "",
+          qual2: d.qual2 || "",
+          // Landingpage
+          ansprache: d.ansprache || "",
+          gendern: d.gendern || "",
+          logo: d.logo || "",
+          ciFarben: d.ciFarben || "",
+          ciFont: d.ciFont || "",
+          firmaText: d.firmaText || "",
+          benefits: d.benefits || "",
+          testimonials: d.testimonials || "",
+          maBilder: d.maBilder || "",
+          kontaktBewerber: d.kontaktBewerber || "",
+          // Creatives
+          material: d.material || "",
+          keinMat: d.keinMat || "",
+          zertifikate: d.zertifikate || "",
+          logoHQ: d.logoHQ || "",
+          ortCreatives: d.ortCreatives || "",
+          // Meta
+          fbSeite: d.fbSeite || "",
+          fbZugriff: d.fbZugriff || "",
+          fbAnfrage: d.fbAnfrage || "",
+          // Google
+          gRelevant: d.gRelevant || "",
+          gKonto: d.gKonto || "",
+          gZugriff: d.gZugriff || "",
+          // Bewerbungen
+          kontaktPerson: d.kontaktPerson || "",
+          erstgespraechTS: d.erstgespraechTS || "",
+          // Abschluss
+          empfohlenesPaket: d.paket || "",
+          timeline: d.laufzeit || "",
+          naechsteSchritte: d.next || "",
+          notizen: d.notizen || "",
+          bewertung: d.bewertung || "",
+          start: d.start || "",
+        },
+      };
+
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitResult("success");
+      } else {
+        setSubmitResult("error");
+      }
+    } catch (error) {
+      console.error("Fehler beim Senden:", error);
+      setSubmitResult("error");
+    } finally {
+      setSubmitting(false);
+      // Reset nach 5 Sekunden
+      setTimeout(() => setSubmitResult(null), 5000);
+    }
+  };
+
   const sec = SOP.find((s) => s.id === active);
   const idx = SOP.findIndex((s) => s.id === active);
+
+  // Button-Styling basierend auf Submit-Status
+  const getSubmitBtnStyle = (base = {}) => ({
+    ...base,
+    background: submitting ? "#94A3B8" : submitResult === "success" ? G : submitResult === "error" ? "#DC2626" : B,
+    cursor: submitting ? "not-allowed" : "pointer",
+  });
+
+  const getSubmitBtnText = () => {
+    if (submitting) return "⏳ Senden...";
+    if (submitResult === "success") return "✅ ClickUp-Doc erstellt!";
+    if (submitResult === "error") return "❌ Fehler – Nochmal?";
+    return "🚀 ClickUp-Doc erstellen";
+  };
 
   return (
     <div id="dc" style={{ background: "#f0f4f7", padding: mob ? "16px 0 40px" : "28px 0 60px", minHeight: "70vh" }}>
@@ -141,14 +265,22 @@ function SopTool() {
                 );
               })}
             </div>
-            {/* Copy button */}
-            <button data-dc="copybtn" onClick={copy} style={{
-              width: "100%", padding: "10px 16px", borderRadius: 8, border: "none",
-              background: copied ? G : B, fontSize: 13, fontWeight: 700, cursor: "pointer",
-              marginTop: 8, fontFamily: "inherit",
-            }}>
-              {copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}
-            </button>
+            {/* Submit + Copy Buttons */}
+            <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
+              <button onClick={handleSubmitToClickUp} disabled={submitting} style={{
+                flex: 1, padding: "10px 12px", borderRadius: 8, border: "none",
+                ...getSubmitBtnStyle(), fontSize: 12, fontWeight: 700, fontFamily: "inherit", color: W,
+              }}>
+                {getSubmitBtnText()}
+              </button>
+              <button data-dc="copybtn" onClick={copy} style={{
+                padding: "10px 14px", borderRadius: 8, border: `1.5px solid ${BD}`,
+                background: copied ? G : W, fontSize: 12, fontWeight: 600, cursor: "pointer",
+                fontFamily: "inherit", color: copied ? W : "#334155",
+              }}>
+                {copied ? "✓" : "📋"}
+              </button>
+            </div>
           </div>
         ) : (
           /* DESKTOP: Vertical sidebar */
@@ -174,12 +306,22 @@ function SopTool() {
                 </button>
               );
             })}
-            <button data-dc="copybtn" onClick={copy} style={{
+            {/* Submit Button (Primary) */}
+            <button onClick={handleSubmitToClickUp} disabled={submitting} style={{
               width: "100%", padding: "13px 16px", borderRadius: 10, border: "none",
-              background: copied ? G : B, fontSize: 13, fontWeight: 700, cursor: "pointer",
-              marginTop: 10, fontFamily: "inherit",
+              ...getSubmitBtnStyle(), fontSize: 13, fontWeight: 700, color: W,
+              marginTop: 10, fontFamily: "inherit", transition: "all 0.3s ease",
             }}>
-              {copied ? "✓ Kopiert!" : "📋 ClickUp-Task kopieren"}
+              {getSubmitBtnText()}
+            </button>
+            {/* Copy Button (Secondary) */}
+            <button data-dc="copybtn" onClick={copy} style={{
+              width: "100%", padding: "10px 16px", borderRadius: 10,
+              border: `1.5px solid ${BD}`, background: copied ? G : W,
+              fontSize: 12, fontWeight: 600, cursor: "pointer", color: copied ? W : "#334155",
+              marginTop: 6, fontFamily: "inherit", transition: "all 0.3s ease",
+            }}>
+              {copied ? "✓ Kopiert!" : "📋 Fallback: Text kopieren"}
             </button>
           </div>
         )}
@@ -265,11 +407,11 @@ function SopTool() {
                   cursor: "pointer", fontFamily: "inherit",
                 }}>Weiter →</button>
               ) : (
-                <button data-dc="pribtn" onClick={copy} style={{
+                <button data-dc="pribtn" onClick={handleSubmitToClickUp} disabled={submitting} style={{
                   padding: mob ? "10px 16px" : "11px 28px", borderRadius: 10, border: "none",
-                  background: copied ? G : B, fontSize: mob ? 12 : 14, fontWeight: 700,
-                  cursor: "pointer", fontFamily: "inherit",
-                }}>{copied ? "✓ Kopiert!" : "📋 ClickUp kopieren"}</button>
+                  ...getSubmitBtnStyle(), fontSize: mob ? 12 : 14, fontWeight: 700,
+                  fontFamily: "inherit", color: W, transition: "all 0.3s ease",
+                }}>{getSubmitBtnText()}</button>
               )}
             </div>
           </div>
