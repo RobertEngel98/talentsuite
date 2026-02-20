@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import styles from "./analyzer.module.css";
 
 const PASSWORD = "talentsuite2026";
@@ -12,35 +12,34 @@ const TABS = [
   { id: "meta", label: "Meta Ads", icon: "📱", color: "#F472B6" },
 ];
 
-/* ───── PDF Styles (inline für Print-Fenster) ───── */
+/* ───── PDF Styles ───── */
 const PDF_STYLES = `
   *{box-sizing:border-box;margin:0}
-  body{font-family:Poppins,sans-serif;color:#1E2D3A !important;background:#fff}
-  p,span,div{color:#1E2D3A !important}
-  h1{font-size:22px;color:#023B5B !important;margin:28px 0 12px}
-  h2{font-size:18px;color:#023B5B !important;margin:24px 0 10px;border-bottom:2px solid #E8EDF1;padding-bottom:6px}
-  h3{font-size:15px;color:#034a73 !important;margin:18px 0 8px}
-  blockquote{border-left:4px solid #00B4D8;padding:10px 16px;background:#f0f9fb;margin:12px 0;border-radius:0 8px 8px 0;color:#1E2D3A !important}
-  ul{padding-left:20px;margin:8px 0;color:#1E2D3A !important}
-  li{margin:4px 0;color:#1E2D3A !important}
+  body{font-family:Poppins,sans-serif;color:#1E2D3A;background:#fff}
+  p,span,div,li,ul{color:#1E2D3A}
+  h1{font-size:22px;color:#023B5B;margin:28px 0 12px}
+  h2{font-size:18px;color:#023B5B;margin:24px 0 10px;border-bottom:2px solid #E8EDF1;padding-bottom:6px}
+  h3{font-size:15px;color:#034a73;margin:18px 0 8px}
+  blockquote{border-left:4px solid #00B4D8;padding:10px 16px;background:#f0f9fb;margin:12px 0;border-radius:0 8px 8px 0;color:#1E2D3A}
+  ul{padding-left:20px;margin:8px 0}
+  li{margin:4px 0}
   hr{border:none;border-top:1px solid #C5CED6;margin:20px 0}
-  strong{color:#023B5B !important}
-  em{color:#4A5B6A !important}
-  .cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#012a42,#023B5B);color:#fff !important;text-align:center;padding:60px;page-break-after:always}
-  .cover *{color:#fff !important}
-  .cover h1{font-size:48px;color:#fff !important;border:none;margin:0}
+  strong{color:#023B5B}
+  em{color:#4A5B6A}
+  .cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#012a42,#023B5B);color:#fff;text-align:center;padding:60px;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cover *{color:#fff}
+  .cover h1{font-size:48px;color:#fff;border:none;margin:0}
   .cover p{font-size:18px;opacity:.7;margin-top:8px}
   .cover .url-box{font-size:20px;margin-top:40px;padding:18px 36px;background:rgba(255,255,255,.08);border-radius:14px;border:1px solid rgba(255,255,255,.15)}
   .cover .date{margin-top:20px;opacity:.5;font-size:14px}
   .cover .module-badge{margin-top:16px;font-size:14px;padding:8px 20px;background:rgba(255,255,255,.12);border-radius:8px;letter-spacing:.05em}
-  .content{padding:48px 56px;font-size:14px;line-height:1.8}
+  .content{padding:48px 56px;font-size:14px;line-height:1.8;color:#1E2D3A}
   .section-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:3px solid #023B5B}
-  .section-header h1{margin:0;font-size:26px;border:none}
+  .section-header h1{margin:0;font-size:26px;border:none;color:#023B5B}
   .section-header span{font-size:30px}
-  @media print{.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 `;
 
-/* ───── Markdown → HTML (Bildschirm, mit CSS Module Klassen) ───── */
+/* ───── Markdown → HTML (Bildschirm) ───── */
 function md(text) {
   if (!text) return "";
   return text
@@ -57,7 +56,7 @@ function md(text) {
     .replace(/\n/g, "<br/>");
 }
 
-/* ───── Markdown → HTML (PDF, ohne CSS Module Klassen) ───── */
+/* ───── Markdown → HTML (PDF) ───── */
 function mdPdf(text) {
   if (!text) return "";
   return text
@@ -74,7 +73,7 @@ function mdPdf(text) {
     .replace(/\n/g, "<br/>");
 }
 
-/* ───── PDF generieren (einzeln oder alle) ───── */
+/* ───── PDF generieren ───── */
 function generatePDF(tabsToExport, allResults, targetUrl) {
   const w = window.open("", "_blank");
   const isSingle = tabsToExport.length === 1;
@@ -114,7 +113,7 @@ function generatePDF(tabsToExport, allResults, targetUrl) {
   setTimeout(() => w.print(), 600);
 }
 
-/* ───── Login Screen ───── */
+/* ───── Login ───── */
 function Login({ onLogin }) {
   const [pw, setPw] = useState("");
   const [err, setErr] = useState(false);
@@ -139,9 +138,7 @@ function Login({ onLogin }) {
             onChange={(e) => { setPw(e.target.value); setErr(false); }}
           />
           {err && <p className={styles.loginErr}>Falsches Passwort.</p>}
-          <button type="submit" className={styles.loginBtn}>
-            Zugang erhalten →
-          </button>
+          <button type="submit" className={styles.loginBtn}>Zugang erhalten →</button>
         </form>
       </div>
     </div>
@@ -158,6 +155,32 @@ export default function AnalyzerPage() {
   const [errors, setErrors] = useState({});
   const [analyzing, setAnalyzing] = useState(false);
   const [progress, setProgress] = useState(0);
+
+  /* Globalen TalentSuite Header/Footer auf dieser Seite ausblenden */
+  useEffect(() => {
+    const globalHeader = document.querySelector("header:not(." + styles.header + ")");
+    const globalFooter = document.querySelector("footer");
+    const smoother = document.querySelector("#smooth-wrapper");
+
+    if (globalHeader) globalHeader.style.display = "none";
+    if (globalFooter) globalFooter.style.display = "none";
+
+    /* Falls ScrollSmoother den Content wrappt, overflow fixen */
+    if (smoother) {
+      smoother.style.overflow = "auto";
+      smoother.style.height = "auto";
+    }
+    document.body.style.overflow = "auto";
+    document.body.style.height = "auto";
+    document.documentElement.style.overflow = "auto";
+
+    return () => {
+      if (globalHeader) globalHeader.style.display = "";
+      if (globalFooter) globalFooter.style.display = "";
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    };
+  }, []);
 
   const analyzeModule = useCallback(async (mod, targetUrl, pw) => {
     setLoading((p) => ({ ...p, [mod]: true }));
@@ -204,7 +227,6 @@ export default function AnalyzerPage() {
 
   return (
     <div className={styles.page}>
-      {/* Header */}
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <span className={styles.logo}>TalentSuite</span>
@@ -231,7 +253,6 @@ export default function AnalyzerPage() {
       </header>
 
       <main className={styles.main}>
-        {/* URL Input */}
         <div className={styles.inputCard}>
           <label className={styles.inputLabel}>Webseite des potenziellen Kunden</label>
           <div className={styles.inputRow}>
@@ -267,7 +288,6 @@ export default function AnalyzerPage() {
           )}
         </div>
 
-        {/* Tabs */}
         <div className={styles.tabs}>
           {TABS.map((t) => (
             <button
@@ -284,7 +304,6 @@ export default function AnalyzerPage() {
           ))}
         </div>
 
-        {/* Result */}
         <div className={styles.resultCard}>
           {curLoad ? (
             <div className={styles.loadingState}>
@@ -312,7 +331,6 @@ export default function AnalyzerPage() {
           )}
         </div>
 
-        {/* Re-generate buttons */}
         {hasResults && !analyzing && (
           <div className={styles.regenRow}>
             {TABS.map((t) => (
