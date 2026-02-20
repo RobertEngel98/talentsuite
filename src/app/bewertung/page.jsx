@@ -203,7 +203,7 @@ export default function BewertungPage() {
               </h3>
               <p data-rf="gray" style={{ fontSize: 13, margin: "0 0 18px" }}>
                 {isPassive
-                  ? "Ihr Feedback hilft uns, von „gut" zu „herausragend" zu kommen."
+                  ? "Ihr Feedback hilft uns, von \u201egut\u201c zu \u201eherausragend\u201c zu kommen."
                   : "Bitte teilen Sie uns mit, was wir verbessern können. Robert Engel wird sich persönlich bei Ihnen melden."}
               </p>
 
