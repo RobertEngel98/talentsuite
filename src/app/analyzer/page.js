@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import styles from "./analyzer.module.css";
 
 const PASSWORD = "talentsuite2026";
@@ -12,7 +12,35 @@ const TABS = [
   { id: "meta", label: "Meta Ads", icon: "📱", color: "#F472B6" },
 ];
 
-/* ───── Markdown → HTML ───── */
+/* ───── PDF Styles (inline für Print-Fenster) ───── */
+const PDF_STYLES = `
+  *{box-sizing:border-box;margin:0}
+  body{font-family:Poppins,sans-serif;color:#1E2D3A !important;background:#fff}
+  p,span,div{color:#1E2D3A !important}
+  h1{font-size:22px;color:#023B5B !important;margin:28px 0 12px}
+  h2{font-size:18px;color:#023B5B !important;margin:24px 0 10px;border-bottom:2px solid #E8EDF1;padding-bottom:6px}
+  h3{font-size:15px;color:#034a73 !important;margin:18px 0 8px}
+  blockquote{border-left:4px solid #00B4D8;padding:10px 16px;background:#f0f9fb;margin:12px 0;border-radius:0 8px 8px 0;color:#1E2D3A !important}
+  ul{padding-left:20px;margin:8px 0;color:#1E2D3A !important}
+  li{margin:4px 0;color:#1E2D3A !important}
+  hr{border:none;border-top:1px solid #C5CED6;margin:20px 0}
+  strong{color:#023B5B !important}
+  em{color:#4A5B6A !important}
+  .cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#012a42,#023B5B);color:#fff !important;text-align:center;padding:60px;page-break-after:always}
+  .cover *{color:#fff !important}
+  .cover h1{font-size:48px;color:#fff !important;border:none;margin:0}
+  .cover p{font-size:18px;opacity:.7;margin-top:8px}
+  .cover .url-box{font-size:20px;margin-top:40px;padding:18px 36px;background:rgba(255,255,255,.08);border-radius:14px;border:1px solid rgba(255,255,255,.15)}
+  .cover .date{margin-top:20px;opacity:.5;font-size:14px}
+  .cover .module-badge{margin-top:16px;font-size:14px;padding:8px 20px;background:rgba(255,255,255,.12);border-radius:8px;letter-spacing:.05em}
+  .content{padding:48px 56px;font-size:14px;line-height:1.8}
+  .section-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:3px solid #023B5B}
+  .section-header h1{margin:0;font-size:26px;border:none}
+  .section-header span{font-size:30px}
+  @media print{.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+`;
+
+/* ───── Markdown → HTML (Bildschirm, mit CSS Module Klassen) ───── */
 function md(text) {
   if (!text) return "";
   return text
@@ -27,6 +55,63 @@ function md(text) {
     .replace(/(<li>.*<\/li>\n?)+/g, (m) => `<ul>${m}</ul>`)
     .replace(/\n\n/g, "<br/><br/>")
     .replace(/\n/g, "<br/>");
+}
+
+/* ───── Markdown → HTML (PDF, ohne CSS Module Klassen) ───── */
+function mdPdf(text) {
+  if (!text) return "";
+  return text
+    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/^> (.+)$/gm, "<blockquote>$1</blockquote>")
+    .replace(/^---$/gm, "<hr/>")
+    .replace(/^- (.+)$/gm, "<li>$1</li>")
+    .replace(/(<li>.*<\/li>\n?)+/g, (m) => `<ul>${m}</ul>`)
+    .replace(/\n\n/g, "<br/><br/>")
+    .replace(/\n/g, "<br/>");
+}
+
+/* ───── PDF generieren (einzeln oder alle) ───── */
+function generatePDF(tabsToExport, allResults, targetUrl) {
+  const w = window.open("", "_blank");
+  const isSingle = tabsToExport.length === 1;
+  const title = isSingle
+    ? `TalentSuite ${tabsToExport[0].label} – ${targetUrl}`
+    : `TalentSuite Vollanalyse – ${targetUrl}`;
+  const subtitle = isSingle ? tabsToExport[0].label : "Vollständige Analyse";
+
+  const pages = tabsToExport.map((t) => {
+    if (!allResults[t.id]) return "";
+    return `<div style="page-break-before:always;">
+      <div class="content">
+        <div class="section-header">
+          <span>${t.icon}</span>
+          <h1>${t.label}</h1>
+        </div>
+        <div>${mdPdf(allResults[t.id])}</div>
+      </div>
+    </div>`;
+  }).join("");
+
+  w.document.write(`<!DOCTYPE html><html><head>
+    <title>${title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>${PDF_STYLES}</style>
+  </head><body>
+    <div class="cover">
+      <h1>TalentSuite</h1>
+      <p>Prospect Analyzer – ${subtitle}</p>
+      <div class="url-box">${targetUrl}</div>
+      ${isSingle ? `<div class="module-badge">${tabsToExport[0].icon} ${tabsToExport[0].label}</div>` : ""}
+      <div class="date">${new Date().toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })}</div>
+    </div>
+    ${pages}
+  </body></html>`);
+  w.document.close();
+  setTimeout(() => w.print(), 600);
 }
 
 /* ───── Login Screen ───── */
@@ -74,11 +159,9 @@ export default function AnalyzerPage() {
   const [analyzing, setAnalyzing] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  /* ── API Call ── */
   const analyzeModule = useCallback(async (mod, targetUrl, pw) => {
     setLoading((p) => ({ ...p, [mod]: true }));
     setErrors((p) => ({ ...p, [mod]: null }));
-
     try {
       const res = await fetch("/api/analyze", {
         method: "POST",
@@ -95,7 +178,6 @@ export default function AnalyzerPage() {
     }
   }, []);
 
-  /* ── Run all 4 ── */
   const analyzeAll = async () => {
     if (!url) return;
     setAnalyzing(true);
@@ -112,62 +194,13 @@ export default function AnalyzerPage() {
     setAnalyzing(false);
   };
 
-  /* ── PDF Export ── */
-  const exportPDF = () => {
-    const w = window.open("", "_blank");
-    const pages = TABS.map((t) => {
-      if (!results[t.id]) return "";
-      return `<div style="page-break-before:always;padding:48px 56px;">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:3px solid #023B5B;">
-          <span style="font-size:30px">${t.icon}</span>
-          <h1 style="margin:0;color:#023B5B;font-size:26px;font-family:Poppins,sans-serif">${t.label}</h1>
-        </div>
-        <div style="font-size:14px;line-height:1.8;color:#1E2D3A;font-family:Poppins,sans-serif">
-          ${md(results[t.id])}
-        </div>
-      </div>`;
-    }).join("");
-
-    w.document.write(`<!DOCTYPE html><html><head>
-      <title>TalentSuite Analyse – ${url}</title>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-      <style>
-        *{box-sizing:border-box;margin:0}
-        body{font-family:Poppins,sans-serif;color:#1E2D3A}
-        h1{font-size:22px;color:#023B5B;margin:28px 0 12px}
-        h2{font-size:18px;color:#023B5B;margin:24px 0 10px;border-bottom:2px solid #E8EDF1;padding-bottom:6px}
-        h3{font-size:15px;color:#034a73;margin:18px 0 8px}
-        blockquote{border-left:4px solid #00B4D8;padding:10px 16px;background:#f0f9fb;margin:12px 0;border-radius:0 8px 8px 0}
-        ul{padding-left:20px;margin:8px 0}
-        li{margin:4px 0}
-        hr{border:none;border-top:1px solid #C5CED6;margin:20px 0}
-        strong{color:#023B5B}
-        .cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#012a42,#023B5B);color:#fff;text-align:center;padding:60px;page-break-after:always}
-        .cover h1{font-size:48px;color:#fff;border:none}
-        .cover p{font-size:18px;opacity:.7;margin-top:8px}
-        .cover .url-box{font-size:20px;margin-top:40px;padding:18px 36px;background:rgba(255,255,255,.08);border-radius:14px;border:1px solid rgba(255,255,255,.12)}
-        .cover .date{margin-top:20px;opacity:.5;font-size:14px}
-      </style>
-    </head><body>
-      <div class="cover">
-        <h1>TalentSuite</h1>
-        <p>Prospect Analyzer – Vollständige Analyse</p>
-        <div class="url-box">${url}</div>
-        <div class="date">${new Date().toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })}</div>
-      </div>
-      ${pages}
-    </body></html>`);
-    w.document.close();
-    setTimeout(() => w.print(), 600);
-  };
-
-  /* ── Guard: Login ── */
   if (!sessionPw) return <Login onLogin={(pw) => setSessionPw(pw)} />;
 
   const cur = results[activeTab];
   const curLoad = loading[activeTab];
   const curErr = errors[activeTab];
   const hasResults = Object.keys(results).length > 0;
+  const activeTabObj = TABS.find((t) => t.id === activeTab);
 
   return (
     <div className={styles.page}>
@@ -177,19 +210,30 @@ export default function AnalyzerPage() {
           <span className={styles.logo}>TalentSuite</span>
           <span className={styles.badge}>Prospect Analyzer</span>
         </div>
-        {hasResults && (
-          <button onClick={exportPDF} className={styles.exportBtn}>
-            📄 PDF Export
-          </button>
-        )}
+        <div className={styles.headerRight}>
+          {results[activeTab] && (
+            <button
+              onClick={() => generatePDF([activeTabObj], results, url)}
+              className={styles.exportBtnSingle}
+            >
+              📄 {activeTabObj.label} PDF
+            </button>
+          )}
+          {hasResults && Object.keys(results).length > 1 && (
+            <button
+              onClick={() => generatePDF(TABS.filter((t) => results[t.id]), results, url)}
+              className={styles.exportBtn}
+            >
+              📑 Gesamt-PDF
+            </button>
+          )}
+        </div>
       </header>
 
       <main className={styles.main}>
         {/* URL Input */}
         <div className={styles.inputCard}>
-          <label className={styles.inputLabel}>
-            Webseite des potenziellen Kunden
-          </label>
+          <label className={styles.inputLabel}>Webseite des potenziellen Kunden</label>
           <div className={styles.inputRow}>
             <div className={styles.inputWrap}>
               <span className={styles.inputIcon}>🌐</span>
@@ -201,11 +245,7 @@ export default function AnalyzerPage() {
                 onChange={(e) => setUrl(e.target.value)}
               />
             </div>
-            <button
-              onClick={analyzeAll}
-              disabled={!url || analyzing}
-              className={styles.analyzeBtn}
-            >
+            <button onClick={analyzeAll} disabled={!url || analyzing} className={styles.analyzeBtn}>
               {analyzing ? (
                 <><span className={styles.spinner} /> Analysiere...</>
               ) : (
@@ -220,7 +260,7 @@ export default function AnalyzerPage() {
                 <div className={styles.progressBar} style={{ width: `${progress}%` }} />
               </div>
               <div className={styles.progressInfo}>
-                <span>Analysiere: {TABS.find((t) => t.id === activeTab)?.label}</span>
+                <span>Analysiere: {activeTabObj?.label}</span>
                 <span>{Math.round(progress)}%</span>
               </div>
             </div>
@@ -248,27 +288,18 @@ export default function AnalyzerPage() {
         <div className={styles.resultCard}>
           {curLoad ? (
             <div className={styles.loadingState}>
-              <span
-                className={styles.bigSpinner}
-                style={{ borderTopColor: TABS.find((t) => t.id === activeTab)?.color }}
-              />
-              <span>{TABS.find((t) => t.id === activeTab)?.label} wird analysiert...</span>
+              <span className={styles.bigSpinner} style={{ borderTopColor: activeTabObj?.color }} />
+              <span>{activeTabObj?.label} wird analysiert...</span>
             </div>
           ) : curErr ? (
             <div className={styles.errorState}>
               <strong>Fehler:</strong> {curErr}
-              <button
-                onClick={() => analyzeModule(activeTab, url, sessionPw)}
-                className={styles.retryBtn}
-              >
+              <button onClick={() => analyzeModule(activeTab, url, sessionPw)} className={styles.retryBtn}>
                 Erneut versuchen
               </button>
             </div>
           ) : cur ? (
-            <div
-              className={styles.analysisContent}
-              dangerouslySetInnerHTML={{ __html: md(cur) }}
-            />
+            <div className={styles.analysisContent} dangerouslySetInnerHTML={{ __html: md(cur) }} />
           ) : (
             <div className={styles.emptyState}>
               <div className={styles.emptyIcon}>🔍</div>
