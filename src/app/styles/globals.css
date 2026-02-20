@@ -92,6 +92,38 @@ p {
 #ep [data-ep="success"] { color: #065F46 !important; }
 #ep [data-ep="success-body"] { color: #047857 !important; }
 #ep input::placeholder, #ep textarea::placeholder { color: #9cb3c4 !important; }
+/* Override: Kundenportal page */
+#kp h1, #kp h2, #kp h3, #kp h4, #kp h5, #kp h6,
+#kp span, #kp li, #kp p, #kp div, #kp label, #kp button,
+#kp input, #kp textarea, #kp summary, #kp a, #kp td, #kp th {
+  color: #023B5B !important;
+}
+#kp [data-kp="white"] { color: #ffffff !important; }
+#kp [data-kp="muted"] { color: #94A3B8 !important; }
+#kp [data-kp="accent"] { color: #1B98E0 !important; }
+#kp [data-kp="gray"] { color: #64748B !important; }
+#kp [data-kp="body"] { color: #334155 !important; }
+#kp [data-kp="pribtn"] { color: #ffffff !important; }
+#kp [data-kp="success"] { color: #065F46 !important; }
+#kp [data-kp="success-body"] { color: #047857 !important; }
+#kp input::placeholder, #kp textarea::placeholder { color: #9cb3c4 !important; }
+/* Override: Branchenreport page */
+#br h1, #br h2, #br h3, #br h4, #br h5, #br h6,
+#br span, #br li, #br p, #br div, #br label, #br button,
+#br input, #br textarea, #br summary, #br a {
+  color: #023B5B !important;
+}
+#br [data-br="white"] { color: #ffffff !important; }
+#br [data-br="muted"] { color: #94A3B8 !important; }
+#br [data-br="accent"] { color: #1B98E0 !important; }
+#br [data-br="green"] { color: #10B981 !important; }
+#br [data-br="gray"] { color: #64748B !important; }
+#br [data-br="body"] { color: #334155 !important; }
+#br [data-br="pribtn"] { color: #ffffff !important; }
+#br [data-br="success"] { color: #065F46 !important; }
+#br [data-br="success-body"] { color: #047857 !important; }
+#br input::placeholder { color: #9cb3c4 !important; }
+#br input[style*="0A1628"] { color: #ffffff !important; }
 h1 {
   color: var(--text-color) !important;
   font-size: 64px !important;
