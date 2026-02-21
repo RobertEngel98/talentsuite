@@ -6,28 +6,26 @@ import { NextResponse } from "next/server";
 // ═══════════════════════════════════════════════════════
 
 const CLICKUP_API = "https://api.clickup.com/api/v2";
-const LIST_ID = process.env.CLICKUP_LEADMAGNET_LIST_ID || "901517476774"; // "Leads (active pipeline)"
+const LIST_ID = process.env.CLICKUP_LEADMAGNET_LIST_ID || "901517476774";
 
 export async function POST(request) {
   try {
     const body = await request.json();
     const { source, name, email, company, phone, industry, extra } = body;
 
-    // Validierung
     if (!email) {
-      return NextResponse.json(
-        { error: "E-Mail ist erforderlich" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "E-Mail ist erforderlich" }, { status: 400 });
     }
 
+    // API Key aus Environment lesen
     const apiKey = process.env.CLICKUP_API_KEY;
+
     if (!apiKey) {
-      console.error("CLICKUP_API_KEY nicht gesetzt");
-      // Trotzdem 200 zurückgeben, damit der User sein Ergebnis sieht
+      console.error("CLICKUP_API_KEY nicht in Environment gefunden");
       return NextResponse.json({
-        success: true,
-        warning: "Lead erfasst, aber ClickUp-Sync fehlgeschlagen (API Key fehlt)",
+        success: false,
+        error: "API Key nicht konfiguriert",
+        debug: "CLICKUP_API_KEY env var ist leer oder nicht gesetzt",
       });
     }
 
@@ -37,6 +35,7 @@ export async function POST(request) {
       branchenreport: "📊 Branchenreport",
       empfehlung: "🤝 Empfehlung",
       analyzer: "🔍 Analyzer",
+      test: "🧪 Test",
       generic: "📥 Leadmagnet",
     };
     const sourceLabel = sourceLabels[source] || sourceLabels.generic;
@@ -47,17 +46,13 @@ export async function POST(request) {
     // ── Datum ──
     const now = new Date();
     const datum = now.toLocaleDateString("de-DE", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+      day: "2-digit", month: "2-digit", year: "numeric",
+      hour: "2-digit", minute: "2-digit",
     });
 
     // ── Beschreibung formatieren ──
     let description = `# ${sourceLabel}\n`;
-    description += `📅 Datum: ${datum}\n\n`;
-    description += `---\n\n`;
+    description += `📅 Datum: ${datum}\n\n---\n\n`;
     description += `## Kontaktdaten\n`;
     if (name) description += `👤 **Name:** ${name}\n`;
     description += `📧 **E-Mail:** ${email}\n`;
@@ -65,14 +60,14 @@ export async function POST(request) {
     if (phone) description += `📞 **Telefon:** ${phone}\n`;
     if (industry) description += `🏭 **Branche:** ${industry}\n`;
 
-    // ── Source-spezifische Daten ──
     if (source === "kostenrechner" && extra) {
       description += `\n---\n\n## Kostenrechner-Ergebnisse\n`;
+      const fmt = (n) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
       if (extra.openPositions) description += `📌 **Offene Stellen:** ${extra.openPositions}\n`;
-      if (extra.avgSalary) description += `💰 **Ø Jahresgehalt:** ${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(extra.avgSalary)}\n`;
+      if (extra.avgSalary) description += `💰 **Ø Jahresgehalt:** ${fmt(extra.avgSalary)}\n`;
       if (extra.monthsOpen) description += `⏱️ **Monate unbesetzt:** ${extra.monthsOpen}\n`;
       if (extra.currentChannel) description += `📢 **Aktueller Kanal:** ${extra.currentChannel}\n`;
-      if (extra.totalVacancyCost) description += `\n🔴 **Vakanzkosten gesamt:** ${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(extra.totalVacancyCost)}\n`;
+      if (extra.totalVacancyCost) description += `\n🔴 **Vakanzkosten gesamt:** ${fmt(extra.totalVacancyCost)}\n`;
       if (extra.roi) description += `📈 **Berechneter ROI:** ${extra.roi}%\n`;
     }
 
@@ -91,7 +86,15 @@ export async function POST(request) {
     description += `\n---\n\n> *Automatisch erfasst über talentsuite.io/${source || "leadmagnet"}*`;
 
     // ── ClickUp Task erstellen ──
-    const res = await fetch(`${CLICKUP_API}/list/${LIST_ID}/task`, {
+    const clickupUrl = `${CLICKUP_API}/list/${LIST_ID}/task`;
+
+    console.log("ClickUp Request:", {
+      url: clickupUrl,
+      keyPrefix: apiKey.substring(0, 8) + "...",
+      listId: LIST_ID,
+    });
+
+    const res = await fetch(clickupUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,23 +103,34 @@ export async function POST(request) {
       body: JSON.stringify({
         name: taskName,
         markdown_description: description,
-        priority: 3, // Normal
+        priority: 3,
         tags: ["leadmagnet", source || "website"],
         status: "to do",
       }),
     });
 
+    const responseText = await res.text();
+
     if (!res.ok) {
-      const errText = await res.text();
-      console.error("ClickUp API Error:", res.status, errText);
-      // Trotzdem Success zurückgeben → User bekommt sein Ergebnis
+      console.error("ClickUp API Error:", res.status, responseText);
       return NextResponse.json({
-        success: true,
-        warning: "Lead erfasst, ClickUp-Sync fehlgeschlagen",
+        success: false,
+        error: "ClickUp API Fehler",
+        status: res.status,
+        detail: responseText,
       });
     }
 
-    const task = await res.json();
+    let task;
+    try {
+      task = JSON.parse(responseText);
+    } catch {
+      return NextResponse.json({
+        success: false,
+        error: "ClickUp Antwort konnte nicht gelesen werden",
+        raw: responseText.substring(0, 200),
+      });
+    }
 
     return NextResponse.json({
       success: true,
@@ -125,10 +139,9 @@ export async function POST(request) {
     });
   } catch (err) {
     console.error("Leadmagnet Capture Error:", err);
-    // Auch bei Fehlern 200 → der User soll sein Ergebnis bekommen
     return NextResponse.json({
-      success: true,
-      warning: "Lead-Erfassung fehlgeschlagen: " + err.message,
+      success: false,
+      error: err.message,
     });
   }
 }
