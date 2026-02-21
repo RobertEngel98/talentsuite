@@ -41,7 +41,7 @@ export default function KostenrechnerPage() {
   const [animateIn, setAnimateIn] = useState(true);
   const [formData, setFormData] = useState({
     industry: "", openPositions: 1, avgSalary: 45000, monthsOpen: 3,
-    currentChannel: "", companyName: "", email: "", name: "",
+    currentChannel: "", companyName: "", email: "", name: "", phone: "", dsgvo: false,
   });
 
   const industryFactor = industries.find(i => i.id === formData.industry)?.factor || 1;
@@ -69,6 +69,7 @@ export default function KostenrechnerPage() {
         source: "kostenrechner",
         name: formData.name,
         email: formData.email,
+        phone: formData.phone,
         company: formData.companyName,
         industry: industries.find(i => i.id === formData.industry)?.label || formData.industry,
         extra: {
@@ -201,32 +202,57 @@ export default function KostenrechnerPage() {
             )}
 
             {/* STEP 3: Kontakt */}
-            {!showResult && step === 3 && (
+            {!showResult && step === 3 && (() => {
+              const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(formData.email);
+              const phoneClean = formData.phone.replace(/[\s\-\/\(\)]/g, "");
+              const phoneValid = /^(\+?[0-9]{7,15})$/.test(phoneClean);
+              const canSubmit = formData.name && emailValid && phoneValid && formData.dsgvo;
+              return (
               <div>
                 <h2 style={{ color: W, fontSize: mob ? 24 : 30, marginBottom: 8, fontWeight: 700 }}>Fast geschafft!</h2>
                 <p style={{ color: `${W}70`, fontSize: 15, marginBottom: 28 }}>Geben Sie Ihre Daten ein und erhalten Sie sofort Ihre Kostenanalyse.</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  {[{ k: "name", p: "Ihr Name" }, { k: "companyName", p: "Firmenname" }, { k: "email", p: "E-Mail-Adresse" }].map(f => (
-                    <input key={f.k} placeholder={f.p} value={formData[f.k]}
-                      onChange={e => setFormData(d => ({...d, [f.k]: e.target.value}))}
-                      style={{
-                        padding: "16px 18px", background: `${W}08`, border: `2px solid ${W}15`,
-                        borderRadius: 10, color: W, fontSize: 15, outline: "none", fontFamily: "inherit",
-                      }} />
+                  {[{ k: "name", p: "Ihr Name", type: "text" }, { k: "companyName", p: "Firmenname", type: "text" }, { k: "email", p: "E-Mail-Adresse", type: "email" }, { k: "phone", p: "Telefonnummer", type: "tel" }].map(f => (
+                    <div key={f.k}>
+                      <input placeholder={f.p} type={f.type} value={formData[f.k]}
+                        onChange={e => setFormData(d => ({...d, [f.k]: e.target.value}))}
+                        style={{
+                          width: "100%", padding: "16px 18px", background: `${W}08`, border: `2px solid ${
+                            f.k === "email" && formData.email && !emailValid ? "#F87171" :
+                            f.k === "phone" && formData.phone && !phoneValid ? "#F87171" : `${W}15`
+                          }`,
+                          borderRadius: 10, color: W, fontSize: 15, outline: "none", fontFamily: "inherit",
+                          boxSizing: "border-box",
+                        }} />
+                      {f.k === "email" && formData.email && !emailValid && (
+                        <p style={{ color: "#F87171", fontSize: 11, marginTop: 4 }}>Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+                      )}
+                      {f.k === "phone" && formData.phone && !phoneValid && (
+                        <p style={{ color: "#F87171", fontSize: 11, marginTop: 4 }}>Bitte geben Sie eine gültige Telefonnummer ein.</p>
+                      )}
+                    </div>
                   ))}
                 </div>
-                <p style={{ color: `${W}50`, fontSize: 12, marginTop: 12, lineHeight: 1.5 }}>
-                  Mit dem Absenden stimmen Sie der Datenschutzerklärung zu. Kein Spam.
-                </p>
+                <label style={{ display: "flex", alignItems: "flex-start", gap: 10, marginTop: 16, cursor: "pointer" }}>
+                  <input type="checkbox" checked={formData.dsgvo}
+                    onChange={e => setFormData(d => ({...d, dsgvo: e.target.checked}))}
+                    style={{ width: 18, height: 18, marginTop: 2, accentColor: A, flexShrink: 0 }} />
+                  <span style={{ color: `${W}70`, fontSize: 12, lineHeight: 1.5 }}>
+                    {"Ich stimme der "}
+                    <a href="/datenschutz" target="_blank" rel="noopener noreferrer" style={{ color: A, textDecoration: "underline" }}>Datenschutzerklärung</a>
+                    {" zu und bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage verarbeitet werden. Ich kann meine Einwilligung jederzeit widerrufen."}
+                  </span>
+                </label>
                 <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
                   <Btn onClick={() => go(2)}>{"← Zurück"}</Btn>
-                  <Btn primary onClick={submit} disabled={!formData.email || !formData.name}
-                    style={{ flex: 1, background: formData.email && formData.name ? `linear-gradient(135deg, ${G}, #0D9669)` : undefined }}>
+                  <Btn primary onClick={submit} disabled={!canSubmit}
+                    style={{ flex: 1, background: canSubmit ? `linear-gradient(135deg, ${G}, #0D9669)` : undefined }}>
                     {"🔓 Auswertung anzeigen"}
                   </Btn>
                 </div>
               </div>
-            )}
+              );
+            })()}
 
             {/* RESULT */}
             {showResult && (

@@ -27,8 +27,15 @@ export default function BranchenreportPage() {
   const mob = useIsMobile();
   const [selected, setSelected] = useState(0);
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [dsgvo, setDsgvo] = useState(false);
   const [sent, setSent] = useState(false);
   const b = branches[selected];
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  const phoneClean = phone.replace(/[\s\-\/\(\)]/g, "");
+  const phoneValid = /^(\+?[0-9]{7,15})$/.test(phoneClean);
+  const canSubmit = name && emailValid && phoneValid && dsgvo;
 
   return (
     <>
@@ -135,39 +142,55 @@ export default function BranchenreportPage() {
 
           {/* Download CTA */}
           {!sent ? (
-            <div style={{ background: D, borderRadius: 16, padding: mob ? "24px 18px" : 28, textAlign: "center" }}>
-              <h3 data-br="white" style={{ fontSize: mob ? 17 : 19, fontWeight: 700, margin: "0 0 4px" }}>Vollständigen Report herunterladen</h3>
-              <p data-br="muted" style={{ fontSize: 13, margin: "0 0 18px" }}>20+ Seiten Daten, Benchmarks und Handlungsempfehlungen — kostenlos.</p>
-              <div style={{ display: "flex", gap: 8, maxWidth: 420, margin: "0 auto", flexDirection: mob ? "column" : "row" }}>
-                <input type="email" placeholder="Ihre E-Mail-Adresse" value={email} onChange={e => setEmail(e.target.value)}
-                  style={{
-                    flex: 1, padding: "12px 14px", borderRadius: 10, border: "2px solid #334155",
-                    background: "#0A1628", fontSize: 14, outline: "none", fontFamily: "inherit",
-                    color: W,
-                  }} />
+            <div style={{ background: D, borderRadius: 16, padding: mob ? "24px 18px" : 28 }}>
+              <h3 data-br="white" style={{ fontSize: mob ? 17 : 19, fontWeight: 700, margin: "0 0 4px", textAlign: "center" }}>Vollständigen Report herunterladen</h3>
+              <p data-br="muted" style={{ fontSize: 13, margin: "0 0 18px", textAlign: "center" }}>20+ Seiten Daten, Benchmarks und Handlungsempfehlungen — kostenlos.</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 420, margin: "0 auto" }}>
+                <input type="text" placeholder="Ihr Name" value={name} onChange={e => setName(e.target.value)}
+                  style={{ padding: "12px 14px", borderRadius: 10, border: "2px solid #334155", background: "#0A1628", fontSize: 14, outline: "none", fontFamily: "inherit", color: W, boxSizing: "border-box" }} />
+                <div>
+                  <input type="email" placeholder="E-Mail-Adresse" value={email} onChange={e => setEmail(e.target.value)}
+                    style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: `2px solid ${email && !emailValid ? "#F87171" : "#334155"}`, background: "#0A1628", fontSize: 14, outline: "none", fontFamily: "inherit", color: W, boxSizing: "border-box" }} />
+                  {email && !emailValid && <p style={{ color: "#F87171", fontSize: 11, marginTop: 4 }}>Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>}
+                </div>
+                <div>
+                  <input type="tel" placeholder="Telefonnummer" value={phone} onChange={e => setPhone(e.target.value)}
+                    style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: `2px solid ${phone && !phoneValid ? "#F87171" : "#334155"}`, background: "#0A1628", fontSize: 14, outline: "none", fontFamily: "inherit", color: W, boxSizing: "border-box" }} />
+                  {phone && !phoneValid && <p style={{ color: "#F87171", fontSize: 11, marginTop: 4 }}>Bitte geben Sie eine gültige Telefonnummer ein.</p>}
+                </div>
+                <label style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer", marginTop: 4 }}>
+                  <input type="checkbox" checked={dsgvo} onChange={e => setDsgvo(e.target.checked)}
+                    style={{ width: 18, height: 18, marginTop: 2, accentColor: A, flexShrink: 0 }} />
+                  <span style={{ color: `${W}70`, fontSize: 11, lineHeight: 1.5 }}>
+                    {"Ich stimme der "}
+                    <a href="/datenschutz" target="_blank" rel="noopener noreferrer" style={{ color: A, textDecoration: "underline" }}>Datenschutzerklärung</a>
+                    {" zu und bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage verarbeitet werden."}
+                  </span>
+                </label>
                 <button data-br="pribtn" onClick={() => {
-                  if (!email) return;
+                  if (!canSubmit) return;
                   setSent(true);
-                  // Lead an ClickUp senden
                   fetch("/api/leadmagnet-capture", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                       source: "branchenreport",
+                      name,
                       email,
+                      phone,
                       extra: { selectedBranch: branches[selected]?.name },
                     }),
                   }).catch(err => console.error("Lead capture error:", err));
                 }}
+                  disabled={!canSubmit}
                   style={{
-                    padding: "12px 24px", background: A, border: "none", borderRadius: 10,
-                    fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                    whiteSpace: "nowrap",
+                    padding: "14px 24px", background: canSubmit ? A : `${W}15`, border: "none", borderRadius: 10,
+                    fontSize: 14, fontWeight: 700, cursor: canSubmit ? "pointer" : "default", fontFamily: "inherit",
+                    whiteSpace: "nowrap", color: W, opacity: canSubmit ? 1 : 0.5,
                   }}>
-                  {"Download →"}
+                  {"Report herunterladen →"}
                 </button>
               </div>
-              <p data-br="muted" style={{ fontSize: 10, margin: "10px 0 0" }}>{"DSGVO-konform · Kein Spam · Jederzeit abbestellbar"}</p>
             </div>
           ) : (
             <div style={{ background: "#ECFDF5", borderRadius: 16, padding: mob ? "24px 18px" : 28, textAlign: "center", boxShadow: "0 4px 28px rgba(0,0,0,0.07)" }}>

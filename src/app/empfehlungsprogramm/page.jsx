@@ -41,9 +41,14 @@ const faqs = [
 export default function EmpfehlungPage() {
   const mob = useIsMobile();
   const [active, setActive] = useState(0);
-  const [form, setForm] = useState({ name: "", email: "", company: "", referral: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", referral: "", message: "" });
+  const [dsgvo, setDsgvo] = useState(false);
   const [sent, setSent] = useState(false);
   const p = programs[active];
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email);
+  const phoneClean = form.phone.replace(/[\s\-\/\(\)]/g, "");
+  const phoneValid = /^(\+?[0-9]{7,15})$/.test(phoneClean);
+  const canSubmit = form.name && emailValid && phoneValid && form.company && dsgvo;
 
   return (
     <>
@@ -156,21 +161,32 @@ export default function EmpfehlungPage() {
 
               <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 12 }}>
                 {[
-                  { key: "name", label: "Ihr Name", ph: "Max Mustermann" },
-                  { key: "email", label: "Ihre E-Mail", ph: "max@firma.de" },
-                  { key: "company", label: "Empfohlenes Unternehmen", ph: "Firma GmbH" },
-                  { key: "referral", label: "Ansprechpartner", ph: "Name des Kontakts" },
+                  { key: "name", label: "Ihr Name", ph: "Max Mustermann", type: "text" },
+                  { key: "email", label: "Ihre E-Mail", ph: "max@firma.de", type: "email" },
+                  { key: "phone", label: "Ihre Telefonnummer", ph: "+49 170 1234567", type: "tel" },
+                  { key: "company", label: "Empfohlenes Unternehmen", ph: "Firma GmbH", type: "text" },
+                  { key: "referral", label: "Ansprechpartner", ph: "Name des Kontakts", type: "text" },
                 ].map(f => (
                   <div key={f.key}>
                     <label style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.5 }}>{f.label}</label>
-                    <input placeholder={f.ph} value={form[f.key]}
+                    <input placeholder={f.ph} type={f.type} value={form[f.key]}
                       onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
                       style={{
                         width: "100%", padding: "11px 14px", borderRadius: 10,
-                        border: "2px solid #cdd8e0", fontSize: 14, outline: "none",
+                        border: `2px solid ${
+                          f.key === "email" && form.email && !emailValid ? "#F87171" :
+                          f.key === "phone" && form.phone && !phoneValid ? "#F87171" : "#cdd8e0"
+                        }`,
+                        fontSize: 14, outline: "none",
                         marginTop: 5, boxSizing: "border-box", fontFamily: "inherit",
                         background: W,
                       }} />
+                    {f.key === "email" && form.email && !emailValid && (
+                      <p style={{ color: "#F87171", fontSize: 11, marginTop: 3 }}>Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+                    )}
+                    {f.key === "phone" && form.phone && !phoneValid && (
+                      <p style={{ color: "#F87171", fontSize: 11, marginTop: 3 }}>Bitte geben Sie eine gültige Telefonnummer ein.</p>
+                    )}
                   </div>
                 ))}
               </div>
@@ -189,9 +205,8 @@ export default function EmpfehlungPage() {
 
               <button data-ep="pribtn"
                 onClick={() => {
-                  if (!form.name || !form.email || !form.company) return;
+                  if (!canSubmit) return;
                   setSent(true);
-                  // Lead an ClickUp senden
                   fetch("/api/leadmagnet-capture", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -199,6 +214,7 @@ export default function EmpfehlungPage() {
                       source: "empfehlung",
                       name: form.name,
                       email: form.email,
+                      phone: form.phone,
                       extra: {
                         referralCompany: form.company,
                         referralContact: form.referral,
@@ -207,16 +223,23 @@ export default function EmpfehlungPage() {
                     }),
                   }).catch(err => console.error("Lead capture error:", err));
                 }}
+                disabled={!canSubmit}
                 style={{
-                  width: "100%", padding: 14, background: B, border: "none",
-                  borderRadius: 12, fontSize: 15, fontWeight: 700, cursor: "pointer",
-                  marginTop: 16, fontFamily: "inherit",
+                  width: "100%", padding: 14, background: canSubmit ? B : "#ccc", border: "none",
+                  borderRadius: 12, fontSize: 15, fontWeight: 700, cursor: canSubmit ? "pointer" : "default",
+                  marginTop: 16, fontFamily: "inherit", opacity: canSubmit ? 1 : 0.5,
                 }}>
                 {"Empfehlung einreichen →"}
               </button>
-              <p data-ep="muted" style={{ fontSize: 10, margin: "8px 0 0", textAlign: "center" }}>
-                {"DSGVO-konform • Daten werden nur für die Kontaktaufnahme verwendet"}
-              </p>
+              <label style={{ display: "flex", alignItems: "flex-start", gap: 10, marginTop: 12, cursor: "pointer" }}>
+                <input type="checkbox" checked={dsgvo} onChange={e => setDsgvo(e.target.checked)}
+                  style={{ width: 18, height: 18, marginTop: 2, accentColor: B, flexShrink: 0 }} />
+                <span style={{ color: GR, fontSize: 11, lineHeight: 1.5 }}>
+                  {"Ich stimme der "}
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer" style={{ color: B, textDecoration: "underline" }}>Datenschutzerklärung</a>
+                  {" zu und bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage verarbeitet werden."}
+                </span>
+              </label>
             </div>
           ) : (
             <div style={{ background: "#ECFDF5", borderRadius: 16, padding: mob ? "28px 20px" : "36px 32px", textAlign: "center", boxShadow: "0 4px 28px rgba(0,0,0,0.07)" }}>
@@ -230,7 +253,7 @@ export default function EmpfehlungPage() {
               <p data-ep="success-body" style={{ fontSize: 13 }}>
                 Sie erhalten eine Bestätigung an {form.email}.
               </p>
-              <button data-ep="pribtn" onClick={() => { setSent(false); setForm({ name: "", email: "", company: "", referral: "", message: "" }); }}
+              <button data-ep="pribtn" onClick={() => { setSent(false); setDsgvo(false); setForm({ name: "", email: "", phone: "", company: "", referral: "", message: "" }); }}
                 style={{
                   marginTop: 18, padding: "11px 28px", background: G, border: "none",
                   borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
