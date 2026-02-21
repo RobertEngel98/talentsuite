@@ -188,7 +188,25 @@ export default function EmpfehlungPage() {
               </div>
 
               <button data-ep="pribtn"
-                onClick={() => form.name && form.email && form.company && setSent(true)}
+                onClick={() => {
+                  if (!form.name || !form.email || !form.company) return;
+                  setSent(true);
+                  // Lead an ClickUp senden
+                  fetch("/api/leadmagnet-capture", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      source: "empfehlung",
+                      name: form.name,
+                      email: form.email,
+                      extra: {
+                        referralCompany: form.company,
+                        referralContact: form.referral,
+                        message: form.message,
+                      },
+                    }),
+                  }).catch(err => console.error("Lead capture error:", err));
+                }}
                 style={{
                   width: "100%", padding: 14, background: B, border: "none",
                   borderRadius: 12, fontSize: 15, fontWeight: 700, cursor: "pointer",

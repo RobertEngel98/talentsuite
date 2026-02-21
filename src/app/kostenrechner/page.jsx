@@ -58,7 +58,30 @@ export default function KostenrechnerPage() {
   const progress = showResult ? 100 : ((step + 1) / 4) * 100;
 
   const go = (s) => { setAnimateIn(false); setTimeout(() => { setStep(s); setAnimateIn(true); }, 250); };
-  const submit = () => { setAnimateIn(false); setTimeout(() => { setShowResult(true); setAnimateIn(true); }, 250); };
+  const submit = () => {
+    setAnimateIn(false);
+    setTimeout(() => { setShowResult(true); setAnimateIn(true); }, 250);
+    // Lead an ClickUp senden (async, blockiert UI nicht)
+    fetch("/api/leadmagnet-capture", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source: "kostenrechner",
+        name: formData.name,
+        email: formData.email,
+        company: formData.companyName,
+        industry: industries.find(i => i.id === formData.industry)?.label || formData.industry,
+        extra: {
+          openPositions: formData.openPositions,
+          avgSalary: formData.avgSalary,
+          monthsOpen: formData.monthsOpen,
+          currentChannel: channels.find(c => c.id === formData.currentChannel)?.label || formData.currentChannel,
+          totalVacancyCost: totalVacancy + recruitCost,
+          roi,
+        },
+      }),
+    }).catch(err => console.error("Lead capture error:", err));
+  };
 
   const Btn = ({ children, onClick, primary, disabled, style: s }) => (
     <button onClick={onClick} disabled={disabled} style={{

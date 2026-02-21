@@ -145,7 +145,20 @@ export default function BranchenreportPage() {
                     background: "#0A1628", fontSize: 14, outline: "none", fontFamily: "inherit",
                     color: W,
                   }} />
-                <button data-br="pribtn" onClick={() => email && setSent(true)}
+                <button data-br="pribtn" onClick={() => {
+                  if (!email) return;
+                  setSent(true);
+                  // Lead an ClickUp senden
+                  fetch("/api/leadmagnet-capture", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      source: "branchenreport",
+                      email,
+                      extra: { selectedBranch: branches[selected]?.name },
+                    }),
+                  }).catch(err => console.error("Lead capture error:", err));
+                }}
                   style={{
                     padding: "12px 24px", background: A, border: "none", borderRadius: 10,
                     fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
