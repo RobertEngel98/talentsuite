@@ -9,6 +9,7 @@ import "./styles/responsiveness.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
+import MetaPixel from "./components/MetaPixel";
 import { Poppins, Rajdhani, Inter } from "next/font/google";
 import Script from "next/script";
 
@@ -26,36 +27,15 @@ export default function RootLayout({ children }) {
       <head>
         <title>TalentSuite | Performance Recruiting, Neukundengewinnung & E-Commerce Agentur</title>
         <meta name="description" content="TalentSuite ist deine Fullservice-Agentur für Performance Recruiting, Neukundengewinnung, E-Commerce & Social Media. 50+ Unternehmen vertrauen uns. Jetzt kostenlose Potenzialanalyse sichern." />
-        <meta name="keywords" content="Performance Recruiting, Personalgewinnung, Social Media Recruiting, Neukundengewinnung, E-Commerce Agentur, Social Media Agentur, Digitalagentur DACH, Fachkräftemangel, Employer Branding" />
-        <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://talentsuite.io" />
-        <meta name="author" content="TalentSuite - Engel & Mühlhof GbR" />
-        {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="de_DE" />
-        <meta property="og:url" content="https://talentsuite.io" />
-        <meta property="og:site_name" content="TalentSuite" />
-        <meta property="og:title" content="TalentSuite | Fullservice-Marketingagentur für Recruiting, Kunden & E-Commerce" />
-        <meta property="og:description" content="Performance Recruiting, Neukundengewinnung & E-Commerce aus einer Hand. 50+ Unternehmen. Über 6 Mio. € verwaltetes Werbebudget." />
-        <meta property="og:image" content="https://talentsuite.io/og-image.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TalentSuite | Fullservice-Marketingagentur" />
-        <meta name="twitter:description" content="Performance Recruiting, Neukundengewinnung & E-Commerce aus einer Hand. 50+ Unternehmen vertrauen uns." />
-        <meta name="twitter:image" content="https://talentsuite.io/og-image.jpg" />
         <link rel="icon" href="/favicon.ico" />
-        {/* Schema.org - Organization */}
+        {/* Schema.org JSON-LD */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "MarketingAgency",
+          "@type": "ProfessionalService",
           "name": "TalentSuite",
-          "alternateName": "Engel & Mühlhof GbR",
           "url": "https://talentsuite.io",
-          "logo": "https://talentsuite.io/logo.png",
-          "description": "Fullservice-Marketingagentur für Performance Recruiting, Neukundengewinnung, E-Commerce und Social Media Management im DACH-Raum.",
+          "description": "Performance Recruiting Agentur für den DACH-Raum. Wir finden Fachkräfte über Social Media — planbar, messbar, ohne Jobbörsen.",
           "address": { "@type": "PostalAddress", "addressLocality": "Iserlohn", "addressRegion": "NRW", "addressCountry": "DE" },
           "areaServed": [
             { "@type": "Country", "name": "Germany" },
@@ -73,6 +53,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
       </head>
       <body>
+        <MetaPixel />
         <CookieConsent />
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7J9WLXF" height="0" width="0" style={{ display: "none", visibility: "hidden" }} title="Google Tag Manager"></iframe>
