@@ -95,13 +95,13 @@ export default function Page() {
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
               Der Bau boomt — Infrastruktur, Wohnungsbau, Sanierung. Aber die Kapazitäten fehlen. 62% der Baubetriebe müssen Aufträge ablehnen, weil sie nicht genug Personal haben.
             </p>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${R}05`, border: `1px solid ${R}15`, borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Auftragsstau: Volle Auftragsbücher, aber keine Hände. Bauprojekte verzögern sich um Monate, Vertragsstrafen drohen.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Saisonalität: Die Abhängigkeit von Wetter und Saison macht langfristige Personalplanung zusätzlich schwierig.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 0 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 0 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Körperliche Belastung: Der Beruf gilt als anstrengend — umso wichtiger ist es, mit modernen Bedingungen zu werben.</p>
             </div>
           </div>

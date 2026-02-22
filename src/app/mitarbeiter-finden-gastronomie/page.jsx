@@ -95,13 +95,13 @@ export default function Page() {
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
               Die Gastronomie hat seit COVID eine historische Personalflucht erlebt. 275.000 Fachkräfte haben die Branche dauerhaft verlassen. Wer jetzt nicht kreativ rekrutiert, verliert den Anschluss.
             </p>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${R}05`, border: `1px solid ${R}15`, borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Post-COVID-Exodus: Jede sechste Fachkraft hat das Gastgewerbe verlassen und kommt nicht zurück. Viele sind in den Einzelhandel oder Bürojobs gewechselt.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Eingeschränkter Betrieb: 58% der Gastro-Betriebe können ihr Angebot wegen Personalmangel nicht voll aufrechterhalten.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 0 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 0 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Imageprobleme: Unregelmäßige Arbeitszeiten und niedrige Löhne schrecken Nachwuchs ab.</p>
             </div>
           </div>

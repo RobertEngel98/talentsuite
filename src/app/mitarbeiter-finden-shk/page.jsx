@@ -95,13 +95,13 @@ export default function Page() {
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
               Die Energiewende treibt die Nachfrage nach SHK-Fachkräften auf ein historisches Hoch. Wärmepumpen, Solarthermie und Gebäudesanierung — der Auftragsberg wächst, aber die Werkbank bleibt leer.
             </p>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${R}05`, border: `1px solid ${R}15`, borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Wärmepumpen-Boom: Die Nachfrage nach Installateuren hat sich seit 2022 verdreifacht, das Angebot an Fachkräften stagniert.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Auftragsablehnung: 62% der SHK-Betriebe müssen regelmäßig Aufträge ablehnen, weil Personal fehlt — das sind tausende Euro entgangener Umsatz pro Woche.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 0 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 0 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Überalterung: Das Durchschnittsalter im SHK-Handwerk steigt jährlich. Viele erfahrene Meister gehen in den nächsten 5 Jahren in Rente.</p>
             </div>
           </div>

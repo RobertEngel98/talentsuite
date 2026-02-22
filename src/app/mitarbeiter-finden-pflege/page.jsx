@@ -95,13 +95,13 @@ export default function Page() {
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
               Die Pflege steht vor einer Belastungskrise. Steigende Patientenzahlen, alternde Belegschaften und ein dramatischer Nachwuchsmangel. Die Vakanzzeiten in der Pflege sind die höchsten aller Branchen.
             </p>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${R}05`, border: `1px solid ${R}15`, borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Abwärtsspirale: Jede unbesetzte Stelle erhöht die Belastung des bestehenden Teams — was zu weiteren Kündigungen führt.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Längste Vakanzzeiten: Mit über 200 Tagen durchschnittlicher Besetzungszeit ist die Pflege Schlusslicht beim Recruiting.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 0 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 0 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Wechselbereitschaft: 72% der Pflegekräfte sind nicht aktiv auf Jobsuche, aber offen für bessere Angebote — Sie müssen sie nur erreichen.</p>
             </div>
           </div>

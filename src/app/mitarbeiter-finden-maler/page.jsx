@@ -95,13 +95,13 @@ export default function Page() {
             <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
               Der Sanierungsboom treibt die Nachfrage nach Malern und Lackierern. Energetische Sanierung, Fassadendämmung und Innausbau — überall werden Hände gebraucht, aber der Nachwuchs fehlt.
             </p>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${R}05`, border: `1px solid ${R}15`, borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🔴</strong> Sanierungspflicht: Neue EU-Vorgaben zur Gebäudesanierung treiben die Nachfrage nach qualifizierten Malern weiter nach oben.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 10 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 10 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟡</strong> Azubi-Mangel: Die Zahl der Ausbildungsverträge im Malerhandwerk sinkt seit Jahren. Der Nachwuchs bleibt aus.</p>
             </div>
-            <div style={{ padding: "14px 16px", background: i === 0 ? `${R}05` : `${L}`, border: `1px solid ${i === 0 ? R + "15" : "#E2E8F0"}`, borderRadius: 10, marginBottom: 0 }}>
+            <div style={{ padding: "14px 16px", background: `${L}`, border: "1px solid #E2E8F0", borderRadius: 10, marginBottom: 0 }}>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.6, margin: 0 }}><strong>🟠</strong> Konkurrenz durch Bau: Viele junge Handwerker entscheiden sich für höher bezahlte Bauberufe statt fürs Malerhandwerk.</p>
             </div>
           </div>
