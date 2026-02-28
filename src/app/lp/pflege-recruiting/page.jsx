@@ -25,9 +25,9 @@ function FAQ({ question, answer }) {
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
         <h3 style={{ margin: 0, color: BRAND, fontSize: 17, fontWeight: 700 }}>{question}</h3>
-        <span style={{ fontSize: 22, fontWeight: 600, color: ACCENT, flexShrink: 0, transition: "transform 0.3s", transform: open ? "rotate(45deg)" : "rotate(0)" }}>+</span>
+        <span data-pf="accent" style={{ fontSize: 22, fontWeight: 600, color: ACCENT, flexShrink: 0, transition: "transform 0.3s", transform: open ? "rotate(45deg)" : "rotate(0)" }}>+</span>
       </div>
-      {open && <p style={{ marginTop: 14, marginBottom: 0, color: "#475569", fontSize: 15, lineHeight: 1.7 }}>{answer}</p>}
+      {open && <p data-pf="body" style={{ marginTop: 14, marginBottom: 0, color: "#475569", fontSize: 15, lineHeight: 1.7 }}>{answer}</p>}
     </div>
   );
 }
@@ -113,29 +113,30 @@ export default function PflegeRecruiting() {
   const containerNarrow = { maxWidth: 720, margin: "0 auto", padding: mob ? "0 16px" : "0 24px" };
 
   return (
-    <div style={{ background: "#f0f4f7", paddingTop: 80 }}>
+    <div id="pf" style={{ background: "#f0f4f7", paddingTop: 80 }}>
       {/* ═══ HERO ═══ */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, ${DARK2} 100%)`, padding: mob ? "48px 16px 56px" : "80px 24px 90px" }}>
         <div style={{ ...containerStyle, display: mob ? "block" : "flex", alignItems: "center", gap: 48 }}>
           <div style={{ flex: 1 }}>
-            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
+            <p data-pf="white50" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
               Performance Recruiting für die Pflege
             </p>
-            <h1 style={{ color: "#ffffff", fontSize: mob ? 28 : 42, fontWeight: 800, lineHeight: 1.15, margin: "0 0 20px" }}>
+            <h1 data-pf="white" style={{ color: "#ffffff", fontSize: mob ? 28 : 42, fontWeight: 800, lineHeight: 1.15, margin: "0 0 20px" }}>
               Pflegefachkräfte finden –{" "}
-              <span style={{ color: ACCENT }}>ohne Jobportale, ohne Zeitarbeit</span>
+              <span data-pf="accent" style={{ color: ACCENT }}>ohne Jobportale, ohne Zeitarbeit</span>
             </h1>
-            <p style={{ color: "rgba(255,255,255,0.75)", fontSize: mob ? 16 : 18, lineHeight: 1.6, marginBottom: 32, maxWidth: 520 }}>
+            <p data-pf="white75" style={{ color: "rgba(255,255,255,0.75)", fontSize: mob ? 16 : 18, lineHeight: 1.6, marginBottom: 32, maxWidth: 520 }}>
               Wir bringen qualifizierte Bewerbungen von Pflegekräften direkt auf Ihren Tisch. Über Social Media. In weniger als 30 Tagen.
             </p>
             <a
               href="#formular"
+              data-pf="pribtn"
               style={{ display: "inline-block", padding: "16px 36px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", color: "#ffffff", background: ACCENT, boxShadow: "0 4px 20px rgba(27,152,224,0.3)" }}
             >
               Kostenlose Recruiting-Analyse →
             </a>
             <div style={{ marginTop: 24, display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>Vertraut von 50+ Pflegeeinrichtungen in Deutschland</span>
+              <span data-pf="white50" style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>Vertraut von 50+ Pflegeeinrichtungen in Deutschland</span>
             </div>
           </div>
           {!mob && (
@@ -143,8 +144,8 @@ export default function PflegeRecruiting() {
               <div style={{ width: 400, height: 300, borderRadius: 20, background: "linear-gradient(135deg, #1a2744, #023B5B)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 40px rgba(0,0,0,0.3)" }}>
                 <div style={{ textAlign: "center" }}>
                   <div style={{ fontSize: 60, marginBottom: 12 }}>🏥</div>
-                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 14, margin: 0 }}>Pflegekräfte finden</p>
-                  <p style={{ color: ACCENT, fontSize: 24, fontWeight: 800, margin: "8px 0 0" }}>in 30 Tagen</p>
+                  <p data-pf="white70" style={{ color: "rgba(255,255,255,0.7)", fontSize: 14, margin: 0 }}>Pflegekräfte finden</p>
+                  <p data-pf="accent" style={{ color: ACCENT, fontSize: 24, fontWeight: 800, margin: "8px 0 0" }}>in 30 Tagen</p>
                 </div>
               </div>
             </div>
@@ -168,7 +169,7 @@ export default function PflegeRecruiting() {
               <div key={i} style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "24px 20px" : "28px 24px", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
                 <div style={{ fontSize: 32, marginBottom: 12 }}>{p.icon}</div>
                 <h3 style={{ color: BRAND, fontSize: 17, fontWeight: 700, margin: "0 0 8px" }}>{p.title}</h3>
-                <p style={{ color: "#64748B", fontSize: 15, lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
+                <p data-pf="gray" style={{ color: "#64748B", fontSize: 15, lineHeight: 1.7, margin: 0 }}>{p.desc}</p>
               </div>
             ))}
           </div>
@@ -196,17 +197,17 @@ export default function PflegeRecruiting() {
                 <div style={{ width: 48, height: 48, borderRadius: 12, background: `${ACCENT}15`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 24, marginBottom: 16 }}>
                   {s.icon}
                 </div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: ACCENT, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>
+                <div data-pf="accent" style={{ fontSize: 12, fontWeight: 700, color: ACCENT, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>
                   Schritt {s.step}
                 </div>
                 <h3 style={{ color: BRAND, fontSize: 20, fontWeight: 700, margin: "0 0 12px" }}>{s.title}</h3>
-                <p style={{ color: "#64748B", fontSize: 15, lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
+                <p data-pf="gray" style={{ color: "#64748B", fontSize: 15, lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
               </div>
             ))}
           </div>
           <div style={{ marginTop: 32, background: `linear-gradient(135deg, ${DARK}, ${BRAND})`, borderRadius: 16, padding: mob ? "24px 20px" : "28px 32px", textAlign: "center" }}>
-            <p style={{ color: "#ffffff", fontSize: mob ? 16 : 18, fontWeight: 600, margin: 0 }}>
-              Durchschnittlich <span style={{ color: ACCENT, fontWeight: 800 }}>15-25€ pro Bewerbung</span> – ein Bruchteil der Kosten von Jobportalen oder Zeitarbeit.
+            <p data-pf="white" style={{ color: "#ffffff", fontSize: mob ? 16 : 18, fontWeight: 600, margin: 0 }}>
+              Durchschnittlich <span data-pf="accent" style={{ color: ACCENT, fontWeight: 800 }}>15-25€ pro Bewerbung</span> – ein Bruchteil der Kosten von Jobportalen oder Zeitarbeit.
             </p>
           </div>
         </div>
@@ -226,8 +227,8 @@ export default function PflegeRecruiting() {
               { value: "15€", label: "Ø Kosten/Bewerbung", color: ACCENT },
             ].map((s, i) => (
               <div key={i} style={{ background: "#ffffff", borderRadius: 14, padding: "24px 16px", textAlign: "center", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
-                <div style={{ fontSize: mob ? 24 : 30, fontWeight: 800, color: s.color, marginBottom: 6 }}>{s.value}</div>
-                <div style={{ fontSize: 13, color: "#64748B" }}>{s.label}</div>
+                <div data-pf={s.color === GREEN ? "green" : "accent"} style={{ fontSize: mob ? 24 : 30, fontWeight: 800, color: s.color, marginBottom: 6 }}>{s.value}</div>
+                <div data-pf="gray" style={{ fontSize: 13, color: "#64748B" }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -237,13 +238,13 @@ export default function PflegeRecruiting() {
             <p style={{ color: BRAND, fontSize: mob ? 16 : 18, fontStyle: "italic", lineHeight: 1.7, margin: "0 0 16px" }}>
               „Wir haben 6 Monate lang auf Indeed inseriert – ohne Ergebnis. Mit TalentSuite hatten wir nach 3 Wochen die ersten Vorstellungsgespräche. Inzwischen haben wir 4 neue Pflegefachkräfte eingestellt."
             </p>
-            <p style={{ color: "#64748B", fontSize: 14, margin: 0 }}>– Pflegedienstleitung, Seniorenheim in NRW</p>
+            <p data-pf="gray" style={{ color: "#64748B", fontSize: 14, margin: 0 }}>– Pflegedienstleitung, Seniorenheim in NRW</p>
             <div style={{ marginTop: 8 }}>{"⭐⭐⭐⭐⭐"}</div>
           </div>
 
           {/* Case Study Teaser */}
           <div style={{ textAlign: "center" }}>
-            <a href="/lp/pflege-case-study" style={{ color: ACCENT, fontSize: 16, fontWeight: 600, textDecoration: "none" }}>
+            <a data-pf="accent" href="/lp/pflege-case-study" style={{ color: ACCENT, fontSize: 16, fontWeight: 600, textDecoration: "none" }}>
               Case Study: Wie ein Pflegeheim in 4 Wochen 12 Pflegekräfte eingestellt hat →
             </a>
           </div>
@@ -256,7 +257,7 @@ export default function PflegeRecruiting() {
           <h2 style={{ color: BRAND, fontSize: mob ? 22 : 28, fontWeight: 700, textAlign: "center", marginBottom: 12 }}>
             Kostenlose Recruiting-Analyse für Ihre Pflegeeinrichtung
           </h2>
-          <p style={{ color: "#64748B", fontSize: 16, textAlign: "center", marginBottom: 32, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
+          <p data-pf="gray" style={{ color: "#64748B", fontSize: 16, textAlign: "center", marginBottom: 32, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
             In 15 Minuten zeigen wir Ihnen, wie Sie qualifizierte Pflegekräfte über Social Media finden. Unverbindlich und kostenlos.
           </p>
 
@@ -264,7 +265,7 @@ export default function PflegeRecruiting() {
             <div style={{ background: "#ffffff", borderRadius: 20, padding: mob ? "32px 20px" : "44px 36px", boxShadow: "0 4px 30px rgba(0,0,0,0.08)", textAlign: "center" }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
               <h3 style={{ color: BRAND, fontSize: 22, fontWeight: 700, margin: "0 0 12px" }}>Vielen Dank!</h3>
-              <p style={{ color: "#64748B", fontSize: 16, lineHeight: 1.6, margin: "0 0 24px" }}>
+              <p data-pf="gray" style={{ color: "#64748B", fontSize: 16, lineHeight: 1.6, margin: "0 0 24px" }}>
                 Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden bei Ihnen.
               </p>
               <p style={{ color: BRAND, fontWeight: 600, marginBottom: 16 }}>
@@ -275,6 +276,7 @@ export default function PflegeRecruiting() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleCalendarClick}
+                data-pf="pribtn"
                 style={{ display: "inline-block", padding: "14px 32px", borderRadius: 12, background: GREEN, color: "#ffffff", fontSize: 16, fontWeight: 700, textDecoration: "none" }}
               >
                 Termin direkt buchen →
@@ -330,9 +332,9 @@ export default function PflegeRecruiting() {
                 <div style={{ marginBottom: 20 }}>
                   <label style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer" }}>
                     <input type="checkbox" checked={form.dsgvo} onChange={(e) => setForm({ ...form, dsgvo: e.target.checked })} style={{ marginTop: 4, width: 18, height: 18, accentColor: ACCENT }} />
-                    <span style={{ fontSize: 13, color: "#64748B", lineHeight: 1.5 }}>
+                    <span data-pf="gray" style={{ fontSize: 13, color: "#64748B", lineHeight: 1.5 }}>
                       Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
-                      <a href="/datenschutz" target="_blank" style={{ color: ACCENT }}>Datenschutzerklärung</a> zu. *
+                      <a data-pf="accent" href="/datenschutz" target="_blank" style={{ color: ACCENT }}>Datenschutzerklärung</a> zu. *
                     </span>
                   </label>
                 </div>
@@ -340,6 +342,7 @@ export default function PflegeRecruiting() {
                 <button
                   type="submit"
                   disabled={submitting}
+                  data-pf="pribtn"
                   style={{ width: "100%", padding: "16px 24px", borderRadius: 12, border: "none", background: ACCENT, color: "#ffffff", fontSize: 16, fontWeight: 700, cursor: submitting ? "wait" : "pointer", opacity: submitting ? 0.7 : 1 }}
                 >
                   {submitting ? "Wird gesendet..." : "Kostenlose Analyse anfordern"}
@@ -347,12 +350,13 @@ export default function PflegeRecruiting() {
               </form>
 
               <div style={{ textAlign: "center", marginTop: 24 }}>
-                <p style={{ color: "#64748B", fontSize: 14, marginBottom: 12 }}>Oder buchen Sie direkt Ihren Wunschtermin:</p>
+                <p data-pf="gray" style={{ color: "#64748B", fontSize: 14, marginBottom: 12 }}>Oder buchen Sie direkt Ihren Wunschtermin:</p>
                 <a
                   href={CALENDAR_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCalendarClick}
+                  data-pf="pribtn"
                   style={{ display: "inline-block", padding: "14px 32px", borderRadius: 12, background: GREEN, color: "#ffffff", fontSize: 16, fontWeight: 700, textDecoration: "none" }}
                 >
                   Termin direkt buchen →
@@ -365,7 +369,7 @@ export default function PflegeRecruiting() {
                   { icon: "⏱", text: "Antwort in 24h" },
                   { icon: "🚫", text: "Kein Spam" },
                 ].map((t, i) => (
-                  <span key={i} style={{ fontSize: 13, color: "#64748B" }}>{t.icon} {t.text}</span>
+                  <span key={i} data-pf="gray" style={{ fontSize: 13, color: "#64748B" }}>{t.icon} {t.text}</span>
                 ))}
               </div>
             </div>
@@ -408,10 +412,10 @@ export default function PflegeRecruiting() {
       <div style={{ paddingBottom: 80 }}>
         <div style={containerNarrow}>
           <div style={{ background: `linear-gradient(135deg, ${DARK}, ${BRAND})`, borderRadius: 20, padding: mob ? "32px 20px" : "48px 36px", textAlign: "center" }}>
-            <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 28, fontWeight: 700, margin: "0 0 12px" }}>
+            <h2 data-pf="white" style={{ color: "#ffffff", fontSize: mob ? 22 : 28, fontWeight: 700, margin: "0 0 12px" }}>
               Bereit, Pflegekräfte zu finden?
             </h2>
-            <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, margin: "0 0 28px" }}>
+            <p data-pf="white65" style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, margin: "0 0 28px" }}>
               15 Minuten, die den Unterschied machen können. Kostenlos und unverbindlich.
             </p>
             <a
@@ -419,11 +423,12 @@ export default function PflegeRecruiting() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleCalendarClick}
+              data-pf="pribtn"
               style={{ display: "inline-block", padding: "16px 36px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", color: "#ffffff", background: ACCENT, boxShadow: "0 4px 20px rgba(27,152,224,0.3)" }}
             >
               Jetzt Termin buchen →
             </a>
-            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 14, marginTop: 16 }}>
+            <p data-pf="white45" style={{ color: "rgba(255,255,255,0.45)", fontSize: 14, marginTop: 16 }}>
               Robert Engel · Geschäftsführer TalentSuite · Keine Verpflichtung
             </p>
           </div>

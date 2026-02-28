@@ -124,6 +124,33 @@ p {
 #br [data-br="success-body"] { color: #047857 !important; }
 #br input::placeholder { color: #9cb3c4 !important; }
 #br input[style*="0A1628"] { color: #ffffff !important; }
+/* Override: Pflege Landing Pages */
+#pf h1, #pf h2, #pf h3, #pf h4, #pf h5, #pf h6,
+#pf span, #pf li, #pf p, #pf div, #pf label, #pf button,
+#pf input, #pf textarea, #pf summary, #pf a {
+  color: #023B5B !important;
+}
+#pf h1 { font-size: inherit !important; }
+#pf h2 { font-size: inherit !important; line-height: inherit !important; }
+#pf h3 { font-size: inherit !important; }
+#pf [data-pf="white"] { color: #ffffff !important; }
+#pf [data-pf="white90"] { color: rgba(255,255,255,0.9) !important; }
+#pf [data-pf="white75"] { color: rgba(255,255,255,0.75) !important; }
+#pf [data-pf="white70"] { color: rgba(255,255,255,0.7) !important; }
+#pf [data-pf="white65"] { color: rgba(255,255,255,0.65) !important; }
+#pf [data-pf="white55"] { color: rgba(255,255,255,0.55) !important; }
+#pf [data-pf="white50"] { color: rgba(255,255,255,0.5) !important; }
+#pf [data-pf="white45"] { color: rgba(255,255,255,0.45) !important; }
+#pf [data-pf="white40"] { color: rgba(255,255,255,0.4) !important; }
+#pf [data-pf="muted"] { color: #94A3B8 !important; }
+#pf [data-pf="accent"] { color: #1B98E0 !important; }
+#pf [data-pf="green"] { color: #10B981 !important; }
+#pf [data-pf="gray"] { color: #64748B !important; }
+#pf [data-pf="body"] { color: #475569 !important; }
+#pf [data-pf="darkbody"] { color: #4A5568 !important; }
+#pf [data-pf="pribtn"] { color: #ffffff !important; }
+#pf [data-pf="brand"] { color: #023B5B !important; }
+#pf input::placeholder, #pf textarea::placeholder { color: #9cb3c4 !important; }
 h1 {
   color: var(--text-color) !important;
   font-size: 64px !important;

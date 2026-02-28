@@ -46,19 +46,19 @@ export default function PflegeCaseStudy() {
   ];
 
   return (
-    <div style={{ background: "#f0f4f7", minHeight: "100vh" }}>
+    <div id="pf" style={{ background: "#f0f4f7", minHeight: "100vh" }}>
       {/* ═══ HERO ═══ */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, ${BRAND} 50%, #0A4D72 100%)`, padding: mob ? "48px 16px 56px" : "72px 24px 80px", textAlign: "center" }}>
-        <a href="/lp/pflege-recruiting" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none", display: "block", marginBottom: 12 }}>
+        <a data-pf="white50" href="/lp/pflege-recruiting" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none", display: "block", marginBottom: 12 }}>
           ← Zurück zur Übersicht
         </a>
         <div style={{ display: "inline-block", padding: "5px 18px", borderRadius: 20, marginBottom: 16, background: "rgba(16,185,129,0.15)" }}>
-          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: GREEN }}>CASE STUDY · PFLEGE</span>
+          <span data-pf="green" style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: GREEN }}>CASE STUDY · PFLEGE</span>
         </div>
-        <h1 style={{ color: "#ffffff", fontSize: mob ? 26 : 38, fontWeight: 800, margin: "0 0 14px", lineHeight: 1.15, maxWidth: 700, marginLeft: "auto", marginRight: "auto" }}>
-          12 Pflegekräfte in <span style={{ color: ACCENT }}>4 Wochen</span> – ohne Jobportale
+        <h1 data-pf="white" style={{ color: "#ffffff", fontSize: mob ? 26 : 38, fontWeight: 800, margin: "0 0 14px", lineHeight: 1.15, maxWidth: 700, marginLeft: "auto", marginRight: "auto" }}>
+          12 Pflegekräfte in <span data-pf="accent" style={{ color: ACCENT }}>4 Wochen</span> – ohne Jobportale
         </h1>
-        <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 15 : 18, maxWidth: 520, margin: "0 auto" }}>
+        <p data-pf="white70" style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 15 : 18, maxWidth: 520, margin: "0 auto" }}>
           Wie ein Pflegeheim in NRW den Fachkräftemangel mit Social Media Recruiting gelöst hat.
         </p>
       </div>
@@ -73,8 +73,8 @@ export default function PflegeCaseStudy() {
             { n: "208€", l: "pro Einstellung" },
           ].map((s, i) => (
             <div key={i} style={{ background: "#ffffff", borderRadius: 12, padding: "16px 8px", textAlign: "center", boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}>
-              <div style={{ fontSize: mob ? 22 : 28, fontWeight: 800, color: s.highlight ? GREEN : ACCENT }}>{s.n}</div>
-              <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{s.l}</div>
+              <div data-pf={s.highlight ? "green" : "accent"} style={{ fontSize: mob ? 22 : 28, fontWeight: 800, color: s.highlight ? GREEN : ACCENT }}>{s.n}</div>
+              <div data-pf="gray" style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{s.l}</div>
             </div>
           ))}
         </div>
@@ -82,22 +82,22 @@ export default function PflegeCaseStudy() {
         {/* Ausgangssituation */}
         <div style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "24px 18px" : "28px 24px", boxShadow: "0 4px 20px rgba(0,0,0,0.06)", marginBottom: 20 }}>
           <h2 style={{ color: BRAND, fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 12px" }}>Ausgangssituation</h2>
-          <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>
+          <p data-pf="darkbody" style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 12px" }}>
             Ein Pflegeheim mit 85 Betten und 60 Mitarbeitern in NRW suchte dringend Pflegefachkräfte. Die Situation:
           </p>
           <ul style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.8, margin: 0, paddingLeft: 20 }}>
-            <li>8 offene Stellen für Pflegefachkräfte seit über 6 Monaten</li>
-            <li>0 qualifizierte Bewerbungen über Indeed und StepStone</li>
-            <li>Zeitarbeit kostete über 40.000€ pro Monat</li>
-            <li>Bestandspersonal am Limit – Krankenstand bei 18%</li>
-            <li>Aufnahmestopp drohte</li>
+            <li data-pf="darkbody">8 offene Stellen für Pflegefachkräfte seit über 6 Monaten</li>
+            <li data-pf="darkbody">0 qualifizierte Bewerbungen über Indeed und StepStone</li>
+            <li data-pf="darkbody">Zeitarbeit kostete über 40.000€ pro Monat</li>
+            <li data-pf="darkbody">Bestandspersonal am Limit – Krankenstand bei 18%</li>
+            <li data-pf="darkbody">Aufnahmestopp drohte</li>
           </ul>
         </div>
 
         {/* Strategie */}
         <div style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "24px 18px" : "28px 24px", boxShadow: "0 4px 20px rgba(0,0,0,0.06)", marginBottom: 20 }}>
           <h2 style={{ color: BRAND, fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 12px" }}>Unsere Strategie</h2>
-          <p style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
+          <p data-pf="darkbody" style={{ color: "#4A5568", fontSize: 15, lineHeight: 1.7, margin: "0 0 16px" }}>
             Statt weitere Stellenanzeigen auf Jobportalen zu schalten, haben wir einen komplett neuen Ansatz gewählt:
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -110,7 +110,7 @@ export default function PflegeCaseStudy() {
                 <div style={{ fontSize: 24, flexShrink: 0 }}>{s.icon}</div>
                 <div>
                   <h3 style={{ color: BRAND, fontSize: 16, fontWeight: 700, margin: "0 0 4px" }}>{s.title}</h3>
-                  <p style={{ color: "#64748B", fontSize: 14, margin: 0, lineHeight: 1.6 }}>{s.desc}</p>
+                  <p data-pf="gray" style={{ color: "#64748B", fontSize: 14, margin: 0, lineHeight: 1.6 }}>{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -132,7 +132,7 @@ export default function PflegeCaseStudy() {
               </div>
               <div>
                 <h3 style={{ color: BRAND, fontSize: 16, fontWeight: 700, margin: "0 0 4px" }}>{t.title}</h3>
-                <p style={{ color: "#64748B", fontSize: 14, margin: 0, lineHeight: 1.6 }}>{t.desc}</p>
+                <p data-pf="gray" style={{ color: "#64748B", fontSize: 14, margin: 0, lineHeight: 1.6 }}>{t.desc}</p>
               </div>
             </div>
           ))}
@@ -151,9 +151,9 @@ export default function PflegeCaseStudy() {
               { label: "Ersparnis", value: "35.000€+", sub: "vs. Zeitarbeit/Monat" },
             ].map((r, i) => (
               <div key={i} style={{ padding: "16px 12px", borderRadius: 12, background: "#f8fafc", textAlign: "center" }}>
-                <div style={{ fontSize: 13, color: "#64748B", marginBottom: 4 }}>{r.label}</div>
-                <div style={{ fontSize: 24, fontWeight: 800, color: ACCENT }}>{r.value}</div>
-                <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 2 }}>{r.sub}</div>
+                <div data-pf="gray" style={{ fontSize: 13, color: "#64748B", marginBottom: 4 }}>{r.label}</div>
+                <div data-pf="accent" style={{ fontSize: 24, fontWeight: 800, color: ACCENT }}>{r.value}</div>
+                <div data-pf="muted" style={{ fontSize: 11, color: "#94a3b8", marginTop: 2 }}>{r.sub}</div>
               </div>
             ))}
           </div>
@@ -164,16 +164,16 @@ export default function PflegeCaseStudy() {
           <p style={{ color: BRAND, fontSize: mob ? 16 : 18, fontStyle: "italic", lineHeight: 1.7, margin: "0 0 12px" }}>
             „Wir waren skeptisch – nach 6 Monaten ohne Bewerbungen über Jobportale. Aber nach nur 3 Wochen mit TalentSuite hatten wir mehr Vorstellungsgespräche als im gesamten letzten Jahr. Die Qualität der Bewerber war herausragend. Wir konnten alle 8 Stellen besetzen und mussten sogar Bewerbern absagen."
           </p>
-          <p style={{ color: "#64748B", fontSize: 14, margin: 0 }}>– Pflegedienstleitung, Seniorenheim in NRW, 85 Betten</p>
+          <p data-pf="gray" style={{ color: "#64748B", fontSize: 14, margin: 0 }}>– Pflegedienstleitung, Seniorenheim in NRW, 85 Betten</p>
           <div style={{ marginTop: 8 }}>{"⭐⭐⭐⭐⭐"}</div>
         </div>
 
         {/* CTA */}
         <div style={{ background: `linear-gradient(135deg, ${DARK}, ${BRAND})`, borderRadius: 16, padding: mob ? "32px 20px" : "44px 32px", textAlign: "center" }}>
-          <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 28, fontWeight: 700, margin: "0 0 10px" }}>
+          <h2 data-pf="white" style={{ color: "#ffffff", fontSize: mob ? 22 : 28, fontWeight: 700, margin: "0 0 10px" }}>
             Ähnliche Ergebnisse für Ihre Einrichtung?
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, margin: "0 0 24px" }}>
+          <p data-pf="white65" style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, margin: "0 0 24px" }}>
             Kostenlose Recruiting-Analyse in 15 Minuten – unverbindlich
           </p>
           <a
@@ -181,11 +181,12 @@ export default function PflegeCaseStudy() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleCalendarClick}
+            data-pf="pribtn"
             style={{ display: "inline-block", padding: "16px 36px", borderRadius: 12, background: ACCENT, color: "#ffffff", fontSize: 16, fontWeight: 700, textDecoration: "none", boxShadow: "0 4px 20px rgba(27,152,224,0.3)" }}
           >
             Jetzt Termin buchen →
           </a>
-          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, marginTop: 14 }}>
+          <p data-pf="white40" style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, marginTop: 14 }}>
             Robert Engel · Geschäftsführer TalentSuite
           </p>
         </div>

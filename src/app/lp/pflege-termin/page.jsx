@@ -69,18 +69,18 @@ export default function PflegeTermin() {
   const containerStyle = { maxWidth: 680, margin: "0 auto", padding: mob ? "0 16px" : "0 24px" };
 
   return (
-    <div style={{ background: "#f0f4f7", minHeight: "100vh" }}>
+    <div id="pf" style={{ background: "#f0f4f7", minHeight: "100vh" }}>
       {/* ═══ HERO ═══ */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, ${BRAND} 100%)`, padding: mob ? "48px 16px 56px" : "80px 24px 90px", textAlign: "center" }}>
         <div style={containerStyle}>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
+          <p data-pf="white50" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
             15 Minuten · Kostenlos · Unverbindlich
           </p>
-          <h1 style={{ color: "#ffffff", fontSize: mob ? 28 : 40, fontWeight: 800, lineHeight: 1.15, margin: "0 0 16px" }}>
+          <h1 data-pf="white" style={{ color: "#ffffff", fontSize: mob ? 28 : 40, fontWeight: 800, lineHeight: 1.15, margin: "0 0 16px" }}>
             Ihr kostenloser Recruiting-Plan{" "}
-            <span style={{ color: ACCENT }}>für Pflegekräfte</span>
+            <span data-pf="accent" style={{ color: ACCENT }}>für Pflegekräfte</span>
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 16 : 18, lineHeight: 1.6, maxWidth: 520, margin: "0 auto 32px" }}>
+          <p data-pf="white70" style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 16 : 18, lineHeight: 1.6, maxWidth: 520, margin: "0 auto 32px" }}>
             In 15 Minuten zeigen wir Ihnen exakt, wie viele Pflegekräfte Sie in den nächsten 30 Tagen gewinnen können.
           </p>
           <a
@@ -88,11 +88,12 @@ export default function PflegeTermin() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleCalendarClick}
+            data-pf="pribtn"
             style={{ display: "inline-block", padding: "18px 40px", borderRadius: 12, fontWeight: 700, fontSize: 17, textDecoration: "none", color: "#ffffff", background: ACCENT, boxShadow: "0 6px 24px rgba(27,152,224,0.35)" }}
           >
             Jetzt Termin wählen →
           </a>
-          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, marginTop: 14 }}>
+          <p data-pf="white40" style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, marginTop: 14 }}>
             Mit Robert Engel, Geschäftsführer TalentSuite
           </p>
         </div>
@@ -115,7 +116,7 @@ export default function PflegeTermin() {
                 <div style={{ fontSize: 28, flexShrink: 0 }}>{b.icon}</div>
                 <div>
                   <h3 style={{ color: BRAND, fontSize: 16, fontWeight: 700, margin: "0 0 4px" }}>{b.title}</h3>
-                  <p style={{ color: "#64748B", fontSize: 14, margin: 0, lineHeight: 1.6 }}>{b.desc}</p>
+                  <p data-pf="gray" style={{ color: "#64748B", fontSize: 14, margin: 0, lineHeight: 1.6 }}>{b.desc}</p>
                 </div>
               </div>
             ))}
@@ -134,8 +135,8 @@ export default function PflegeTermin() {
               { value: "30 Tage", label: "Ø bis Einstellung" },
             ].map((s, i) => (
               <div key={i} style={{ background: "#ffffff", borderRadius: 12, padding: "16px 8px", textAlign: "center", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-                <div style={{ fontSize: mob ? 20 : 24, fontWeight: 800, color: ACCENT }}>{s.value}</div>
-                <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{s.label}</div>
+                <div data-pf="accent" style={{ fontSize: mob ? 20 : 24, fontWeight: 800, color: ACCENT }}>{s.value}</div>
+                <div data-pf="gray" style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -143,7 +144,7 @@ export default function PflegeTermin() {
             <p style={{ color: BRAND, fontSize: 15, fontStyle: "italic", lineHeight: 1.7, margin: "0 0 8px" }}>
               „47 Bewerbungen in 4 Wochen – komplett ohne StepStone oder Indeed. Wir haben inzwischen alle Stellen besetzt."
             </p>
-            <p style={{ color: "#64748B", fontSize: 13, margin: 0 }}>– Pflegedienstleitung, Pflegeheim NRW</p>
+            <p data-pf="gray" style={{ color: "#64748B", fontSize: 13, margin: 0 }}>– Pflegedienstleitung, Pflegeheim NRW</p>
           </div>
         </div>
       </div>
@@ -152,10 +153,10 @@ export default function PflegeTermin() {
       <div style={{ marginBottom: mob ? 40 : 60 }}>
         <div style={containerStyle}>
           <div style={{ background: `linear-gradient(135deg, ${DARK}, ${BRAND})`, borderRadius: 20, padding: mob ? "32px 20px" : "48px 36px", textAlign: "center" }}>
-            <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 30, fontWeight: 700, margin: "0 0 10px" }}>
+            <h2 data-pf="white" style={{ color: "#ffffff", fontSize: mob ? 22 : 30, fontWeight: 700, margin: "0 0 10px" }}>
               Jetzt Ihren Termin sichern
             </h2>
-            <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, margin: "0 0 28px", maxWidth: 440, marginLeft: "auto", marginRight: "auto" }}>
+            <p data-pf="white65" style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, margin: "0 0 28px", maxWidth: 440, marginLeft: "auto", marginRight: "auto" }}>
               15 Minuten – Kostenlose Recruiting-Analyse – Keine Verpflichtung
             </p>
             <a
@@ -163,6 +164,7 @@ export default function PflegeTermin() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleCalendarClick}
+              data-pf="pribtn"
               style={{ display: "inline-block", padding: "18px 44px", borderRadius: 14, fontWeight: 700, fontSize: 18, textDecoration: "none", color: "#ffffff", background: ACCENT, boxShadow: "0 6px 28px rgba(27,152,224,0.4)" }}
             >
               Termin wählen →
@@ -173,7 +175,7 @@ export default function PflegeTermin() {
                 { icon: "💯", text: "100% kostenlos" },
                 { icon: "🚫", text: "Kein Verkaufsdruck" },
               ].map((t, i) => (
-                <span key={i} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13 }}>{t.icon} {t.text}</span>
+                <span key={i} data-pf="white55" style={{ color: "rgba(255,255,255,0.55)", fontSize: 13 }}>{t.icon} {t.text}</span>
               ))}
             </div>
           </div>
@@ -187,21 +189,21 @@ export default function PflegeTermin() {
             <h3 style={{ color: BRAND, fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 8px" }}>
               Lieber Rückruf?
             </h3>
-            <p style={{ color: "#64748B", fontSize: 15, marginBottom: 24 }}>
+            <p data-pf="gray" style={{ color: "#64748B", fontSize: 15, marginBottom: 24 }}>
               Hinterlassen Sie Ihre Nummer – wir rufen Sie innerhalb von 24 Stunden zurück.
             </p>
 
             {callbackSubmitted ? (
               <div>
                 <div style={{ fontSize: 36, marginBottom: 12 }}>✅</div>
-                <p style={{ color: GREEN, fontWeight: 600, fontSize: 16 }}>Vielen Dank! Wir rufen Sie zurück.</p>
+                <p data-pf="green" style={{ color: GREEN, fontWeight: 600, fontSize: 16 }}>Vielen Dank! Wir rufen Sie zurück.</p>
               </div>
             ) : (
               <form onSubmit={handleCallback} style={{ maxWidth: 400, margin: "0 auto" }}>
                 <input type="text" required value={callbackForm.name} onChange={(e) => setCallbackForm({ ...callbackForm, name: e.target.value })} placeholder="Ihr Name *" style={{ ...inputStyle, marginBottom: 12 }} />
                 <input type="tel" required value={callbackForm.telefon} onChange={(e) => setCallbackForm({ ...callbackForm, telefon: e.target.value })} placeholder="Ihre Telefonnummer *" style={{ ...inputStyle, marginBottom: 12 }} />
                 <input type="text" value={callbackForm.einrichtung} onChange={(e) => setCallbackForm({ ...callbackForm, einrichtung: e.target.value })} placeholder="Name der Einrichtung (optional)" style={{ ...inputStyle, marginBottom: 16 }} />
-                <button type="submit" disabled={submitting} style={{ width: "100%", padding: "14px 24px", borderRadius: 12, border: "none", background: GREEN, color: "#ffffff", fontSize: 16, fontWeight: 700, cursor: submitting ? "wait" : "pointer", opacity: submitting ? 0.7 : 1 }}>
+                <button type="submit" disabled={submitting} data-pf="pribtn" style={{ width: "100%", padding: "14px 24px", borderRadius: 12, border: "none", background: GREEN, color: "#ffffff", fontSize: 16, fontWeight: 700, cursor: submitting ? "wait" : "pointer", opacity: submitting ? 0.7 : 1 }}>
                   {submitting ? "Wird gesendet..." : "Rückruf anfordern"}
                 </button>
               </form>
