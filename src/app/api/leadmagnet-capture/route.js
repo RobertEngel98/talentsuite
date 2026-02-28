@@ -2,11 +2,13 @@ import { NextResponse } from "next/server";
 
 // ═══════════════════════════════════════════════════════
 // TalentSuite Leadmagnet Capture API Route
-// Erstellt automatisch einen ClickUp Task bei jedem Lead
+// Erstellt automatisch einen ClickUp Task + CRM Lead
 // ═══════════════════════════════════════════════════════
 
 const CLICKUP_API = "https://api.clickup.com/api/v2";
 const LIST_ID = process.env.CLICKUP_LEADMAGNET_LIST_ID || "901517476774"; // "Leads (active pipeline)"
+const CRM_WEBHOOK_URL = process.env.CRM_WEBHOOK_URL; // z.B. https://tasks.talentsuite.io/api/crm/webhook
+const CRM_WEBHOOK_TOKEN = process.env.CRM_WEBHOOK_TOKEN;
 
 export async function POST(request) {
   try {
@@ -19,15 +21,6 @@ export async function POST(request) {
         { error: "E-Mail ist erforderlich" },
         { status: 400 }
       );
-    }
-
-    const apiKey = process.env.CLICKUP_API_KEY;
-    if (!apiKey) {
-      console.error("CLICKUP_API_KEY nicht gesetzt");
-      return NextResponse.json({
-        success: true,
-        warning: "Lead erfasst, aber ClickUp-Sync fehlgeschlagen (API Key fehlt)",
-      });
     }
 
     // ── Task-Name formatieren ──
@@ -166,6 +159,17 @@ export async function POST(request) {
     const priority = highPrioritySources.includes(source) ? 2 : 3; // 2 = high, 3 = normal
 
     // ── ClickUp Task erstellen ──
+    const apiKey = process.env.CLICKUP_API_KEY;
+    if (!apiKey) {
+      console.error("CLICKUP_API_KEY nicht gesetzt");
+      // CRM trotzdem synchronisieren
+      await syncToCRM({ source, name, email, company, phone, industry, extra, description });
+      return NextResponse.json({
+        success: true,
+        warning: "Lead erfasst, aber ClickUp-Sync fehlgeschlagen (API Key fehlt)",
+      });
+    }
+
     const res = await fetch(`${CLICKUP_API}/list/${LIST_ID}/task`, {
       method: "POST",
       headers: {
@@ -184,6 +188,8 @@ export async function POST(request) {
     if (!res.ok) {
       const errText = await res.text();
       console.error("ClickUp API Error:", res.status, errText);
+      // CRM trotzdem synchronisieren
+      await syncToCRM({ source, name, email, company, phone, industry, extra, description });
       return NextResponse.json({
         success: true,
         warning: "Lead erfasst, ClickUp-Sync fehlgeschlagen",
@@ -191,6 +197,9 @@ export async function POST(request) {
     }
 
     const task = await res.json();
+
+    // ── CRM Sync (tasks.talentsuite.io) ──
+    await syncToCRM({ source, name, email, company, phone, industry, extra, description });
 
     return NextResponse.json({
       success: true,
@@ -203,5 +212,57 @@ export async function POST(request) {
       success: true,
       warning: "Lead-Erfassung fehlgeschlagen: " + err.message,
     });
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// CRM Sync — Sendet Lead an tasks.talentsuite.io
+// ═══════════════════════════════════════════════════════
+async function syncToCRM({ source, name, email, company, phone, industry, extra, description }) {
+  if (!CRM_WEBHOOK_URL || !CRM_WEBHOOK_TOKEN) {
+    console.warn("CRM Webhook nicht konfiguriert (CRM_WEBHOOK_URL / CRM_WEBHOOK_TOKEN fehlt)");
+    return;
+  }
+
+  try {
+    // Source-Label für Tags
+    const sourceTag = source || "website";
+
+    // Alle Daten als message formatieren (description enthält bereits alles)
+    const message = description;
+
+    // Tags basierend auf Source
+    const tags = ["leadmagnet", sourceTag];
+    if (extra?.level === "Dringender Handlungsbedarf") tags.push("hot-lead");
+    if (extra?.type === "rueckruf") tags.push("rückruf");
+
+    const crmPayload = {
+      name: name || email.split("@")[0],
+      email: email || "",
+      phone: phone || "",
+      company: company || "",
+      industry: industry || extra?.branche || extra?.selectedBranch || "",
+      message,
+      source: "website",
+      tags,
+    };
+
+    const crmRes = await fetch(CRM_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Webhook-Token": CRM_WEBHOOK_TOKEN,
+      },
+      body: JSON.stringify(crmPayload),
+    });
+
+    if (!crmRes.ok) {
+      const errText = await crmRes.text();
+      console.error("CRM Webhook Error:", crmRes.status, errText);
+    } else {
+      console.log("CRM Lead erstellt:", email);
+    }
+  } catch (err) {
+    console.error("CRM Sync Fehler:", err.message);
   }
 }
