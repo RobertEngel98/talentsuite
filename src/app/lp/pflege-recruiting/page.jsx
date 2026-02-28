@@ -141,12 +141,12 @@ export default function PflegeRecruiting() {
           </div>
           {!mob && (
             <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
-              <div style={{ width: 400, height: 300, borderRadius: 20, background: "linear-gradient(135deg, #1a2744, #023B5B)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 40px rgba(0,0,0,0.3)" }}>
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 60, marginBottom: 12 }}>🏥</div>
-                  <p data-pf="white70" style={{ color: "rgba(255,255,255,0.7)", fontSize: 14, margin: 0 }}>Pflegekräfte finden</p>
-                  <p data-pf="accent" style={{ color: ACCENT, fontSize: 24, fontWeight: 800, margin: "8px 0 0" }}>in 30 Tagen</p>
-                </div>
+              <div style={{ width: 420, height: 320, borderRadius: 20, overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.3)", position: "relative" }}>
+                <img
+                  src="/assets/pflege-hero.jpg"
+                  alt="Pflegekraft mit Seniorin – vertrauensvolle Betreuung"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
             </div>
           )}
