@@ -67,3 +67,26 @@ export function trackMetaLead(data = {}) {
     });
   }
 }
+
+export function trackMetaViewContent(data = {}) {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "ViewContent", {
+      content_name: data.contentName || "page",
+      content_category: data.category || "pflege",
+      content_type: data.contentType || "landing_page",
+      ...data,
+    });
+  }
+}
+
+export function trackMetaSchedule(data = {}) {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "Schedule", {
+      content_name: data.formName || "termin_buchung",
+      content_category: data.category || "pflege",
+      value: data.value || 0,
+      currency: "EUR",
+      ...data,
+    });
+  }
+}

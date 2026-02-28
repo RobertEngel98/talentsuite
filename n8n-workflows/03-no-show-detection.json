@@ -1,0 +1,89 @@
+{
+  "name": "Pflege: No-Show Detection",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "hours", "hoursInterval": 1 }]
+        }
+      },
+      "id": "trigger",
+      "name": "Stündlicher Check",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "notes": "Prüft stündlich ob No-Shows erkannt werden müssen"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.brevo.com/v3/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "limit", "value": "50" }
+          ]
+        }
+      },
+      "id": "getContacts",
+      "name": "Brevo: Kontakte mit Termin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [450, 300],
+      "notes": "Kontakte mit Tag 'termin_gebucht' abrufen (ohne 'no_show' und ohne 'termin_wahrgenommen')"
+    },
+    {
+      "parameters": {
+        "functionCode": "const items = $input.all();\nconst now = new Date();\nconst results = [];\n\nfor (const item of items) {\n  const attrs = item.json.attributes || {};\n  const tags = item.json.tags || [];\n  \n  // Skip wenn schon no_show oder termin_wahrgenommen Tag\n  if (tags.includes('no_show') || tags.includes('termin_wahrgenommen')) continue;\n  if (!tags.includes('termin_gebucht')) continue;\n  \n  const dateParts = (attrs.TERMIN_DATUM || '').split('.');\n  const time = (attrs.TERMIN_UHRZEIT || '10:00').split(':');\n  \n  if (dateParts.length !== 3) continue;\n  \n  const terminDate = new Date(\n    parseInt(dateParts[2]), parseInt(dateParts[1]) - 1, parseInt(dateParts[0]),\n    parseInt(time[0]), parseInt(time[1])\n  );\n  \n  const hoursSince = (now - terminDate) / (1000 * 60 * 60);\n  \n  // No-Show: 24h nach Termin, kein 'termin_wahrgenommen' Tag\n  if (hoursSince >= 24 && hoursSince <= 48) {\n    results.push({ json: { ...item.json, hoursSinceTermin: Math.round(hoursSince) } });\n  }\n}\n\nreturn results;"
+      },
+      "id": "detectNoShows",
+      "name": "No-Shows erkennen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [650, 300],
+      "notes": "Prüft ob Termin 24h+ vergangen ist ohne 'termin_wahrgenommen' Tag"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.brevo.com/v3/contacts/{{ encodeURIComponent($json.email) }}/tags",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ tags: ['no_show'] }) }}"
+      },
+      "id": "addNoShowTag",
+      "name": "Brevo: Tag 'no_show' setzen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [850, 250]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.brevo.com/v3/smtp/email",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ sender: { name: 'Robert Engel', email: 'robert@talentsuite.io' }, to: [{ email: $json.email }], subject: 'Wir haben Sie vermisst, ' + ($json.attributes.FIRSTNAME || '') , htmlContent: '<p>Hallo ' + ($json.attributes.FIRSTNAME || '') + ',</p><p>wir hatten einen Termin für Ihre Recruiting-Analyse – leider hat es nicht geklappt. Das ist überhaupt kein Problem.</p><p>Buchen Sie einfach einen neuen Termin, der besser passt:</p><p><a href=\"https://calendar.app.google/CSGu2PT8671jC4q68\" style=\"display:inline-block;padding:14px 28px;background:#1B98E0;color:white;text-decoration:none;border-radius:10px;font-weight:bold;\">Neuen Termin buchen →</a></p><p>Oder antworten Sie auf diese Mail und nennen Sie mir 2-3 Zeitslots die für Sie funktionieren.</p><p>Beste Grüße<br>Robert</p>' }) }}"
+      },
+      "id": "sendNoShowMail",
+      "name": "No-Show Mail 1 senden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [850, 400],
+      "notes": "Sofort nach No-Show-Erkennung: Freundliche Neutermin-Mail"
+    }
+  ],
+  "connections": {
+    "Stündlicher Check": { "main": [[{ "node": "Brevo: Kontakte mit Termin", "type": "main", "index": 0 }]] },
+    "Brevo: Kontakte mit Termin": { "main": [[{ "node": "No-Shows erkennen", "type": "main", "index": 0 }]] },
+    "No-Shows erkennen": { "main": [[{ "node": "Brevo: Tag 'no_show' setzen", "type": "main", "index": 0 }, { "node": "No-Show Mail 1 senden", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "pflege" }, { "name": "no-show" }]
+}

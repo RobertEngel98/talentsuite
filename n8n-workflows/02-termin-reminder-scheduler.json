@@ -1,0 +1,123 @@
+{
+  "name": "Pflege: Termin-Reminder Scheduler",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "hours", "hoursInterval": 1 }]
+        }
+      },
+      "id": "trigger",
+      "name": "Stündlicher Check",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "notes": "Prüft stündlich ob Reminder gesendet werden müssen"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.brevo.com/v3/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "limit", "value": "50" },
+            { "name": "modifiedSince", "value": "={{ $now.minus(2, 'days').toISO() }}" }
+          ]
+        }
+      },
+      "id": "getContacts",
+      "name": "Brevo: Kontakte mit Termin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [450, 300],
+      "notes": "Kontakte mit Tag 'termin_gebucht' und TERMIN_DATUM abrufen"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.attributes?.TERMIN_DATUM }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "filterHasDate",
+      "name": "Filter: Hat Termin-Datum",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "const items = $input.all();\nconst now = new Date();\nconst results = [];\n\nfor (const item of items) {\n  const attrs = item.json.attributes || {};\n  const dateParts = (attrs.TERMIN_DATUM || '').split('.');\n  const time = (attrs.TERMIN_UHRZEIT || '10:00').split(':');\n  \n  if (dateParts.length !== 3) continue;\n  \n  const terminDate = new Date(\n    parseInt(dateParts[2]), parseInt(dateParts[1]) - 1, parseInt(dateParts[0]),\n    parseInt(time[0]), parseInt(time[1])\n  );\n  \n  const hoursUntil = (terminDate - now) / (1000 * 60 * 60);\n  \n  let reminderType = null;\n  if (hoursUntil > 23 && hoursUntil <= 25) reminderType = '24h_reminder';\n  else if (hoursUntil > 0.5 && hoursUntil <= 1.5) reminderType = '1h_reminder';\n  \n  if (reminderType) {\n    results.push({\n      json: {\n        ...item.json,\n        reminderType,\n        hoursUntil: Math.round(hoursUntil * 10) / 10\n      }\n    });\n  }\n}\n\nreturn results;"
+      },
+      "id": "calculateReminders",
+      "name": "Reminder-Timing berechnen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [850, 300],
+      "notes": "Prüft ob 24h oder 1h Reminder fällig ist"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            { "value1": "={{ $json.reminderType }}", "value2": "24h_reminder" }
+          ]
+        }
+      },
+      "id": "switch24h",
+      "name": "Switch: 24h oder 1h",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [1050, 300],
+      "notes": "Verzweigt nach Reminder-Typ"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.brevo.com/v3/smtp/email",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ sender: { name: 'Robert Engel', email: 'robert@talentsuite.io' }, to: [{ email: $json.email }], subject: 'Morgen um ' + $json.attributes.TERMIN_UHRZEIT + ' Uhr – Ihre Recruiting-Analyse', htmlContent: '<p>Hallo ' + ($json.attributes.FIRSTNAME || '') + ',</p><p>kurze Erinnerung: Morgen um ' + $json.attributes.TERMIN_UHRZEIT + ' Uhr sprechen wir über Ihre Recruiting-Strategie für Pflegekräfte.</p><p>🔗 <a href=\"' + $json.attributes.MEETING_LINK + '\">Hier ist Ihr Meeting-Link</a></p><p>Ich habe bereits eine erste Analyse für ' + ($json.attributes.COMPANY || 'Ihre Einrichtung') + ' vorbereitet.</p><p>Bis morgen!<br>Robert</p>' }) }}"
+      },
+      "id": "send24hReminder",
+      "name": "Sende 24h Reminder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1250, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.brevo.com/v3/smtp/email",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ sender: { name: 'Robert Engel', email: 'robert@talentsuite.io' }, to: [{ email: $json.email }], subject: 'In 1 Stunde: Ihre Recruiting-Analyse', htmlContent: '<p>Hallo ' + ($json.attributes.FIRSTNAME || '') + ',</p><p>in einer Stunde ist es soweit. Hier nochmal Ihr Link:</p><p>🔗 <a href=\"' + $json.attributes.MEETING_LINK + '\">' + $json.attributes.MEETING_LINK + '</a></p><p>Bis gleich!<br>Robert</p>' }) }}"
+      },
+      "id": "send1hReminder",
+      "name": "Sende 1h Reminder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1250, 400]
+    }
+  ],
+  "connections": {
+    "Stündlicher Check": { "main": [[{ "node": "Brevo: Kontakte mit Termin", "type": "main", "index": 0 }]] },
+    "Brevo: Kontakte mit Termin": { "main": [[{ "node": "Filter: Hat Termin-Datum", "type": "main", "index": 0 }]] },
+    "Filter: Hat Termin-Datum": { "main": [[{ "node": "Reminder-Timing berechnen", "type": "main", "index": 0 }]] },
+    "Reminder-Timing berechnen": { "main": [[{ "node": "Switch: 24h oder 1h", "type": "main", "index": 0 }]] },
+    "Switch: 24h oder 1h": { "main": [[{ "node": "Sende 24h Reminder", "type": "main", "index": 0 }], [{ "node": "Sende 1h Reminder", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "pflege" }, { "name": "reminder" }]
+}

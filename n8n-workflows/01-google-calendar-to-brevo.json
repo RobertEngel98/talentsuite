@@ -1,0 +1,126 @@
+{
+  "name": "Pflege: Google Calendar → Brevo Tag",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "minutes", "minutesInterval": 5 }]
+        }
+      },
+      "id": "trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "notes": "Alle 5 Minuten prüfen ob neue Termine existieren"
+    },
+    {
+      "parameters": {
+        "resource": "event",
+        "operation": "getAll",
+        "calendarId": "primary",
+        "returnAll": false,
+        "limit": 10,
+        "options": {
+          "timeMin": "={{ $now.minus(5, 'minutes').toISO() }}",
+          "timeMax": "={{ $now.plus(30, 'days').toISO() }}",
+          "singleEvents": true,
+          "orderBy": "startTime"
+        }
+      },
+      "id": "getEvents",
+      "name": "Google Calendar – Neue Events",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [450, 300],
+      "credentials": { "googleCalendarOAuth2Api": { "id": "GOOGLE_CALENDAR_CREDENTIAL_ID" } },
+      "notes": "Neue Termine aus Google Calendar abrufen"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.attendees ? $json.attendees[0].email : '' }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "filterAttendees",
+      "name": "Filter: Hat Teilnehmer",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            { "name": "email", "value": "={{ $json.attendees[0].email }}" },
+            { "name": "termin_datum", "value": "={{ new Date($json.start.dateTime).toLocaleDateString('de-DE') }}" },
+            { "name": "termin_uhrzeit", "value": "={{ new Date($json.start.dateTime).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) }}" },
+            { "name": "meeting_link", "value": "={{ $json.hangoutLink || $json.htmlLink }}" },
+            { "name": "event_id", "value": "={{ $json.id }}" },
+            { "name": "start_datetime", "value": "={{ $json.start.dateTime }}" }
+          ]
+        }
+      },
+      "id": "extractData",
+      "name": "Termin-Daten extrahieren",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "update",
+        "email": "={{ $json.email }}",
+        "additionalFields": {
+          "attributes": {
+            "TERMIN_DATUM": "={{ $json.termin_datum }}",
+            "TERMIN_UHRZEIT": "={{ $json.termin_uhrzeit }}",
+            "MEETING_LINK": "={{ $json.meeting_link }}"
+          }
+        }
+      },
+      "id": "brevoUpdateContact",
+      "name": "Brevo: Attribute speichern",
+      "type": "n8n-nodes-base.brevo",
+      "typeVersion": 1,
+      "position": [1050, 250],
+      "credentials": { "brevoApi": { "id": "BREVO_CREDENTIAL_ID" } }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.brevo.com/v3/contacts/{{ encodeURIComponent($json.email) }}/tags",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "tags", "value": "[\"termin_gebucht\"]" }
+          ]
+        }
+      },
+      "id": "brevoAddTag",
+      "name": "Brevo: Tag 'termin_gebucht'",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1050, 400],
+      "notes": "Tag 'termin_gebucht' zum Kontakt hinzufügen"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": { "main": [[{ "node": "Google Calendar – Neue Events", "type": "main", "index": 0 }]] },
+    "Google Calendar – Neue Events": { "main": [[{ "node": "Filter: Hat Teilnehmer", "type": "main", "index": 0 }]] },
+    "Filter: Hat Teilnehmer": { "main": [[{ "node": "Termin-Daten extrahieren", "type": "main", "index": 0 }]] },
+    "Termin-Daten extrahieren": { "main": [[{ "node": "Brevo: Attribute speichern", "type": "main", "index": 0 }, { "node": "Brevo: Tag 'termin_gebucht'", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "pflege" }, { "name": "automation" }]
+}
