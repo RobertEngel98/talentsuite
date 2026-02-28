@@ -19,8 +19,9 @@ const inter = Inter({ subsets: ["latin"], weight: ["900"], style: ["italic"], va
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const hideHeader = pathname === "/madeByMe";
-  const hideFooter = pathname === "/madeByMe";
+  const isLandingPage = pathname?.startsWith("/lp/pflege-");
+  const hideHeader = pathname === "/madeByMe" || isLandingPage;
+  const hideFooter = pathname === "/madeByMe" || isLandingPage;
 
   return (
     <html lang="de" className={`${poppins.variable} ${rajdhani.variable} ${inter.variable}`}>

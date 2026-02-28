@@ -113,7 +113,7 @@ export default function PflegeRecruiting() {
   const containerNarrow = { maxWidth: 720, margin: "0 auto", padding: mob ? "0 16px" : "0 24px" };
 
   return (
-    <div id="pf" style={{ background: "#f0f4f7", paddingTop: 80 }}>
+    <div id="pf" style={{ background: "#f0f4f7" }}>
       {/* ═══ HERO ═══ */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, ${DARK2} 100%)`, padding: mob ? "48px 16px 56px" : "80px 24px 90px" }}>
         <div style={{ ...containerStyle, display: mob ? "block" : "flex", alignItems: "center", gap: 48 }}>
