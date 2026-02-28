@@ -45,6 +45,9 @@ export async function POST(request) {
       "pflege-recruiting": "🏥 Pflege Recruiting",
       "pflege-case-study": "🏥 Pflege Case Study",
       "pflege-termin": "🏥 Pflege Termin",
+      "kfz-recruiting": "🚗 KFZ Recruiting",
+      "kfz-case-study": "🚗 KFZ Case Study",
+      "kfz-termin": "🚗 KFZ Termin",
       generic: "📥 Leadmagnet",
     };
     const sourceLabel = sourceLabels[source] || sourceLabels.generic;
@@ -145,10 +148,21 @@ export async function POST(request) {
       if (utmValues) description += `🔗 **UTM:** ${utmValues}\n`;
     }
 
+    if ((source === "kfz-recruiting" || source === "kfz-case-study" || source === "kfz-termin") && extra) {
+      description += `\n---\n\n## KFZ Lead\n`;
+      description += `🚗 **Funnel-Stufe:** ${extra.funnel_stage || source}\n`;
+      if (extra.rolle) description += `👔 **Rolle:** ${extra.rolle}\n`;
+      if (extra.anzahlFachkraefte) description += `👥 **Gesuchte Fachkräfte:** ${extra.anzahlFachkraefte}\n`;
+      if (extra.type === "rueckruf") description += `📞 **Typ:** Rückruf gewünscht\n`;
+      const utmFields = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+      const utmValues = utmFields.filter(k => extra[k]).map(k => `${k}=${extra[k]}`).join(", ");
+      if (utmValues) description += `🔗 **UTM:** ${utmValues}\n`;
+    }
+
     description += `\n---\n\n> *Automatisch erfasst über talentsuite.io/${source || "leadmagnet"}*`;
 
     // ── Priorität basierend auf Source ──
-    const highPrioritySources = ["schnellcheck", "stellenanzeigen-generator", "recruiting-analyse", "pflege-recruiting", "pflege-termin"];
+    const highPrioritySources = ["schnellcheck", "stellenanzeigen-generator", "recruiting-analyse", "pflege-recruiting", "pflege-termin", "kfz-recruiting", "kfz-termin"];
     const priority = highPrioritySources.includes(source) ? 2 : 3; // 2 = high, 3 = normal
 
     // ── ClickUp Task erstellen ──

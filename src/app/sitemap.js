@@ -20,6 +20,10 @@ export default function sitemap() {
     { url: `${baseUrl}/lp/pflege-recruiting`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/lp/pflege-case-study`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/lp/pflege-termin`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    // ── KFZ Landing Pages ──
+    { url: `${baseUrl}/lp/kfz-recruiting`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/lp/kfz-case-study`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/lp/kfz-termin`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     // ── Blog ──
     { url: `${baseUrl}/blog/marketing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/blog/trends`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
