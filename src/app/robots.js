@@ -7,6 +7,6 @@ export default function robots() {
         disallow: ["/api/", "/_next/", "/admin/"],
       },
     ],
-    sitemap: "https://talentsuite.io/sitemap.xml",
+    sitemap: "https://www.talentsuite.io/sitemap.xml",
   };
 }
