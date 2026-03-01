@@ -17,13 +17,17 @@ const CookieConsent = () => {
   const acceptAll = () => {
     document.cookie = "cookie_consent=accepted; path=/; max-age=31536000; SameSite=Lax";
     setShowBanner(false);
-    // Event feuern damit GTM geladen wird
+    // Event feuern damit GTM + Journey Tracking geladen wird
     window.dispatchEvent(new Event("cookieConsentAccepted"));
   };
 
   const acceptEssential = () => {
     document.cookie = "cookie_consent=essential; path=/; max-age=31536000; SameSite=Lax";
     setShowBanner(false);
+    // Journey Tracking widerrufen falls bereits geladen
+    if (window.TalentSuiteTracking) {
+      window.TalentSuiteTracking.revokeConsent();
+    }
   };
 
   if (!showBanner) return null;
@@ -107,8 +111,9 @@ const CookieConsent = () => {
             </p>
             <p style={{ margin: "0 0 8px", fontSize: "13px", opacity: 1 }}>
               <strong style={{ color: "rgba(255,255,255,0.85)" }}>Analyse & Marketing:</strong> Google
-              Tag Manager, Google Analytics, Meta Pixel – zur Messung der Website-Performance und
-              Optimierung unserer Werbeanzeigen.
+              Tag Manager, Google Analytics, Meta Pixel, Customer Journey Tracking – zur Messung der
+              Website-Performance, Analyse der Besucherreise und Optimierung unserer Werbeanzeigen.
+              IP-Adressen werden nur anonymisiert (gehasht) gespeichert.
             </p>
             <p style={{ margin: 0, fontSize: "13px", opacity: 1 }}>
               <strong style={{ color: "rgba(255,255,255,0.85)" }}>Drittanbieter:</strong> Videos werden

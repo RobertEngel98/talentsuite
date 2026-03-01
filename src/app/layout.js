@@ -110,6 +110,18 @@ export default function RootLayout({ children }) {
             window.addEventListener('cookieConsentAccepted',loadClarity);
           `}
         </Script>
+        {/* TalentSuite Customer Journey Tracking — consent-gated */}
+        <Script id="journey-tracking-script" strategy="afterInteractive">
+          {`
+            function loadJourneyTracking(){if(window.__journeyLoaded)return;window.__journeyLoaded=true;
+            var s=document.createElement('script');s.async=true;s.defer=true;
+            s.src='https://tasks.talentsuite.io/api/journey/script.js';
+            s.onload=function(){if(window.TalentSuiteTracking){window.TalentSuiteTracking.grantConsent();}};
+            document.head.appendChild(s);}
+            if(document.cookie.indexOf('cookie_consent=accepted')!==-1){loadJourneyTracking();}
+            window.addEventListener('cookieConsentAccepted',loadJourneyTracking);
+          `}
+        </Script>
       </body>
     </html>
   );
