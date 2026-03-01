@@ -53,20 +53,45 @@ export default function RootLayout({ children }) {
         }) }} />
         {/* Bootstrap Icons */}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-        {/* GA4 — consent-gated via gtag consent mode */}
+        {/*
+          ========================================================
+          GOOGLE CONSENT MODE v2 — MUSS VOR ALLEN TRACKING-SCRIPTS STEHEN
+          Setzt alle Consent-Kategorien auf "denied" bis der Nutzer zustimmt.
+          Google sammelt KEINE Daten bis consent update kommt.
+          ========================================================
+        */}
         <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer=window.dataLayer||[];
           function gtag(){dataLayer.push(arguments);}
+
+          gtag('consent','default',{
+            'ad_storage':'denied',
+            'ad_user_data':'denied',
+            'ad_personalization':'denied',
+            'analytics_storage':'denied',
+            'functionality_storage':'denied',
+            'personalization_storage':'denied',
+            'security_storage':'granted',
+            'wait_for_update':500
+          });
+
+          gtag('set','ads_data_redaction',true);
+          gtag('set','url_passthrough',true);
+        `}} />
+        {/* GA4 gtag.js — lädt sofort, respektiert aber Consent Mode */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSTMVQC2PJ" />
+        <script dangerouslySetInnerHTML={{ __html: `
           gtag('js',new Date());
-          gtag('config','G-LSTMVQC2PJ',{send_page_view:false});
+          gtag('config','G-LSTMVQC2PJ',{
+            send_page_view:false,
+            cookie_flags:'SameSite=Lax;Secure',
+            link_attribution:true
+          });
         `}} />
       </head>
       <body>
         <MetaPixel />
         <CookieConsent />
-        <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7J9WLXF" height="0" width="0" style={{ display: "none", visibility: "hidden" }} title="Google Tag Manager"></iframe>
-        </noscript>
         {!hideHeader && <Header />}
         <TrackingProvider>
           <main>
@@ -75,29 +100,6 @@ export default function RootLayout({ children }) {
         </TrackingProvider>
         {!hideFooter && <Footer />}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-        {/* DSGVO: GTM nur nach Cookie-Consent */}
-        <Script id="gtm-consent-script" strategy="afterInteractive">
-          {`
-            function loadGTM(){if(window.__gtmLoaded)return;window.__gtmLoaded=true;
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-            j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-            f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N7J9WLXF');}
-            if(document.cookie.indexOf('cookie_consent=accepted')!==-1){loadGTM();}
-            window.addEventListener('cookieConsentAccepted',loadGTM);
-          `}
-        </Script>
-        {/* GA4 gtag.js — consent-gated */}
-        <Script id="ga4-consent-script" strategy="afterInteractive">
-          {`
-            function loadGA4(){if(window.__ga4Loaded)return;window.__ga4Loaded=true;
-            var s=document.createElement('script');s.async=true;
-            s.src='https://www.googletagmanager.com/gtag/js?id=G-LSTMVQC2PJ';
-            document.head.appendChild(s);}
-            if(document.cookie.indexOf('cookie_consent=accepted')!==-1){loadGA4();}
-            window.addEventListener('cookieConsentAccepted',loadGA4);
-          `}
-        </Script>
         {/* Microsoft Clarity — consent-gated */}
         <Script id="clarity-consent-script" strategy="afterInteractive">
           {`

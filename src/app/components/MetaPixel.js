@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, Suspense } from "react";
+import { useEffect, Suspense, useState } from "react";
 
 const META_PIXEL_ID = "1544188033050623";
 
@@ -20,6 +20,22 @@ function PageViewTracker() {
 }
 
 export default function MetaPixel() {
+  const [consentGiven, setConsentGiven] = useState(false);
+
+  useEffect(() => {
+    // Prüfe ob Consent bereits vorhanden
+    if (document.cookie.indexOf("cookie_consent=accepted") !== -1) {
+      setConsentGiven(true);
+    }
+
+    // Auf Consent-Event reagieren
+    const handleConsent = () => setConsentGiven(true);
+    window.addEventListener("cookieConsentAccepted", handleConsent);
+    return () => window.removeEventListener("cookieConsentAccepted", handleConsent);
+  }, []);
+
+  if (!consentGiven) return null;
+
   return (
     <>
       <Script
@@ -40,15 +56,6 @@ export default function MetaPixel() {
           `,
         }}
       />
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-          alt=""
-        />
-      </noscript>
       <Suspense fallback={null}>
         <PageViewTracker />
       </Suspense>

@@ -18,6 +18,7 @@ function ga4Event(eventName, params = {}) {
 }
 
 function metaEvent(eventName, params = {}) {
+  if (!hasConsent()) return;
   if (typeof window !== "undefined" && window.fbq) {
     window.fbq("track", eventName, params);
   }

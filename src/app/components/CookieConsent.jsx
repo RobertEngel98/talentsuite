@@ -17,13 +17,39 @@ const CookieConsent = () => {
   const acceptAll = () => {
     document.cookie = "cookie_consent=accepted; path=/; max-age=31536000; SameSite=Lax";
     setShowBanner(false);
-    // Event feuern damit GTM + Journey Tracking geladen wird
+
+    // Google Consent Mode v2 — alle Kategorien freischalten
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        ad_storage: "granted",
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+        analytics_storage: "granted",
+        functionality_storage: "granted",
+        personalization_storage: "granted",
+      });
+    }
+
+    // Event feuern damit Clarity, Meta Pixel + Journey Tracking geladen wird
     window.dispatchEvent(new Event("cookieConsentAccepted"));
   };
 
   const acceptEssential = () => {
     document.cookie = "cookie_consent=essential; path=/; max-age=31536000; SameSite=Lax";
     setShowBanner(false);
+
+    // Google Consent Mode v2 — alles explizit verweigern
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+      });
+    }
+
     // Journey Tracking widerrufen falls bereits geladen
     if (window.TalentSuiteTracking) {
       window.TalentSuiteTracking.revokeConsent();
@@ -111,7 +137,7 @@ const CookieConsent = () => {
             </p>
             <p style={{ margin: "0 0 8px", fontSize: "13px", opacity: 1 }}>
               <strong style={{ color: "rgba(255,255,255,0.85)" }}>Analyse & Marketing:</strong> Google
-              Tag Manager, Google Analytics, Meta Pixel, Customer Journey Tracking – zur Messung der
+              Analytics, Meta Pixel, Microsoft Clarity, Customer Journey Tracking – zur Messung der
               Website-Performance, Analyse der Besucherreise und Optimierung unserer Werbeanzeigen.
               IP-Adressen werden nur anonymisiert (gehasht) gespeichert.
             </p>
