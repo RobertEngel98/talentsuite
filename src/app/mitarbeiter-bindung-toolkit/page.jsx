@@ -13,7 +13,20 @@ export default function BindungToolkit() {
   const mob = useIsMobile();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const handleSubmit = () => { if (!email) return; trackMetaLead({ formName: "mitarbeiter-bindung-toolkit", category: "leadmagnet", value: 50 }); setSent(true); };
+  const handleSubmit = async () => {
+    if (!email) return;
+    trackMetaLead({ formName: "mitarbeiter-bindung-toolkit", category: "leadmagnet", value: 50 });
+    setSent(true);
+    try {
+      await fetch("/api/leadmagnet-capture", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "mitarbeiter-bindung", name: email.split("@")[0], email,
+          extra: { toolkit: "bindung-toolkit" },
+        }),
+      });
+    } catch (e) { console.error(e); }
+  };
   const tools = [
     { icon: "📋", title: "Fluktuations-Analyse-Checkliste", desc: "Identifizieren Sie die 7 häufigsten Gründe, warum Mitarbeiter kündigen." },
     { icon: "💬", title: "Mitarbeitergespräch-Leitfaden", desc: "Strukturierter Gesprächsguide für Bleibe- und Entwicklungsgespräche." },

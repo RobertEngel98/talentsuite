@@ -14,7 +14,21 @@ export default function GehaltsBenchmark() {
   const [email, setEmail] = useState("");
   const [branche, setBranche] = useState("");
   const [sent, setSent] = useState(false);
-  const handleSubmit = () => { if (!email || !branche) return; trackMetaLead({ formName: "gehalts-benchmark", category: "leadmagnet", value: 50 }); setSent(true); };
+  const handleSubmit = async () => {
+    if (!email || !branche) return;
+    trackMetaLead({ formName: "gehalts-benchmark", category: "leadmagnet", value: 50 });
+    setSent(true);
+    try {
+      await fetch("/api/leadmagnet-capture", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "gehalts-benchmark", name: email.split("@")[0], email,
+          industry: branche,
+          extra: { branche },
+        }),
+      });
+    } catch (e) { console.error(e); }
+  };
   const branches = ["SHK", "Elektro", "Pflege", "Gastronomie", "Bau", "Logistik", "KFZ", "Industrie"];
 
   return (
