@@ -26,7 +26,7 @@ const processData = [
 
 const Process = () => {
   return (
-    <section className="process_section" aria-label="Unser Prozess in 4 Schritten">
+    <section className="process_section" aria-label="Unser Prozess in 4 Schritten" data-track-section="process" data-track-section-name="Prozess">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-5">

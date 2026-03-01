@@ -32,7 +32,7 @@ export default function SoFunktionierts() {
             Von der Analyse bis zur Einstellung — in 4 klaren Schritten.
           </p>
         </div>
-        <div style={{ maxWidth: 740, margin: "0 auto", padding: mob ? "32px 16px 48px" : "48px 24px 64px" }}>
+        <div data-track-section="how-it-works" data-track-section-name="So funktionierts" style={{ maxWidth: 740, margin: "0 auto", padding: mob ? "32px 16px 48px" : "48px 24px 64px" }}>
           {steps.map((s, i) => (
             <div key={i} style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "24px 18px" : "32px 28px", boxShadow: "0 4px 20px rgba(0,0,0,0.06)", marginBottom: 20, borderLeft: "4px solid #1B98E0" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
@@ -56,7 +56,7 @@ export default function SoFunktionierts() {
           <div style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: mob ? "28px 18px" : "40px 28px", textAlign: "center", marginTop: 12 }}>
             <h2 style={{ color: "#ffffff", fontSize: mob ? 20 : 26, fontWeight: 700, margin: "0 0 8px" }}>Bereit für Schritt 1?</h2>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 15, margin: "0 0 20px" }}>Kostenlose Recruiting-Analyse — 20 Minuten, keine Verpflichtung</p>
-            <a href="/recruiting-analyse" style={{ display: "inline-block", padding: "14px 32px", borderRadius: 10, background: "#1B98E0", color: "#ffffff", fontSize: 16, fontWeight: 700, textDecoration: "none" }}>Jetzt Analyse starten →</a>
+            <a href="/recruiting-analyse" data-track-click="Jetzt Analyse starten" data-track-location="so-funktionierts" style={{ display: "inline-block", padding: "14px 32px", borderRadius: 10, background: "#1B98E0", color: "#ffffff", fontSize: 16, fontWeight: 700, textDecoration: "none" }}>Jetzt Analyse starten →</a>
           </div>
         </div>
       </div>

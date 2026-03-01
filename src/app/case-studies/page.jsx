@@ -31,7 +31,7 @@ export default function CaseStudiesPage() {
         <title>Case Studies | TalentSuite — Echte Ergebnisse</title>
         <meta name="description" content="Echte Recruiting-Ergebnisse unserer Kunden: 15-31 Bewerbungen in 3-5 Wochen. Case Studies aus SHK, Pflege, Gastro, Elektro, Bau und Logistik." />
       </Head>
-      <div style={{ background: "#f0f4f7", minHeight: "100vh" }}>
+      <div style={{ background: "#f0f4f7", minHeight: "100vh" }} data-track-section="case-studies" data-track-section-name="Case Studies">
         <div style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: mob ? "48px 16px 56px" : "72px 24px 80px", textAlign: "center" }}>
           <div style={{ display: "inline-block", padding: "5px 18px", borderRadius: 20, marginBottom: 16, background: "rgba(27,152,224,0.15)" }}>
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: "#1B98E0" }}>ECHTE ERGEBNISSE</span>

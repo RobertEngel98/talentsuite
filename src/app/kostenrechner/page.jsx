@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { trackMetaLead } from "../components/MetaPixel";
+import { trackLead } from "../components/Analytics";
 import Head from "next/head";
 
 const B = "#023B5B", D = "#011E2F", A = "#1B98E0", G = "#10B981", W = "#FFFFFF";
@@ -83,7 +83,7 @@ export default function KostenrechnerPage() {
         },
       }),
     }).catch(err => console.error("Lead capture error:", err));
-    trackMetaLead({ formName: "kostenrechner", category: "leadmagnet", value: 100 });
+    trackLead({ formName: "kostenrechner", category: "leadmagnet", value: 100 });
   };
 
   const Btn = ({ children, onClick, primary, disabled, style: s }) => (

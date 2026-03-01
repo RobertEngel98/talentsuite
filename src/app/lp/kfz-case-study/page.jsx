@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { trackMetaViewContent, trackMetaSchedule, trackMetaLead } from "../../components/MetaPixel";
+import { trackViewContent, trackSchedule, trackLead } from "../../components/Analytics";
 
 const ACCENT = "#1B98E0";
 const DARK = "#0a1628";
@@ -26,14 +26,11 @@ export default function KfzCaseStudy() {
       utmKeys.forEach((k) => { const v = params.get(k); if (v) utmData[k] = v; });
       if (Object.keys(utmData).length > 0) sessionStorage.setItem("utm_data", JSON.stringify(utmData));
     }
-    trackMetaViewContent({ contentName: "kfz-case-study", category: "kfz", contentType: "case_study" });
+    trackViewContent({ contentName: "kfz-case-study", category: "kfz", contentType: "case_study" });
   }, []);
 
   const handleCalendarClick = () => {
-    trackMetaSchedule({ formName: "kfz-casestudy-calendar", category: "kfz", value: 50 });
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "begin_checkout", { currency: "EUR", value: 50, items: [{ item_name: "kfz-termin" }] });
-    }
+    trackSchedule({ formName: "kfz-casestudy-calendar", category: "kfz", value: 50 });
   };
 
   const containerStyle = { maxWidth: 720, margin: "0 auto", padding: mob ? "0 16px" : "0 24px" };

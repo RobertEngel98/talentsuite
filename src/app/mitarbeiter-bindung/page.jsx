@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { trackLead } from "../components/Analytics";
 
 const B = "#023B5B", D = "#011E2F", A = "#1B98E0", G = "#10B981", W = "#ffffff", L = "#f0f4f7", R = "#EF4444";
 
@@ -54,6 +55,7 @@ export default function MitarbeiterBindung() {
         }),
       });
     } catch (e) { console.error(e); }
+    trackLead({ formName: "mitarbeiter-bindung", category: "leadmagnet", value: 50 });
   };
 
   return (
@@ -134,7 +136,7 @@ export default function MitarbeiterBindung() {
           </div>
 
           {/* Download form */}
-          <div style={{ background: `linear-gradient(135deg, ${D}, ${B})`, borderRadius: 16, padding: mob ? "28px 18px" : "36px 32px" }}>
+          <div data-track-form="mitarbeiter-bindung" data-track-section="download-form" data-track-section-name="Download Formular" style={{ background: `linear-gradient(135deg, ${D}, ${B})`, borderRadius: 16, padding: mob ? "28px 18px" : "36px 32px" }}>
             {!sent ? (
               <>
                 <h2 style={{ color: W, fontSize: mob ? 20 : 24, fontWeight: 700, margin: "0 0 8px", textAlign: "center" }}>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { trackLead } from "../components/Analytics";
 
 function useIsMobile() {
   const [m, setM] = useState(false);
@@ -34,6 +35,7 @@ export default function Page() {
         }),
       });
     } catch (e) { console.error(e); }
+    trackLead({ formName: "mitarbeiter-finden-kfz", category: "branchen-landing", industry: "KFZ & Automobilbranche", value: 50 });
   };
 
   return (
@@ -119,7 +121,7 @@ export default function Page() {
       `}</style>
 
       {/* HERO */}
-      <div className="bp-hero" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: mob ? "48px 16px 56px" : "80px 24px 88px", position: "relative", overflow: "hidden" }}>
+      <div className="bp-hero" data-track-section="hero" data-track-section-name="Hero" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: mob ? "48px 16px 56px" : "80px 24px 88px", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
           <span style={{ fontSize: 56, display: "block", marginBottom: 12 }}>🚗</span>
           <h1 style={{ color: "#ffffff", fontSize: mob ? 26 : 42, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
@@ -235,7 +237,7 @@ export default function Page() {
           </div>
 
           {/* CTA */}
-          <div className="bp-cta" style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: mob ? "32px 18px" : "44px 32px", textAlign: "center" }}>
+          <div className="bp-cta" data-track-section="cta-form" data-track-section-name="Kontaktformular" style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: mob ? "32px 18px" : "44px 32px", textAlign: "center" }}>
             <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 30, fontWeight: 800, margin: "0 0 10px" }}>KFZ-Mechatroniker gesucht?</h2>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 15 : 17, margin: "0 0 24px", lineHeight: 1.6 }}>
               In 20 Minuten zeigen wir Ihnen, wie viele passende Fachkräfte in Ihrer Region über Social Media erreichbar sind — und was eine Kampagne kosten würde.
@@ -258,7 +260,7 @@ export default function Page() {
                 <p className="bp-success-msg" style={{ marginTop: 8 }}>Wir melden uns innerhalb von 24 Stunden bei Ihnen, {form.name.split(" ")[0]}.</p>
               </div>
             ) : (
-              <div style={{ maxWidth: 440, margin: "0 auto", textAlign: "left" }}>
+              <div data-track-form="mitarbeiter-finden-kfz" style={{ maxWidth: 440, margin: "0 auto", textAlign: "left" }}>
                 {[
                   { label: "Name *", k: "name", ph: "Max Mustermann", type: "text" },
                   { label: "E-Mail *", k: "email", ph: "max@firma.de", type: "email" },

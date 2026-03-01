@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { trackMetaLead } from "../components/MetaPixel";
+import { trackLead } from "../components/Analytics";
 
 const B = "#023B5B", A = "#1B98E0", G = "#10B981", D = "#011E2F", GR = "#64748B", W = "#ffffff", L = "#f0f4f7";
 
@@ -182,7 +182,7 @@ export default function BranchenreportPage() {
                       extra: { selectedBranch: branches[selected]?.name },
                     }),
                   }).catch(err => console.error("Lead capture error:", err));
-                  trackMetaLead({ formName: "branchenreport", category: "leadmagnet", value: 50 });
+                  trackLead({ formName: "branchenreport", category: "leadmagnet", value: 50 });
                 }}
                   disabled={!canSubmit}
                   style={{

@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <>
       {/* Pre-Footer CTA Section */}
-      <section aria-label="Jetzt starten" className="pre-footer-cta-section">
+      <section aria-label="Jetzt starten" className="pre-footer-cta-section" data-track-section="pre-footer-cta" data-track-section-name="Pre-Footer CTA">
         <div className="container pre-footer-cta">
           <h2>Bereit für messbares Wachstum?</h2>
           <p className="pre-footer-cta-text">
@@ -21,6 +21,8 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: "inline-flex", margin: "0 auto" }}
+            data-track-click="Kostenlose Potenzialanalyse buchen"
+            data-track-location="footer"
           >
             Kostenlose Potenzialanalyse buchen
             <span className="btn_arrows">

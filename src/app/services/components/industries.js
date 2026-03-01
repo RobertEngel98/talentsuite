@@ -3,7 +3,7 @@ import React from "react";
 
 const Industries = ({ title, description, industries }) => {
   return (
-    <section className="steps_section" aria-label="Branchen">
+    <section className="steps_section" aria-label="Branchen" data-track-section="industries" data-track-section-name="Branchen">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-lg-8 text-center">

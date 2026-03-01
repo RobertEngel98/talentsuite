@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { trackMetaViewContent, trackMetaSchedule, trackMetaLead } from "../../components/MetaPixel";
+import { trackViewContent, trackSchedule, trackLead } from "../../components/Analytics";
 
 const ACCENT = "#1B98E0";
 const DARK = "#0a1628";
@@ -29,14 +29,11 @@ export default function KfzTermin() {
       utmKeys.forEach((k) => { const v = params.get(k); if (v) utmData[k] = v; });
       if (Object.keys(utmData).length > 0) sessionStorage.setItem("utm_data", JSON.stringify(utmData));
     }
-    trackMetaViewContent({ contentName: "kfz-bofu", category: "kfz", contentType: "booking_page" });
+    trackViewContent({ contentName: "kfz-bofu", category: "kfz", contentType: "booking_page" });
   }, []);
 
   const handleCalendarClick = () => {
-    trackMetaSchedule({ formName: "kfz-bofu-calendar", category: "kfz", value: 50 });
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "begin_checkout", { currency: "EUR", value: 50, items: [{ item_name: "kfz-termin" }] });
-    }
+    trackSchedule({ formName: "kfz-bofu-calendar", category: "kfz", value: 50 });
   };
 
   const handleCallback = async (e) => {
@@ -60,7 +57,7 @@ export default function KfzTermin() {
           extra: { type: "rueckruf", funnel_stage: "bofu", ...utmData },
         }),
       });
-      trackMetaLead({ formName: "kfz-bofu-callback", category: "kfz", value: 30 });
+      trackLead({ formName: "kfz-bofu-callback", category: "kfz", value: 30 });
       setCallbackSubmitted(true);
     } catch {}
     setSubmitting(false);

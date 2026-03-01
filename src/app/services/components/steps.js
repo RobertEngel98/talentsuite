@@ -3,7 +3,7 @@ import React from "react";
 
 const Steps = ({ title, stepsData }) => {
   return (
-    <section className="process_section" aria-label={title}>
+    <section className="process_section" aria-label={title} data-track-section="steps" data-track-section-name="Schritte">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-5">

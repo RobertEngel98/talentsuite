@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { trackMetaLead } from "../../components/MetaPixel";
+import { trackLead } from "../../components/Analytics";
 
 function useIsMobile() {
   const [m, setM] = useState(false);
@@ -12,7 +12,7 @@ function useIsMobile() {
 export default function Danke() {
   const mob = useIsMobile();
   const [tracked, setTracked] = useState(false);
-  useEffect(() => { if (!tracked) { trackMetaLead({ formName: "danke-kostenrechner", category: "leadmagnet-danke", value: 100 }); setTracked(true); } }, [tracked]);
+  useEffect(() => { if (!tracked) { trackLead({ formName: "danke-kostenrechner", category: "leadmagnet-danke", value: 100 }); setTracked(true); } }, [tracked]);
 
   return (
     <>

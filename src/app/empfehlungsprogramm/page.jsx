@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
+import { trackLead } from "../components/Analytics";
 
 const B = "#023B5B", A = "#1B98E0", G = "#10B981", W = "#ffffff", GR = "#64748B", L = "#f0f4f7";
 
@@ -153,7 +154,7 @@ export default function EmpfehlungPage() {
 
           {/* Referral Form */}
           {!sent ? (
-            <div style={{ background: W, borderRadius: 16, boxShadow: "0 4px 28px rgba(0,0,0,0.07)", padding: mob ? "22px 18px" : "28px 28px" }}>
+            <div data-track-form="empfehlungsprogramm" style={{ background: W, borderRadius: 16, boxShadow: "0 4px 28px rgba(0,0,0,0.07)", padding: mob ? "22px 18px" : "28px 28px" }}>
               <h3 style={{ fontSize: 19, fontWeight: 700, margin: "0 0 4px" }}>Jetzt empfehlen</h3>
               <p data-ep="gray" style={{ fontSize: 13, margin: "0 0 20px" }}>
                 Füllen Sie das Formular aus — wir kümmern uns um den Rest.
@@ -222,6 +223,7 @@ export default function EmpfehlungPage() {
                       },
                     }),
                   }).catch(err => console.error("Lead capture error:", err));
+                  trackLead({ formName: "empfehlungsprogramm", category: "empfehlung", value: 50 });
                 }}
                 disabled={!canSubmit}
                 style={{

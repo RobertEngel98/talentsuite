@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const MainSection = ({ title, description, buttonText, buttonLink = "https://calendar.app.google/QFoADWcRwwuYUoky8", imageSrc, imageAlt, trustBadges = true }) => {
   return (
-    <section className="hero-section" aria-label={imageAlt || "Service Hero"}>
+    <section className="hero-section" aria-label={imageAlt || "Service Hero"} data-track-section="service-hero" data-track-section-name="Service Hero">
       <div className="hero_content container">
         <div className="row align-items-center">
           <div className="col-12 col-md-6 col-lg-6 col-xl-6">
@@ -12,7 +12,7 @@ const MainSection = ({ title, description, buttonText, buttonLink = "https://cal
               <h1>{title}</h1>
               <p>{description}</p>
               <div className="hero_buttons">
-                <Link className="btns web_btns" href={buttonLink} target="_blank" rel="noopener noreferrer">
+                <Link className="btns web_btns" href={buttonLink} target="_blank" rel="noopener noreferrer" data-track-click={buttonText} data-track-location="service-hero">
                   {buttonText}
                   <span className="btn_arrows">
                     <i className="bi bi-arrow-up-right"></i>

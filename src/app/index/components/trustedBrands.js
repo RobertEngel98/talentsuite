@@ -35,7 +35,7 @@ export default function TrustedBrands() {
   ];
 
   return (
-    <section className="trusted_brands">
+    <section className="trusted_brands" data-track-section="trustedBrands" data-track-section-name="Partnerlogos">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-10">

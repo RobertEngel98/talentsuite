@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { trackMetaLead } from "../components/MetaPixel";
+import { trackLead } from "../components/Analytics";
 
 function useIsMobile() {
   const [m, setM] = useState(false);
@@ -15,7 +15,7 @@ export default function BindungToolkit() {
   const [sent, setSent] = useState(false);
   const handleSubmit = async () => {
     if (!email) return;
-    trackMetaLead({ formName: "mitarbeiter-bindung-toolkit", category: "leadmagnet", value: 50 });
+    trackLead({ formName: "mitarbeiter-bindung-toolkit", category: "leadmagnet", value: 50 });
     setSent(true);
     try {
       await fetch("/api/leadmagnet-capture", {

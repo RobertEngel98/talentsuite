@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { trackMetaLead, trackMetaViewContent, trackMetaSchedule } from "../../components/MetaPixel";
+import { trackLead, trackViewContent, trackSchedule } from "../../components/Analytics";
 
 const ACCENT = "#1B98E0";
 const DARK = "#0a1628";
@@ -54,7 +54,7 @@ export default function PflegeRecruiting() {
       utmKeys.forEach((k) => { const v = params.get(k); if (v) utmData[k] = v; });
       if (Object.keys(utmData).length > 0) sessionStorage.setItem("utm_data", JSON.stringify(utmData));
     }
-    trackMetaViewContent({ contentName: "pflege-tofu", category: "pflege", contentType: "landing_page" });
+    trackViewContent({ contentName: "pflege-tofu", category: "pflege", contentType: "landing_page" });
   }, []);
 
   const handleSubmit = async (e) => {
@@ -88,11 +88,7 @@ export default function PflegeRecruiting() {
         }),
       });
 
-      trackMetaLead({ formName: "pflege-tofu", category: "pflege", value: 30 });
-
-      if (typeof window !== "undefined" && window.gtag) {
-        window.gtag("event", "generate_lead", { currency: "EUR", value: 30, industry: "pflege", funnel_stage: "tofu" });
-      }
+      trackLead({ formName: "pflege-tofu", category: "pflege", value: 30, industry: "pflege" });
 
       setSubmitted(true);
     } catch {
@@ -102,10 +98,7 @@ export default function PflegeRecruiting() {
   };
 
   const handleCalendarClick = () => {
-    trackMetaSchedule({ formName: "pflege-tofu-calendar", category: "pflege", value: 50 });
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "begin_checkout", { currency: "EUR", value: 50, items: [{ item_name: "pflege-termin" }] });
-    }
+    trackSchedule({ formName: "pflege-tofu-calendar", category: "pflege", value: 50 });
   };
 
   const sectionStyle = { marginBottom: mob ? 60 : 80 };

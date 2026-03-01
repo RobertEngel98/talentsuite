@@ -28,7 +28,7 @@ const serviceData = [
 
 const Campaigns = () => {
   return (
-    <section className="campaigns_section">
+    <section className="campaigns_section" data-track-section="campaigns" data-track-section-name="Kampagnen">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-12 col-xl-9">

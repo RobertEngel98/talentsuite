@@ -30,7 +30,7 @@ export default function PreisePage() {
           <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 15 : 18, maxWidth: 520, margin: "0 auto" }}>Keine versteckten Kosten. Keine Mindestlaufzeit. Messbare Ergebnisse.</p>
         </div>
         <div style={{ maxWidth: 960, margin: "0 auto", padding: mob ? "24px 16px 48px" : "40px 24px 64px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr 1fr", gap: 20, marginTop: mob ? -28 : -40 }}>
+          <div data-track-section="pricing" data-track-section-name="Preise" style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr 1fr", gap: 20, marginTop: mob ? -28 : -40 }}>
             {plans.map((p, i) => (
               <div key={i} style={{ background: "#ffffff", borderRadius: 16, padding: "28px 24px", boxShadow: p.popular ? "0 8px 40px rgba(27,152,224,0.2)" : "0 4px 20px rgba(0,0,0,0.06)", border: p.popular ? "2px solid #1B98E0" : "1px solid #e8e8e8", position: "relative" }}>
                 {p.popular && <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", padding: "4px 16px", borderRadius: 12, background: "#1B98E0", color: "#ffffff", fontSize: 11, fontWeight: 700 }}>BELIEBT</div>}
@@ -46,7 +46,7 @@ export default function PreisePage() {
                     <span style={{ color: "#4A5568", fontSize: 13, lineHeight: 1.4 }}>{f}</span>
                   </div>
                 ))}
-                <a href="/recruiting-analyse" style={{ display: "block", textAlign: "center", marginTop: 20, padding: "12px 20px", borderRadius: 10, textDecoration: "none", fontWeight: 700, fontSize: 14, background: p.popular ? "#1B98E0" : "#023B5B", color: "#ffffff" }}>
+                <a href="/recruiting-analyse" data-track-click="Jetzt beraten lassen" data-track-location="preise" style={{ display: "block", textAlign: "center", marginTop: 20, padding: "12px 20px", borderRadius: 10, textDecoration: "none", fontWeight: 700, fontSize: 14, background: p.popular ? "#1B98E0" : "#023B5B", color: "#ffffff" }}>
                   {p.popular ? "Jetzt beraten lassen" : p.name === "Starter" ? "Jetzt starten" : "Angebot anfordern"} →
                 </a>
               </div>

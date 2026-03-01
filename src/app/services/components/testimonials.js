@@ -7,7 +7,7 @@ import "swiper/css";
 
 const Testimonials = ({ title, description, link, linkText, testimonialData }) => {
   return (
-    <section className="testimonial_section" aria-label="Kundenstimmen">
+    <section className="testimonial_section" aria-label="Kundenstimmen" data-track-section="service-testimonials" data-track-section-name="Kundenstimmen">
       <div className="container">
         {/* Text centered above */}
         <div className="row justify-content-center mb-5">

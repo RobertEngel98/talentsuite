@@ -5,7 +5,7 @@ import Link from "next/link";
 const About = () => {
   return (
     <>
-      <section className="about_section" aria-label="Über TalentSuite">
+      <section className="about_section" aria-label="Über TalentSuite" data-track-section="about" data-track-section-name="Über uns">
         <div className="container">
           <div className="row align-items-center justify-content-between">
             <div className="col-12 col-md-12 col-lg-6">

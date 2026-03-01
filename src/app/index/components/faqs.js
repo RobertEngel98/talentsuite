@@ -42,7 +42,7 @@ const faqData = [
 
 const Faqs = () => {
   return (
-    <section className="faqs_section" aria-label="Häufig gestellte Fragen">
+    <section className="faqs_section" aria-label="Häufig gestellte Fragen" data-track-section="faqs" data-track-section-name="FAQ">
       <Image src="/assets/circle.png" width={100} height={100} className="blur_image" alt="" aria-hidden="true" />
 
       {/* Schema.org FAQPage Markup */}

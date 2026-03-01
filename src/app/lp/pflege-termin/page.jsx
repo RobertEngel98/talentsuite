@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { trackMetaViewContent, trackMetaSchedule, trackMetaLead } from "../../components/MetaPixel";
+import { trackViewContent, trackSchedule, trackLead } from "../../components/Analytics";
 
 const ACCENT = "#1B98E0";
 const DARK = "#0a1628";
@@ -29,14 +29,11 @@ export default function PflegeTermin() {
       utmKeys.forEach((k) => { const v = params.get(k); if (v) utmData[k] = v; });
       if (Object.keys(utmData).length > 0) sessionStorage.setItem("utm_data", JSON.stringify(utmData));
     }
-    trackMetaViewContent({ contentName: "pflege-bofu", category: "pflege", contentType: "booking_page" });
+    trackViewContent({ contentName: "pflege-bofu", category: "pflege", contentType: "booking_page" });
   }, []);
 
   const handleCalendarClick = () => {
-    trackMetaSchedule({ formName: "pflege-bofu-calendar", category: "pflege", value: 50 });
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "begin_checkout", { currency: "EUR", value: 50, items: [{ item_name: "pflege-termin" }] });
-    }
+    trackSchedule({ formName: "pflege-bofu-calendar", category: "pflege", value: 50 });
   };
 
   const handleCallback = async (e) => {
@@ -60,7 +57,7 @@ export default function PflegeTermin() {
           extra: { type: "rueckruf", funnel_stage: "bofu", ...utmData },
         }),
       });
-      trackMetaLead({ formName: "pflege-bofu-callback", category: "pflege", value: 30 });
+      trackLead({ formName: "pflege-bofu-callback", category: "pflege", value: 30 });
       setCallbackSubmitted(true);
     } catch {}
     setSubmitting(false);

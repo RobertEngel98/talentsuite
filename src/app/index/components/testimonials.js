@@ -51,7 +51,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="testimonial_section" aria-label="Kundenstimmen">
+    <section className="testimonial_section" aria-label="Kundenstimmen" data-track-section="testimonials" data-track-section-name="Kundenstimmen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

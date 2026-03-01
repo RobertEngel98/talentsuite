@@ -2,7 +2,7 @@
 
 const Traditional = ({ title, description, data }) => {
   return (
-    <section className="traditional_section" aria-label="Herausforderungen">
+    <section className="traditional_section" aria-label="Herausforderungen" data-track-section="traditional" data-track-section-name="Vergleich">
       <div className="container">
         <div className="row align-items-center justify-content-between">
           <div className="col-12 col-md-12 col-lg-7 col-xl-6">

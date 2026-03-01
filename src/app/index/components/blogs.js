@@ -29,7 +29,7 @@ const serviceData = [
 const Blogs = () => {
   return (
     <>
-      <section className="blogs_section">
+      <section className="blogs_section" data-track-section="blogs" data-track-section-name="Blog">
         <div className="container">
           <div className="row align-items-center justify-content-between mb-5">
             <div className="col-12 col-md-6 col-lg-5">

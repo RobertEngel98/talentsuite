@@ -77,7 +77,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="hero-section" aria-label="Startbereich">
+      <section className="hero-section" aria-label="Startbereich" data-track-section="hero" data-track-section-name="Hero Section">
         <video
           ref={videoRef}
           autoPlay

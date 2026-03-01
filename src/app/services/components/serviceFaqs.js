@@ -5,7 +5,7 @@ const ServiceFaqs = ({ title, description, faqData, accordionId }) => {
   const id = accordionId || "accordionServiceFAQ";
 
   return (
-    <section className="faqs_section" aria-label="Häufig gestellte Fragen">
+    <section className="faqs_section" aria-label="Häufig gestellte Fragen" data-track-section="service-faqs" data-track-section-name="FAQ">
       {/* Schema.org FAQPage Markup */}
       <script
         type="application/ld+json"

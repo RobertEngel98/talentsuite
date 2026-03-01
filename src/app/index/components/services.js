@@ -44,7 +44,7 @@ const serviceData = [
 
 const Services = () => {
   return (
-    <section className="services_section" aria-label="Unsere Dienstleistungen">
+    <section className="services_section" aria-label="Unsere Dienstleistungen" data-track-section="services" data-track-section-name="Dienstleistungen">
       <Image src="/assets/circle.png" width={100} height={100} className="blur_image" alt="" aria-hidden="true" />
 
       <div className="container">

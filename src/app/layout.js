@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import MetaPixel from "./components/MetaPixel";
+import TrackingProvider from "./components/TrackingProvider";
 import { Poppins, Rajdhani, Inter } from "next/font/google";
 import Script from "next/script";
 
@@ -52,6 +53,13 @@ export default function RootLayout({ children }) {
         }) }} />
         {/* Bootstrap Icons */}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+        {/* GA4 — consent-gated via gtag consent mode */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer=window.dataLayer||[];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js',new Date());
+          gtag('config','G-LSTMVQC2PJ',{send_page_view:false});
+        `}} />
       </head>
       <body>
         <MetaPixel />
@@ -60,9 +68,11 @@ export default function RootLayout({ children }) {
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7J9WLXF" height="0" width="0" style={{ display: "none", visibility: "hidden" }} title="Google Tag Manager"></iframe>
         </noscript>
         {!hideHeader && <Header />}
-        <main>
-          {children}
-        </main>
+        <TrackingProvider>
+          <main>
+            {children}
+          </main>
+        </TrackingProvider>
         {!hideFooter && <Footer />}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
         {/* DSGVO: GTM nur nach Cookie-Consent */}
@@ -75,6 +85,29 @@ export default function RootLayout({ children }) {
             f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N7J9WLXF');}
             if(document.cookie.indexOf('cookie_consent=accepted')!==-1){loadGTM();}
             window.addEventListener('cookieConsentAccepted',loadGTM);
+          `}
+        </Script>
+        {/* GA4 gtag.js — consent-gated */}
+        <Script id="ga4-consent-script" strategy="afterInteractive">
+          {`
+            function loadGA4(){if(window.__ga4Loaded)return;window.__ga4Loaded=true;
+            var s=document.createElement('script');s.async=true;
+            s.src='https://www.googletagmanager.com/gtag/js?id=G-LSTMVQC2PJ';
+            document.head.appendChild(s);}
+            if(document.cookie.indexOf('cookie_consent=accepted')!==-1){loadGA4();}
+            window.addEventListener('cookieConsentAccepted',loadGA4);
+          `}
+        </Script>
+        {/* Microsoft Clarity — consent-gated */}
+        <Script id="clarity-consent-script" strategy="afterInteractive">
+          {`
+            function loadClarity(){if(window.__clarityLoaded)return;window.__clarityLoaded=true;
+            (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/vp3s48lqbe";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window,document,"clarity","script");}
+            if(document.cookie.indexOf('cookie_consent=accepted')!==-1){loadClarity();}
+            window.addEventListener('cookieConsentAccepted',loadClarity);
           `}
         </Script>
       </body>
