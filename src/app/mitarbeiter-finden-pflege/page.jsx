@@ -118,6 +118,13 @@ export default function Page() {
         @media (min-width: 768px) {
           #bp-root .bp-cta h2 { font-size: 30px !important; }
         }
+
+        /* === RESPONSIVE GRIDS === */
+        @media (max-width: 767px) {
+          .bp-g1 { grid-template-columns: 1fr !important; }
+          .bp-g2 { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        #bp-root input { -webkit-appearance: none !important; }
       `}</style>
 
       {/* HERO */}
@@ -142,7 +149,7 @@ export default function Page() {
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
 
           {/* Stats */}
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 32 }}>
+          <div className="bp-g2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 32 }}>
             {[
               { n: "46.000+", label: "Offene Stellen", c: "#1B98E0" },
               { n: "200+ Tage", label: "Ø Vakanzzeit", c: "#EF4444" },
@@ -193,7 +200,7 @@ export default function Page() {
             <p className="bp-pain-intro" style={{ margin: "0 0 16px" }}>
               Statt auf die 20% zu warten, die aktiv suchen, sprechen wir die 80% an, die passiv offen sind — direkt auf Facebook, Instagram und Co.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr 1fr", gap: 12 }}>
+            <div className="bp-g1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
               {[
                 { icon: "🎯", t: "Gezielte Ansprache", d: "Wir erreichen Pflegefachkräfte im Umkreis von 30km — nach Beruf, Alter und Interessen." },
                 { icon: "📱", t: "60-Sekunden-Bewerbung", d: "Kein Anschreiben, kein Lebenslauf-Upload. Bewerben direkt vom Smartphone in unter einer Minute." },
@@ -270,7 +277,7 @@ export default function Page() {
                   <div key={idx} style={{ marginBottom: 14 }}>
                     <label className="bp-form-label" style={{ display: "block", marginBottom: 4 }}>{f.label}</label>
                     <input type={f.type} value={form[f.k]} onChange={e => setForm({ ...form, [f.k]: e.target.value })} placeholder={f.ph}
-                      style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
+                      style={{ width: "100%", padding: "12px 14px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, color: "#ffffff", fontSize: 16, fontFamily: "inherit", boxSizing: "border-box", outline: "none" }} />
                     {f.k === "email" && form.email && !emailValid && <span style={{ color: "#EF4444", fontSize: 12 }}>Bitte gültige E-Mail eingeben</span>}
                     {f.k === "phone" && form.phone && !phoneValid && <span style={{ color: "#EF4444", fontSize: 12 }}>Bitte gültige Telefonnummer</span>}
                   </div>

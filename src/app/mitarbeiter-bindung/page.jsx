@@ -60,6 +60,12 @@ export default function MitarbeiterBindung() {
 
   return (
     <>
+      <style>{`
+        .mb-page input{font-size:16px!important;-webkit-appearance:none}
+        @media(max-width:767px){
+          .mb-g1{grid-template-columns:1fr!important}
+        }
+      `}</style>
       {/* Hero */}
       <div style={{ background: `linear-gradient(135deg, ${D} 0%, ${B} 50%, #0A4D72 100%)`, padding: mob ? "40px 16px 48px" : "64px 24px 72px" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
@@ -73,11 +79,11 @@ export default function MitarbeiterBindung() {
         </div>
       </div>
 
-      <div style={{ background: L, padding: mob ? "32px 16px 48px" : "48px 24px 72px" }}>
+      <div className="mb-page" style={{ background: L, padding: mob ? "32px 16px 48px" : "48px 24px 72px" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
 
           {/* Stats bar */}
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr 1fr", gap: 12, marginBottom: 28 }}>
+          <div className="mb-g1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 28 }}>
             {[
               { n: "30.000€+", l: "Ø Kosten einer Neueinstellung", c: R },
               { n: "82%", l: "Weniger Frühfluktuation durch gutes Onboarding", c: G },
@@ -155,7 +161,7 @@ export default function MitarbeiterBindung() {
                     <div key={f.key} style={{ marginBottom: 12 }}>
                       <label style={{ color: `${W}70`, fontSize: 13, display: "block", marginBottom: 4 }}>{f.label}</label>
                       <input type={f.type || "text"} value={form[f.key]} onChange={e => setForm({ ...form, [f.key]: e.target.value })} placeholder={f.ph}
-                        style={{ width: "100%", padding: "12px 14px", background: `${W}08`, border: `1px solid ${W}15`, borderRadius: 8, color: W, fontSize: 15, fontFamily: "inherit", boxSizing: "border-box" }} />
+                        style={{ width: "100%", padding: "12px 14px", background: `${W}08`, border: `1px solid ${W}15`, borderRadius: 8, color: W, fontSize: 16, fontFamily: "inherit", boxSizing: "border-box", WebkitAppearance: "none" }} />
                       {f.key === "email" && form.email && !emailValid && <span style={{ color: R, fontSize: 12 }}>Bitte gültige E-Mail eingeben</span>}
                     </div>
                   ))}

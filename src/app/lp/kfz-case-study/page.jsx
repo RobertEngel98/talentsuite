@@ -44,6 +44,13 @@ export default function KfzCaseStudy() {
 
   return (
     <div id="pf" style={{ background: "#f0f4f7", minHeight: "100vh" }}>
+      <style>{`
+        #pf{overflow-x:hidden}
+        @media(max-width:767px){
+          .pf-1{grid-template-columns:1fr!important}
+          .pf-2{grid-template-columns:repeat(2,1fr)!important}
+        }
+      `}</style>
       {/* ═══ HERO ═══ */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, ${BRAND} 50%, #0A4D72 100%)`, padding: mob ? "48px 16px 56px" : "72px 24px 80px", textAlign: "center" }}>
         <a data-pf="white50" href="/lp/kfz-recruiting" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none", display: "block", marginBottom: 12 }}>
@@ -62,7 +69,7 @@ export default function KfzCaseStudy() {
 
       <div style={{ ...containerStyle, paddingTop: mob ? 24 : 40, paddingBottom: mob ? 48 : 64 }}>
         {/* Stats Bar */}
-        <div style={{ display: "grid", gridTemplateColumns: mob ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 10, marginBottom: 24, marginTop: mob ? -28 : -36 }}>
+        <div className="pf-2" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 24, marginTop: mob ? -28 : -36 }}>
           {[
             { n: "42", l: "Bewerbungen" },
             { n: "18", l: "Qualifiziert" },
@@ -138,7 +145,7 @@ export default function KfzCaseStudy() {
         {/* Ergebnisse */}
         <div style={{ background: "#ffffff", borderRadius: 16, padding: mob ? "24px 18px" : "28px 24px", boxShadow: "0 4px 20px rgba(0,0,0,0.06)", marginBottom: 20 }}>
           <h2 style={{ color: BRAND, fontSize: mob ? 18 : 22, fontWeight: 700, margin: "0 0 16px" }}>Ergebnisse nach 5 Wochen</h2>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr 1fr" : "repeat(3, 1fr)", gap: 16 }}>
+          <div className="pf-2" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
             {[
               { label: "Bewerbungen", value: "42", sub: "gesamt" },
               { label: "Qualifiziert", value: "18", sub: "43% Quote" },

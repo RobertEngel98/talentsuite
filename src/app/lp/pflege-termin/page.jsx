@@ -67,6 +67,16 @@ export default function PflegeTermin() {
 
   return (
     <div id="pf" style={{ background: "#f0f4f7", minHeight: "100vh" }}>
+      <style>{`
+        #pf{overflow-x:hidden}
+        #pf input,#pf select{font-size:16px!important;-webkit-appearance:none}
+        @media(max-width:767px){
+          .pf-col{flex-direction:column!important}
+          .pf-1{grid-template-columns:1fr!important}
+          .pf-2{grid-template-columns:repeat(2,1fr)!important}
+          .pf-mh{display:none!important}
+        }
+      `}</style>
       {/* ═══ HERO ═══ */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, ${BRAND} 100%)`, padding: mob ? "48px 16px 56px" : "80px 24px 90px", textAlign: "center" }}>
         <div style={containerStyle}>
@@ -124,7 +134,7 @@ export default function PflegeTermin() {
       {/* ═══ SOCIAL PROOF KOMPAKT ═══ */}
       <div style={{ marginBottom: mob ? 40 : 60 }}>
         <div style={containerStyle}>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 12, marginBottom: 20 }}>
+          <div className="pf-2" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 20 }}>
             {[
               { value: "50+", label: "Kunden" },
               { value: "47+", label: "Bewerbungen/Monat" },
@@ -217,9 +227,10 @@ const inputStyle = {
   padding: "12px 16px",
   borderRadius: 10,
   border: "1.5px solid #e2e8f0",
-  fontSize: 15,
+  fontSize: 16,
   color: "#023B5B",
   outline: "none",
   background: "#f8fafc",
+  WebkitAppearance: "none",
   boxSizing: "border-box",
 };

@@ -107,9 +107,19 @@ export default function KfzRecruiting() {
 
   return (
     <div id="pf" style={{ background: "#f0f4f7" }}>
+      <style>{`
+        #pf{overflow-x:hidden}
+        #pf input,#pf select{font-size:16px!important;-webkit-appearance:none}
+        @media(max-width:767px){
+          .pf-col{flex-direction:column!important}
+          .pf-1{grid-template-columns:1fr!important}
+          .pf-2{grid-template-columns:repeat(2,1fr)!important}
+          .pf-mh{display:none!important}
+        }
+      `}</style>
       {/* ═══ HERO ═══ */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, ${DARK2} 100%)`, padding: mob ? "48px 16px 56px" : "80px 24px 90px" }}>
-        <div style={{ ...containerStyle, display: mob ? "block" : "flex", alignItems: "center", gap: 48 }}>
+        <div className="pf-col" style={{ ...containerStyle, display: "flex", alignItems: "center", gap: 48 }}>
           <div style={{ flex: 1 }}>
             <p data-pf="white50" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
               Performance Recruiting für das KFZ-Gewerbe
@@ -132,8 +142,7 @@ export default function KfzRecruiting() {
               <span data-pf="white50" style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>Vertraut von 50+ KFZ-Betrieben in Deutschland</span>
             </div>
           </div>
-          {!mob && (
-            <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+          <div className="pf-mh" style={{ flex: 1, display: "flex", justifyContent: "center" }}>
               <div style={{ width: 420, height: 320, borderRadius: 20, overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.3)", position: "relative" }}>
                 <img
                   src="/assets/kfz-hero.jpg"
@@ -142,7 +151,6 @@ export default function KfzRecruiting() {
                 />
               </div>
             </div>
-          )}
         </div>
       </div>
 
@@ -152,7 +160,7 @@ export default function KfzRecruiting() {
           <h2 style={{ color: BRAND, fontSize: mob ? 24 : 32, fontWeight: 700, textAlign: "center", marginBottom: 40 }}>
             Kommt Ihnen das bekannt vor?
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(2, 1fr)", gap: 20 }}>
+          <div className="pf-1" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }}>
             {[
               { icon: "🔧", title: "Werkstattauslastung sinkt – weil Personal fehlt", desc: "Aufträge müssen abgelehnt werden, Wartezeiten steigen. Ihre Hebebühnen stehen leer, weil kein Mechatroniker da ist." },
               { icon: "🏭", title: "Abwanderung in die Industrie", desc: "Gut ausgebildete KFZ-Mechatroniker wechseln in die besser zahlende Industrie. Und Sie bleiben auf der Strecke." },
@@ -177,7 +185,7 @@ export default function KfzRecruiting() {
       {/* ═══ STATS ═══ */}
       <div style={sectionStyle}>
         <div style={containerStyle}>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(3, 1fr)", gap: 20, marginBottom: 20 }}>
+          <div className="pf-1" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 20 }}>
             {[
               { value: "25.000+", label: "Offene KFZ-Stellen in Deutschland", color: ACCENT },
               { value: "145 Tage", label: "Ø Vakanzzeit im KFZ-Gewerbe", color: ACCENT },
@@ -217,7 +225,7 @@ export default function KfzRecruiting() {
           <h2 style={{ color: BRAND, fontSize: mob ? 24 : 32, fontWeight: 700, textAlign: "center", marginBottom: 40 }}>
             So finden wir Ihre KFZ-Fachkräfte
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(3, 1fr)", gap: 24 }}>
+          <div className="pf-1" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {[
               { step: "1", icon: "🔍", title: "Analyse", desc: "Wir analysieren Ihren Betrieb, Ihre offenen Stellen und Ihren Standort. Daraus entwickeln wir eine maßgeschneiderte Recruiting-Strategie für KFZ-Fachkräfte." },
               { step: "2", icon: "📱", title: "Kampagne", desc: "Wir schalten hochperformante Kampagnen auf Facebook, Instagram & Google – und erreichen damit KFZ-Fachkräfte die aktuell NICHT auf Jobportalen unterwegs sind." },
@@ -249,7 +257,7 @@ export default function KfzRecruiting() {
           <h2 style={{ color: BRAND, fontSize: mob ? 24 : 32, fontWeight: 700, textAlign: "center", marginBottom: 40 }}>
             Ergebnisse die überzeugen
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
+          <div className="pf-2" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
             {[
               { value: "42+", label: "Bewerbungen/Monat", color: ACCENT },
               { value: "21 Tage", label: "Ø bis erste Bewerbung", color: ACCENT },
@@ -315,7 +323,7 @@ export default function KfzRecruiting() {
           ) : (
             <div style={{ background: "#ffffff", borderRadius: 20, padding: mob ? "28px 20px" : "44px 36px", boxShadow: "0 4px 30px rgba(0,0,0,0.08)" }}>
               <form onSubmit={handleSubmit}>
-                <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 16, marginBottom: 16 }}>
+                <div className="pf-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
                   <div>
                     <label style={{ display: "block", fontSize: 14, fontWeight: 600, color: BRAND, marginBottom: 6 }}>Vorname *</label>
                     <input type="text" required value={form.vorname} onChange={(e) => setForm({ ...form, vorname: e.target.value })} style={inputStyle} placeholder="Max" />
@@ -337,7 +345,7 @@ export default function KfzRecruiting() {
                   <label style={{ display: "block", fontSize: 14, fontWeight: 600, color: BRAND, marginBottom: 6 }}>Werkstatt / Autohaus *</label>
                   <input type="text" required value={form.betrieb} onChange={(e) => setForm({ ...form, betrieb: e.target.value })} style={inputStyle} placeholder="Autohaus Musterstadt" />
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 16, marginBottom: 16 }}>
+                <div className="pf-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
                   <div>
                     <label style={{ display: "block", fontSize: 14, fontWeight: 600, color: BRAND, marginBottom: 6 }}>Ihre Rolle</label>
                     <select value={form.rolle} onChange={(e) => setForm({ ...form, rolle: e.target.value })} style={inputStyle}>
@@ -474,9 +482,10 @@ const inputStyle = {
   padding: "12px 16px",
   borderRadius: 10,
   border: "1.5px solid #e2e8f0",
-  fontSize: 15,
+  fontSize: 16,
   color: "#023B5B",
   outline: "none",
   background: "#f8fafc",
   boxSizing: "border-box",
+  WebkitAppearance: "none",
 };

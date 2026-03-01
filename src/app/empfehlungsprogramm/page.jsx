@@ -59,6 +59,13 @@ export default function EmpfehlungPage() {
       </Head>
 
       <div id="ep" style={{ background: L, minHeight: "60vh" }}>
+        <style>{`
+          #ep{overflow-x:hidden}
+          #ep input,#ep select,#ep textarea{font-size:16px!important;-webkit-appearance:none}
+          @media(max-width:767px){
+            .ep-1{grid-template-columns:1fr!important}
+          }
+        `}</style>
 
         {/* Hero */}
         <div style={{
@@ -160,7 +167,7 @@ export default function EmpfehlungPage() {
                 Füllen Sie das Formular aus — wir kümmern uns um den Rest.
               </p>
 
-              <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 12 }}>
+              <div className="ep-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 {[
                   { key: "name", label: "Ihr Name", ph: "Max Mustermann", type: "text" },
                   { key: "email", label: "Ihre E-Mail", ph: "max@firma.de", type: "email" },
