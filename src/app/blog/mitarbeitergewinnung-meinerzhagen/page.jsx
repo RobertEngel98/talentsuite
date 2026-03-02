@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Meinerzhagen | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Meinerzhagen: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Meinerzhagen, Mitarbeiter finden Meinerzhagen, Recruiting Meinerzhagen, Personalgewinnung Meinerzhagen, Fachkraefte Meinerzhagen"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-meinerzhagen"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-meinerzhagen"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

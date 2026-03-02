@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Schwerte | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Schwerte: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Schwerte, Mitarbeiter finden Schwerte, Recruiting Schwerte, Personalgewinnung Schwerte, Fachkraefte Schwerte"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-schwerte"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-schwerte"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

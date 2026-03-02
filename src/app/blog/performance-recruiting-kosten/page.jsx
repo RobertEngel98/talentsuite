@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Performance Recruiting Kosten 2026: Preise, Budget & ROI im Vergleich"
       metaDescription="Was kostet Performance Recruiting wirklich? Agenturhonorar, Werbebudget, Kosten pro Bewerbung und ROI-Vergleich mit Headhuntern und Jobbörsen. Transparente Übersicht."
       metaKeywords="Performance Recruiting Kosten, Performance Recruiting Preise, Recruiting Kosten pro Bewerbung, Social Recruiting Budget, Recruiting Agentur Kosten"
-      canonical="https://talentsuite.io/blog/performance-recruiting-kosten"
+      canonical="https://www.talentsuite.io/blog/performance-recruiting-kosten"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Performance Recruiting"

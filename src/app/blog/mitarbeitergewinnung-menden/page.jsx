@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Menden (Sauerland) | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Menden (Sauerland): Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Menden (Sauerland), Mitarbeiter finden Menden (Sauerland), Recruiting Menden (Sauerland), Personalgewinnung Menden (Sauerland), Fachkraefte Menden (Sauerland)"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-menden"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-menden"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

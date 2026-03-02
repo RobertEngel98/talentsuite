@@ -2,7 +2,7 @@
 import BlogArticle from "../BlogArticle";
 export default function Article() {
   return (
-    <BlogArticle title="Landingpage Optimierung: 12 Tipps fuer hoehere Conversion Rates" metaTitle="Landingpage Optimierung: 12 Tipps fuer hoehere Conversion Rates | TalentSuite" metaDescription="Landingpage Optimierung: 12 bewährte Tipps fuer Headline, CTA und mobile UX." metaKeywords="Landingpage Optimierung, CRO, Conversion Rate" canonical="https://talentsuite.io/blog/landing-page-optimierung" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Conversion"
+    <BlogArticle title="Landingpage Optimierung: 12 Tipps fuer hoehere Conversion Rates" metaTitle="Landingpage Optimierung: 12 Tipps fuer hoehere Conversion Rates | TalentSuite" metaDescription="Landingpage Optimierung: 12 bewährte Tipps fuer Headline, CTA und mobile UX." metaKeywords="Landingpage Optimierung, CRO, Conversion Rate" canonical="https://www.talentsuite.io/blog/landing-page-optimierung" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Conversion"
       relatedArticles={[{ href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" }, { href: "/blog/neukundengewinnung-strategien", title: "Neukundengewinnung Strategien", category: "Neukundengewinnung" }, { href: "/blog/mitarbeiter-finden-handwerk", title: "Mitarbeiter finden im Handwerk", category: "Handwerk" }]}>
       <p>Dieser Leitfaden zum Thema <strong>Landingpage Optimierung: 12 Tipps fuer hoehere Conversion Rates</strong> zeigt dir bewaehrte Strategien fuer planbare Ergebnisse im digitalen Marketing. Wir teilen Praxiserfahrungen aus ueber 50 Kundenprojekten im DACH-Raum.</p>
       <h2>Warum digitales Marketing 2026 unverzichtbar ist</h2>

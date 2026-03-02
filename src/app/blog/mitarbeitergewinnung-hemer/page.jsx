@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Hemer | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Hemer: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Hemer, Mitarbeiter finden Hemer, Recruiting Hemer, Personalgewinnung Hemer, Fachkraefte Hemer"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-hemer"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-hemer"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

@@ -7,7 +7,7 @@ export default function Article() {
       metaTitle="Social Media Recruiting Leitfaden 2026: Plattformen, Strategien & Tipps"
       metaDescription="Social Media Recruiting von A bis Z: Welche Plattformen, welche Strategien und welche Fehler du vermeiden musst. Der komplette Leitfaden für erfolgreiches Recruiting über Social Media."
       metaKeywords="Social Media Recruiting, Social Recruiting, Facebook Recruiting, Instagram Recruiting, TikTok Recruiting, LinkedIn Recruiting, Social Media Personalgewinnung"
-      canonical="https://talentsuite.io/blog/social-media-recruiting-leitfaden"
+      canonical="https://www.talentsuite.io/blog/social-media-recruiting-leitfaden"
       publishDate="2026-02-16" readingTime="10 Min. Lesezeit" category="Social Recruiting"
       relatedArticles={[
         { href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" },

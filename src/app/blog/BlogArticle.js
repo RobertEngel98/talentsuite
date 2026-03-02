@@ -15,14 +15,14 @@ const BlogArticle = ({
     "@type": "Person",
     "name": authorName || "Robert Engel",
     "jobTitle": authorRole || "Gründer & Geschäftsführer",
-    "url": "https://talentsuite.io/autor/robert-engel",
+    "url": "https://www.talentsuite.io/autor/robert-engel",
     "sameAs": [
       authorLinkedin || "https://www.linkedin.com/in/robert-engel"
     ],
     "worksFor": {
       "@type": "Organization",
       "name": "TalentSuite",
-      "url": "https://talentsuite.io"
+      "url": "https://www.talentsuite.io"
     },
     "knowsAbout": [
       "Performance Recruiting",
@@ -42,10 +42,10 @@ const BlogArticle = ({
     "publisher": { 
       "@type": "Organization", 
       "name": "TalentSuite", 
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://talentsuite.io/logo.png"
+        "url": "https://www.talentsuite.io/logo.png"
       }
     },
     "datePublished": publishDate || "2026-02-16",
@@ -59,7 +59,7 @@ const BlogArticle = ({
     "isPartOf": {
       "@type": "Blog",
       "name": "TalentSuite Blog",
-      "url": "https://talentsuite.io/blog"
+      "url": "https://www.talentsuite.io/blog"
     }
   };
 

@@ -2,7 +2,7 @@
 import BlogArticle from "../BlogArticle";
 export default function Article() {
   return (
-    <BlogArticle title="Social Media Marketing fuer KMU: Leitfaden fuer kleine Unternehmen" metaTitle="Social Media Marketing fuer KMU: Leitfaden fuer kleine Unternehmen | TalentSuite" metaDescription="Social Media Marketing fuer KMU: Strategien und Budgettipps." metaKeywords="Social Media Marketing KMU, Social Media kleine Unternehmen" canonical="https://talentsuite.io/blog/social-media-marketing-kmu" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Social Media"
+    <BlogArticle title="Social Media Marketing fuer KMU: Leitfaden fuer kleine Unternehmen" metaTitle="Social Media Marketing fuer KMU: Leitfaden fuer kleine Unternehmen | TalentSuite" metaDescription="Social Media Marketing fuer KMU: Strategien und Budgettipps." metaKeywords="Social Media Marketing KMU, Social Media kleine Unternehmen" canonical="https://www.talentsuite.io/blog/social-media-marketing-kmu" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Social Media"
       relatedArticles={[{ href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" }, { href: "/blog/neukundengewinnung-strategien", title: "Neukundengewinnung Strategien", category: "Neukundengewinnung" }, { href: "/blog/mitarbeiter-finden-handwerk", title: "Mitarbeiter finden im Handwerk", category: "Handwerk" }]}>
       <p>In diesem Artikel erfaehrst du alles Wichtige zum Thema <strong>Social Media Marketing fuer KMU: Leitfaden fuer kleine Unternehmen</strong>. Wir teilen Erfahrungen aus der Praxis und geben dir konkrete Handlungsempfehlungen fuer dein Unternehmen.</p>
       <h2>Warum dieses Thema jetzt wichtig ist</h2>

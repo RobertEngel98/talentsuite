@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Schalksmühle | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Schalksmühle: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Schalksmühle, Mitarbeiter finden Schalksmühle, Recruiting Schalksmühle, Personalgewinnung Schalksmühle, Fachkraefte Schalksmühle"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-schalksmühle"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-schalksmühle"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

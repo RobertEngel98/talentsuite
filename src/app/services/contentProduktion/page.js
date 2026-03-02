@@ -81,7 +81,7 @@ const ContentProduktion = () => {
     "provider": {
       "@type": "MarketingAgency",
       "name": "TalentSuite",
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "areaServed": ["DE", "AT", "CH"],
     },
     "description": "Professionelle Content Produktion: Video, Fotografie, Social Media Content und Employer Branding für Unternehmen im DACH-Raum.",
@@ -94,7 +94,7 @@ const ContentProduktion = () => {
         <title>Content Produktion Agentur | Video, Foto & Social Media | TalentSuite</title>
         <meta name="description" content="Professionelle Content Produktion: Videos, Fotos, Social Media Content & Employer Branding. Authentisch, strategisch, wirkungsvoll. Jetzt Beratung buchen." />
         <meta name="keywords" content="Content Produktion, Video Produktion, Employer Branding Video, Social Media Content, Unternehmensfilm, Imagefilm, Content Agentur" />
-        <link rel="canonical" href="https://talentsuite.io/services/contentProduktion" />
+        <link rel="canonical" href="https://www.talentsuite.io/services/contentProduktion" />
         <meta property="og:title" content="Content Produktion Agentur | TalentSuite" />
         <meta property="og:description" content="Professionelle Videos, Fotos und Social Media Content – authentisch und wirkungsvoll." />
         <meta property="og:type" content="website" />

@@ -32,7 +32,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Märkischer Kreis | Recruiting Südwestfalen | TalentSuite"
       metaDescription="Mitarbeiter finden im Märkischen Kreis und Südwestfalen: Performance Recruiting für alle 15 Städte und Gemeinden. Lokale Agentur aus Iserlohn."
       metaKeywords="Mitarbeitergewinnung Märkischer Kreis, Recruiting Südwestfalen, Fachkräfte Sauerland, Personal finden Märkischer Kreis"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-maerkischer-kreis"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-maerkischer-kreis"
       publishDate="2026-02-16"
       readingTime="10 Min. Lesezeit"
       category="Lokales Recruiting"

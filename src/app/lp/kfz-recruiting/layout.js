@@ -4,17 +4,17 @@ export const metadata = {
     "In 30 Tagen qualifizierte Bewerbungen von KFZ-Mechatronikern über Social Media. Ohne Jobportale, ohne teure Vermittler. Kostenlose Analyse für Ihren Betrieb.",
   keywords:
     "KFZ Mechatroniker finden, KFZ Fachkräfte recruiting, KFZ Personal suchen, Social Media Recruiting KFZ, Performance Recruiting KFZ Gewerbe, Alternative Zeitarbeit KFZ",
-  alternates: { canonical: "https://talentsuite.io/lp/kfz-recruiting" },
+  alternates: { canonical: "https://www.talentsuite.io/lp/kfz-recruiting" },
   openGraph: {
     title: "KFZ-Fachkräfte finden – ohne Jobportale | TalentSuite",
     description:
       "In 30 Tagen qualifizierte Bewerbungen von KFZ-Fachkräften. Über Social Media. Ab 15€ pro Bewerbung.",
-    url: "https://talentsuite.io/lp/kfz-recruiting",
+    url: "https://www.talentsuite.io/lp/kfz-recruiting",
     siteName: "TalentSuite",
     locale: "de_DE",
     type: "website",
     images: [
-      { url: "https://talentsuite.io/og-image.jpg", width: 1200, height: 630 },
+      { url: "https://www.talentsuite.io/og-image.jpg", width: 1200, height: 630 },
     ],
   },
   twitter: {
@@ -35,13 +35,13 @@ export default function Layout({ children }) {
             "@context": "https://schema.org",
             "@type": "Service",
             name: "Performance Recruiting für das KFZ-Gewerbe",
-            url: "https://talentsuite.io/lp/kfz-recruiting",
+            url: "https://www.talentsuite.io/lp/kfz-recruiting",
             description:
               "Social Media Recruiting für KFZ-Betriebe. Qualifizierte Bewerbungen von KFZ-Mechatronikern und Meistern in 30 Tagen.",
             provider: {
               "@type": "Organization",
               name: "TalentSuite",
-              url: "https://talentsuite.io",
+              url: "https://www.talentsuite.io",
             },
             areaServed: { "@type": "Country", name: "Germany" },
             offers: {

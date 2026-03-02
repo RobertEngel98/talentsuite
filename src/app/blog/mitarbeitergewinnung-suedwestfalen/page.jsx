@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Südwestfalen | Performance Recruiting | TalentSuite"
       metaDescription="Mitarbeiter finden in Südwestfalen: Performance Recruiting für die Region mit 150 Weltmarktführern. Lokale Agentur aus dem Märkischen Kreis."
       metaKeywords="Mitarbeitergewinnung Südwestfalen, Recruiting Südwestfalen, Fachkräfte Sauerland, Personal finden Südwestfalen"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-suedwestfalen"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-suedwestfalen"
       publishDate="2026-02-16"
       readingTime="8 Min. Lesezeit"
       category="Lokales Recruiting"

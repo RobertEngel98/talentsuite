@@ -4,17 +4,17 @@ export const metadata = {
     "In 30 Tagen qualifizierte Bewerbungen von Pflegekräften über Social Media. Ohne Jobportale, ohne Zeitarbeit. Kostenlose Analyse für Ihre Einrichtung.",
   keywords:
     "Pflegepersonal finden, Pflegekräfte recruiting, Pflegefachkraft suchen, Social Media Recruiting Pflege, Performance Recruiting Pflege, Alternative Zeitarbeit Pflege",
-  alternates: { canonical: "https://talentsuite.io/lp/pflege-recruiting" },
+  alternates: { canonical: "https://www.talentsuite.io/lp/pflege-recruiting" },
   openGraph: {
     title: "Pflegefachkräfte finden – ohne Jobportale | TalentSuite",
     description:
       "In 30 Tagen qualifizierte Bewerbungen von Pflegekräften. Über Social Media. Ab 15€ pro Bewerbung.",
-    url: "https://talentsuite.io/lp/pflege-recruiting",
+    url: "https://www.talentsuite.io/lp/pflege-recruiting",
     siteName: "TalentSuite",
     locale: "de_DE",
     type: "website",
     images: [
-      { url: "https://talentsuite.io/og-image.jpg", width: 1200, height: 630 },
+      { url: "https://www.talentsuite.io/og-image.jpg", width: 1200, height: 630 },
     ],
   },
   twitter: {
@@ -35,13 +35,13 @@ export default function Layout({ children }) {
             "@context": "https://schema.org",
             "@type": "Service",
             name: "Performance Recruiting für die Pflege",
-            url: "https://talentsuite.io/lp/pflege-recruiting",
+            url: "https://www.talentsuite.io/lp/pflege-recruiting",
             description:
               "Social Media Recruiting für Pflegeeinrichtungen. Qualifizierte Bewerbungen von Pflegekräften in 30 Tagen.",
             provider: {
               "@type": "Organization",
               name: "TalentSuite",
-              url: "https://talentsuite.io",
+              url: "https://www.talentsuite.io",
             },
             areaServed: { "@type": "Country", name: "Germany" },
             offers: {

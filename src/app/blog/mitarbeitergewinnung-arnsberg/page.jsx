@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Arnsberg | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Arnsberg: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Arnsberg, Mitarbeiter finden Arnsberg, Recruiting Arnsberg, Personalgewinnung Arnsberg, Fachkraefte Arnsberg"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-arnsberg"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-arnsberg"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

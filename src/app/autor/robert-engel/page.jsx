@@ -9,7 +9,7 @@ const AuthorPage = () => {
     "@type": "Person",
     "name": "Robert Engel",
     "jobTitle": "Gründer & Geschäftsführer",
-    "url": "https://talentsuite.io/autor/robert-engel",
+    "url": "https://www.talentsuite.io/autor/robert-engel",
     "sameAs": [
       "https://www.linkedin.com/in/robert-engel",
       "https://www.instagram.com/talentsuite.io",
@@ -19,7 +19,7 @@ const AuthorPage = () => {
       "@type": "Organization",
       "name": "TalentSuite",
       "alternateName": "Engel & Mühlhof GbR",
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Iserlohn",
@@ -92,7 +92,7 @@ const AuthorPage = () => {
       <Head>
         <title>Robert Engel – Performance Recruiting Experte | TalentSuite</title>
         <meta name="description" content="Robert Engel ist Gründer von TalentSuite und Experte für Performance Recruiting, Social Media Marketing und Fachkräftegewinnung für den Mittelstand in Südwestfalen." />
-        <link rel="canonical" href="https://talentsuite.io/autor/robert-engel" />
+        <link rel="canonical" href="https://www.talentsuite.io/autor/robert-engel" />
       </Head>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />

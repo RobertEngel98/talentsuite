@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Werdohl | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Werdohl: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Werdohl, Mitarbeiter finden Werdohl, Recruiting Werdohl, Personalgewinnung Werdohl, Fachkraefte Werdohl"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-werdohl"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-werdohl"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

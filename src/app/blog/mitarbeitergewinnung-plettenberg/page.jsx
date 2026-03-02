@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Plettenberg | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Plettenberg: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Plettenberg, Mitarbeiter finden Plettenberg, Recruiting Plettenberg, Personalgewinnung Plettenberg, Fachkraefte Plettenberg"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-plettenberg"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-plettenberg"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

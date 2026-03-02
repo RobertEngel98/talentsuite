@@ -81,7 +81,7 @@ const SocialMediaManagement = () => {
     "provider": {
       "@type": "MarketingAgency",
       "name": "TalentSuite",
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "areaServed": ["DE", "AT", "CH"],
     },
     "description": "Professionelles Social Media Management: Strategieentwicklung, Content-Produktion, Community Management und Performance Reporting.",
@@ -94,7 +94,7 @@ const SocialMediaManagement = () => {
         <title>Social Media Management Agentur | Content & Strategie | TalentSuite</title>
         <meta name="description" content="Professionelles Social Media Management: Strategie, Content-Produktion, Community Management & Reporting. Mehr Reichweite, mehr Wirkung. Jetzt Beratung buchen." />
         <meta name="keywords" content="Social Media Management, Social Media Agentur, Content Marketing, Community Management, Instagram Marketing, LinkedIn Marketing, TikTok Marketing" />
-        <link rel="canonical" href="https://talentsuite.io/services/socialMediaManagement" />
+        <link rel="canonical" href="https://www.talentsuite.io/services/socialMediaManagement" />
         <meta property="og:title" content="Social Media Management Agentur | TalentSuite" />
         <meta property="og:description" content="Social Media, das konvertiert – Strategie, Content & Community Management aus einer Hand." />
         <meta property="og:type" content="website" />

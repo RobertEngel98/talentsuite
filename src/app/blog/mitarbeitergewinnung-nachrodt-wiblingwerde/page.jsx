@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Nachrodt-Wiblingwerde | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Nachrodt-Wiblingwerde: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Nachrodt-Wiblingwerde, Mitarbeiter finden Nachrodt-Wiblingwerde, Recruiting Nachrodt-Wiblingwerde, Personalgewinnung Nachrodt-Wiblingwerde, Fachkraefte Nachrodt-Wiblingwerde"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-nachrodt-wiblingwerde"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-nachrodt-wiblingwerde"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

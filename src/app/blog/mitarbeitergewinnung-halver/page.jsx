@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Halver | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Halver: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Halver, Mitarbeiter finden Halver, Recruiting Halver, Personalgewinnung Halver, Fachkraefte Halver"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-halver"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-halver"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

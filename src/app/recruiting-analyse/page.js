@@ -91,7 +91,7 @@ export default function RecruitingAnalyse() {
       <Head>
         <title>Kostenlose Recruiting-Analyse | TalentSuite</title>
         <meta name="description" content="Kostenlose Recruiting-Analyse — Fachkräfte finden in 30 Tagen. In 20 Minuten erfahren Sie, wie Sie qualifizierte Fachkräfte über Social Media finden." />
-        <link rel="canonical" href="https://talentsuite.io/recruiting-analyse" />
+        <link rel="canonical" href="https://www.talentsuite.io/recruiting-analyse" />
       </Head>
 
       <div id="ra">

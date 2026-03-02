@@ -82,7 +82,7 @@ const PerformanceRecruiting = () => {
     "provider": {
       "@type": "MarketingAgency",
       "name": "TalentSuite",
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "areaServed": ["DE", "AT", "CH"],
     },
     "description": "Datenbasiertes Social Media Recruiting mit Performance-Kampagnen auf Meta, TikTok & LinkedIn. Qualifizierte Bewerbungen in unter 30 Tagen.",
@@ -102,11 +102,11 @@ const PerformanceRecruiting = () => {
         <title>Performance Recruiting Agentur | Social Media Recruiting | TalentSuite</title>
         <meta name="description" content="Performance Recruiting mit System: Qualifizierte Bewerbungen über Meta, TikTok & LinkedIn Ads. 50+ Unternehmen vertrauen TalentSuite. Jetzt kostenloses Erstgespräch buchen." />
         <meta name="keywords" content="Performance Recruiting, Social Media Recruiting, Personalgewinnung, Bewerberfunnel, Recruiting Agentur, Fachkräftemangel, Social Recruiting DACH" />
-        <link rel="canonical" href="https://talentsuite.io/services/performanceRecruiting" />
+        <link rel="canonical" href="https://www.talentsuite.io/services/performanceRecruiting" />
         <meta property="og:title" content="Performance Recruiting Agentur | TalentSuite" />
         <meta property="og:description" content="Qualifizierte Bewerbungen über Social Media Ads. Datenbasiert, messbar, planbar." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://talentsuite.io/services/performanceRecruiting" />
+        <meta property="og:url" content="https://www.talentsuite.io/services/performanceRecruiting" />
       </Head>
 
       <script

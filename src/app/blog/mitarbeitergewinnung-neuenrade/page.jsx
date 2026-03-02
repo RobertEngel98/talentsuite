@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Neuenrade | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Neuenrade: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Neuenrade, Mitarbeiter finden Neuenrade, Recruiting Neuenrade, Personalgewinnung Neuenrade, Fachkraefte Neuenrade"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-neuenrade"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-neuenrade"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

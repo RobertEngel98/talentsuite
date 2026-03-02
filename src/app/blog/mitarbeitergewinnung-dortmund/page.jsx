@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Dortmund | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Dortmund: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Dortmund, Mitarbeiter finden Dortmund, Recruiting Dortmund, Personalgewinnung Dortmund, Fachkraefte Dortmund"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-dortmund"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-dortmund"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

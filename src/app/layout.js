@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
           "name": "TalentSuite",
-          "url": "https://talentsuite.io",
+          "url": "https://www.talentsuite.io",
           "description": "Performance Recruiting Agentur für den DACH-Raum. Wir finden Fachkräfte über Social Media — planbar, messbar, ohne Jobbörsen.",
           "address": { "@type": "PostalAddress", "addressLocality": "Iserlohn", "addressRegion": "NRW", "addressCountry": "DE" },
           "areaServed": [

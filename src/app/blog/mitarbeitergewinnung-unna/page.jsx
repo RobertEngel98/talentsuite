@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Unna | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Unna: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Unna, Mitarbeiter finden Unna, Recruiting Unna, Personalgewinnung Unna, Fachkraefte Unna"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-unna"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-unna"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Fröndenberg/Ruhr | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Fröndenberg/Ruhr: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Fröndenberg/Ruhr, Mitarbeiter finden Fröndenberg/Ruhr, Recruiting Fröndenberg/Ruhr, Personalgewinnung Fröndenberg/Ruhr, Fachkraefte Fröndenberg/Ruhr"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-froendenberg"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-froendenberg"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

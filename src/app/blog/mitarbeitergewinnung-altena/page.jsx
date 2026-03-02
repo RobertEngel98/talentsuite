@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Altena | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Altena: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Altena, Mitarbeiter finden Altena, Recruiting Altena, Personalgewinnung Altena, Fachkraefte Altena"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-altena"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-altena"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

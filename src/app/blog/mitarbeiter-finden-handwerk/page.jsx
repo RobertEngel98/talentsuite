@@ -7,7 +7,7 @@ export default function Article() {
       metaTitle="Mitarbeiter finden Handwerk: 7 bewährte Strategien [2026]"
       metaDescription="Mitarbeiter finden im Handwerk trotz Fachkräftemangel? Diese 7 Strategien funktionieren 2026: Social Recruiting, Employer Branding, Bewerberfunnels und mehr."
       metaKeywords="Mitarbeiter finden Handwerk, Fachkräftemangel Handwerk, Handwerker finden, SHK Fachkräfte, Handwerk Recruiting, Mitarbeitergewinnung Handwerk"
-      canonical="https://talentsuite.io/blog/mitarbeiter-finden-handwerk"
+      canonical="https://www.talentsuite.io/blog/mitarbeiter-finden-handwerk"
       publishDate="2026-02-16" readingTime="9 Min. Lesezeit" category="Recruiting Handwerk"
       relatedArticles={[
         { href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" },

@@ -81,7 +81,7 @@ const ECommerce = () => {
     "provider": {
       "@type": "MarketingAgency",
       "name": "TalentSuite",
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "areaServed": ["DE", "AT", "CH"],
     },
     "description": "Fullservice E-Commerce Agentur: Shopify-Entwicklung, Logistik-Automatisierung, SEO und Performance Marketing für Online-Shops.",
@@ -94,7 +94,7 @@ const ECommerce = () => {
         <title>E-Commerce Agentur | Shopify Entwicklung & Marketing | TalentSuite</title>
         <meta name="description" content="Fullservice E-Commerce Agentur: Shopify-Entwicklung, Logistik, SEO & Performance Marketing. Mehr Umsatz für deinen Online-Shop. Jetzt kostenloses Erstgespräch." />
         <meta name="keywords" content="E-Commerce Agentur, Shopify Entwicklung, Online-Shop erstellen, E-Commerce Beratung, Shop Marketing, Shopify Agentur DACH" />
-        <link rel="canonical" href="https://talentsuite.io/services/ecommerce" />
+        <link rel="canonical" href="https://www.talentsuite.io/services/ecommerce" />
         <meta property="og:title" content="E-Commerce Agentur | TalentSuite" />
         <meta property="og:description" content="Fullservice E-Commerce: Von der Shopify-Entwicklung bis zum Marketing – alles aus einer Hand." />
         <meta property="og:type" content="website" />

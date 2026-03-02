@@ -81,7 +81,7 @@ const CustomerAcquisition = () => {
     "provider": {
       "@type": "MarketingAgency",
       "name": "TalentSuite",
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "areaServed": ["DE", "AT", "CH"],
     },
     "description": "Performancebasierte Neukundengewinnung mit digitalen Kampagnen, Funnels und Lead-Automatisierung für B2B und B2C Unternehmen.",
@@ -94,7 +94,7 @@ const CustomerAcquisition = () => {
         <title>Neukundengewinnung Agentur | Digitale Leadgenerierung | TalentSuite</title>
         <meta name="description" content="Digitale Neukundengewinnung mit System: Meta Ads, Google Ads, LinkedIn & Funnel-Strategien. Planbar neue Kunden gewinnen. Jetzt kostenloses Erstgespräch." />
         <meta name="keywords" content="Neukundengewinnung, Leadgenerierung, digitale Kundengewinnung, Performance Marketing, Funnel Marketing, B2B Leads, Kundenakquise" />
-        <link rel="canonical" href="https://talentsuite.io/services/customerAcquisition" />
+        <link rel="canonical" href="https://www.talentsuite.io/services/customerAcquisition" />
         <meta property="og:title" content="Neukundengewinnung Agentur | TalentSuite" />
         <meta property="og:description" content="Planbar neue Kunden gewinnen – mit datenbasierten Kampagnen und automatisierten Funnels." />
         <meta property="og:type" content="website" />

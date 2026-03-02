@@ -2,7 +2,7 @@
 import BlogArticle from "../BlogArticle";
 export default function Article() {
   return (
-    <BlogArticle title="Google Ads fuer Handwerksbetriebe: Kunden und Mitarbeiter finden" metaTitle="Google Ads fuer Handwerksbetriebe: Kunden und Mitarbeiter finden | TalentSuite" metaDescription="Google Ads fuer Handwerker: Neue Kunden und Mitarbeiter ueber Google gewinnen." metaKeywords="Google Ads Handwerk, SHK Marketing" canonical="https://talentsuite.io/blog/google-ads-handwerk" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Online Marketing"
+    <BlogArticle title="Google Ads fuer Handwerksbetriebe: Kunden und Mitarbeiter finden" metaTitle="Google Ads fuer Handwerksbetriebe: Kunden und Mitarbeiter finden | TalentSuite" metaDescription="Google Ads fuer Handwerker: Neue Kunden und Mitarbeiter ueber Google gewinnen." metaKeywords="Google Ads Handwerk, SHK Marketing" canonical="https://www.talentsuite.io/blog/google-ads-handwerk" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Online Marketing"
       relatedArticles={[{ href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" }, { href: "/blog/neukundengewinnung-strategien", title: "Neukundengewinnung Strategien", category: "Neukundengewinnung" }, { href: "/blog/mitarbeiter-finden-handwerk", title: "Mitarbeiter finden im Handwerk", category: "Handwerk" }]}>
       <p>Dieser Leitfaden zum Thema <strong>Google Ads fuer Handwerksbetriebe: Kunden und Mitarbeiter finden</strong> zeigt dir bewaehrte Strategien fuer planbare Ergebnisse im digitalen Marketing. Wir teilen Praxiserfahrungen aus ueber 50 Kundenprojekten im DACH-Raum.</p>
       <h2>Warum digitales Marketing 2026 unverzichtbar ist</h2>

@@ -9,7 +9,7 @@ export default function Article() {
       metaTitle="Performance Recruiting: Was ist das? Definition, Ablauf & Kosten [2026]"
       metaDescription="Performance Recruiting einfach erklärt: Was es ist, wie es funktioniert, was es kostet und warum 80% der Fachkräfte nur über Social Media erreichbar sind. Kompletter Leitfaden."
       metaKeywords="Performance Recruiting, was ist Performance Recruiting, Performance Recruiting Definition, Performance Recruiting Kosten, Social Media Recruiting erklärt"
-      canonical="https://talentsuite.io/blog/performance-recruiting-was-ist-das"
+      canonical="https://www.talentsuite.io/blog/performance-recruiting-was-ist-das"
       publishDate="2026-02-16"
       updatedDate="2026-02-17"
       readingTime="8 Min. Lesezeit"

@@ -81,7 +81,7 @@ const WebDevelopment = () => {
     "provider": {
       "@type": "MarketingAgency",
       "name": "TalentSuite",
-      "url": "https://talentsuite.io",
+      "url": "https://www.talentsuite.io",
       "areaServed": ["DE", "AT", "CH"],
     },
     "description": "Professionelle Webentwicklung: UX/UI Design, React & Next.js Entwicklung, SEO-Optimierung und Wartung für Unternehmen im DACH-Raum.",
@@ -94,7 +94,7 @@ const WebDevelopment = () => {
         <title>Webentwicklung Agentur | UX Design & SEO | TalentSuite</title>
         <meta name="description" content="Professionelle Webentwicklung: UX/UI Design, React & Next.js, SEO-Optimierung und Wartung. Websites, die überzeugen und konvertieren. Jetzt Beratung buchen." />
         <meta name="keywords" content="Webentwicklung, Web Development, Website erstellen, UX Design, SEO Optimierung, React Agentur, Next.js Agentur, Webdesign Agentur" />
-        <link rel="canonical" href="https://talentsuite.io/services/webDevelopment" />
+        <link rel="canonical" href="https://www.talentsuite.io/services/webDevelopment" />
         <meta property="og:title" content="Webentwicklung Agentur | TalentSuite" />
         <meta property="og:description" content="Professionelle Websites mit React & Next.js – UX-optimiert, SEO-freundlich, performant." />
         <meta property="og:type" content="website" />

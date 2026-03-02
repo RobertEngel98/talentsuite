@@ -2,7 +2,7 @@
 import BlogArticle from "../BlogArticle";
 export default function Article() {
   return (
-    <BlogArticle title="Website erstellen lassen: Kosten, Dauer und Anbieter im Vergleich" metaTitle="Website erstellen lassen: Kosten, Dauer und Anbieter im Vergleich | TalentSuite" metaDescription="Website erstellen lassen: Was eine professionelle Website kostet." metaKeywords="Website erstellen lassen Kosten, Webdesign Preise" canonical="https://talentsuite.io/blog/website-erstellen-lassen-kosten" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Webentwicklung"
+    <BlogArticle title="Website erstellen lassen: Kosten, Dauer und Anbieter im Vergleich" metaTitle="Website erstellen lassen: Kosten, Dauer und Anbieter im Vergleich | TalentSuite" metaDescription="Website erstellen lassen: Was eine professionelle Website kostet." metaKeywords="Website erstellen lassen Kosten, Webdesign Preise" canonical="https://www.talentsuite.io/blog/website-erstellen-lassen-kosten" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="Webentwicklung"
       relatedArticles={[{ href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" }, { href: "/blog/neukundengewinnung-strategien", title: "Neukundengewinnung Strategien", category: "Neukundengewinnung" }, { href: "/blog/mitarbeiter-finden-handwerk", title: "Mitarbeiter finden im Handwerk", category: "Handwerk" }]}>
       <p>In diesem Artikel erfaehrst du alles Wichtige zum Thema <strong>Website erstellen lassen: Kosten, Dauer und Anbieter im Vergleich</strong>. Wir teilen Erfahrungen aus der Praxis und geben dir konkrete Handlungsempfehlungen fuer dein Unternehmen.</p>
       <h2>Warum dieses Thema jetzt wichtig ist</h2>

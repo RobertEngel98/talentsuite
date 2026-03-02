@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Kierspe | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Kierspe: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Kierspe, Mitarbeiter finden Kierspe, Recruiting Kierspe, Personalgewinnung Kierspe, Fachkraefte Kierspe"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-kierspe"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-kierspe"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

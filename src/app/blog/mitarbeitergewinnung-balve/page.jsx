@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Balve | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Balve: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Balve, Mitarbeiter finden Balve, Recruiting Balve, Personalgewinnung Balve, Fachkraefte Balve"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-balve"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-balve"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

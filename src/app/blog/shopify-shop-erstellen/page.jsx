@@ -2,7 +2,7 @@
 import BlogArticle from "../BlogArticle";
 export default function Article() {
   return (
-    <BlogArticle title="Shopify Shop erstellen: Komplett-Guide fuer Einsteiger" metaTitle="Shopify Shop erstellen: Komplett-Guide fuer Einsteiger | TalentSuite" metaDescription="Shopify Shop erstellen: Schritt-fuer-Schritt Anleitung." metaKeywords="Shopify Shop erstellen, Online-Shop erstellen" canonical="https://talentsuite.io/blog/shopify-shop-erstellen" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="E-Commerce"
+    <BlogArticle title="Shopify Shop erstellen: Komplett-Guide fuer Einsteiger" metaTitle="Shopify Shop erstellen: Komplett-Guide fuer Einsteiger | TalentSuite" metaDescription="Shopify Shop erstellen: Schritt-fuer-Schritt Anleitung." metaKeywords="Shopify Shop erstellen, Online-Shop erstellen" canonical="https://www.talentsuite.io/blog/shopify-shop-erstellen" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="E-Commerce"
       relatedArticles={[{ href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" }, { href: "/blog/neukundengewinnung-strategien", title: "Neukundengewinnung Strategien", category: "Neukundengewinnung" }, { href: "/blog/mitarbeiter-finden-handwerk", title: "Mitarbeiter finden im Handwerk", category: "Handwerk" }]}>
       <p>In diesem Artikel erfaehrst du alles Wichtige zum Thema <strong>Shopify Shop erstellen: Komplett-Guide fuer Einsteiger</strong>. Wir teilen Erfahrungen aus der Praxis und geben dir konkrete Handlungsempfehlungen fuer dein Unternehmen.</p>
       <h2>Warum dieses Thema jetzt wichtig ist</h2>

@@ -8,7 +8,7 @@ export default function Article() {
       metaTitle="Mitarbeitergewinnung Lüdenscheid | Performance Recruiting Agentur | TalentSuite"
       metaDescription="Mitarbeiter finden in Lüdenscheid: Performance Recruiting und Social Media Kampagnen fuer Handwerk, Pflege, Gastronomie und Industrie. Jetzt Fachkraefte gewinnen."
       metaKeywords="Mitarbeitergewinnung Lüdenscheid, Mitarbeiter finden Lüdenscheid, Recruiting Lüdenscheid, Personalgewinnung Lüdenscheid, Fachkraefte Lüdenscheid"
-      canonical="https://talentsuite.io/blog/mitarbeitergewinnung-luedenscheid"
+      canonical="https://www.talentsuite.io/blog/mitarbeitergewinnung-luedenscheid"
       publishDate="2026-02-16"
       readingTime="7 Min. Lesezeit"
       category="Lokales Recruiting"

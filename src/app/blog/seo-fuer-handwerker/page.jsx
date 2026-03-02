@@ -2,7 +2,7 @@
 import BlogArticle from "../BlogArticle";
 export default function Article() {
   return (
-    <BlogArticle title="SEO fuer Handwerker: Bei Google gefunden werden" metaTitle="SEO fuer Handwerker: Bei Google gefunden werden | TalentSuite" metaDescription="SEO fuer Handwerksbetriebe: Ueber Google neue Kunden gewinnen." metaKeywords="SEO Handwerker, lokales SEO Handwerk" canonical="https://talentsuite.io/blog/seo-fuer-handwerker" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="SEO"
+    <BlogArticle title="SEO fuer Handwerker: Bei Google gefunden werden" metaTitle="SEO fuer Handwerker: Bei Google gefunden werden | TalentSuite" metaDescription="SEO fuer Handwerksbetriebe: Ueber Google neue Kunden gewinnen." metaKeywords="SEO Handwerker, lokales SEO Handwerk" canonical="https://www.talentsuite.io/blog/seo-fuer-handwerker" publishDate="2026-02-16" readingTime="8 Min. Lesezeit" category="SEO"
       relatedArticles={[{ href: "/blog/performance-recruiting-was-ist-das", title: "Was ist Performance Recruiting?", category: "Performance Recruiting" }, { href: "/blog/neukundengewinnung-strategien", title: "Neukundengewinnung Strategien", category: "Neukundengewinnung" }, { href: "/blog/mitarbeiter-finden-handwerk", title: "Mitarbeiter finden im Handwerk", category: "Handwerk" }]}>
       <p>In diesem Artikel erfaehrst du alles Wichtige zum Thema <strong>SEO fuer Handwerker: Bei Google gefunden werden</strong>. Wir teilen Erfahrungen aus der Praxis und geben dir konkrete Handlungsempfehlungen fuer dein Unternehmen.</p>
       <h2>Warum dieses Thema jetzt wichtig ist</h2>
