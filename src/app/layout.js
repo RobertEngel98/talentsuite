@@ -29,24 +29,32 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        {/* Schema.org JSON-LD */}
+        {/* Schema.org JSON-LD: Organization + LocalBusiness */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "ProfessionalService",
+          "@type": ["ProfessionalService", "MarketingAgency"],
           "name": "TalentSuite",
+          "alternateName": "TalentSuite — Engel & Mühlhof GbR",
           "url": "https://www.talentsuite.io",
-          "description": "Performance Recruiting Agentur für den DACH-Raum. Wir finden Fachkräfte über Social Media — planbar, messbar, ohne Jobbörsen.",
-          "address": { "@type": "PostalAddress", "addressLocality": "Iserlohn", "addressRegion": "NRW", "addressCountry": "DE" },
+          "logo": "https://www.talentsuite.io/logo.png",
+          "description": "Fullservice-Agentur für Performance Recruiting, Neukundengewinnung und E-Commerce im DACH-Raum. Über 50 Unternehmen vertrauen auf unsere messbaren Ergebnisse.",
+          "address": { "@type": "PostalAddress", "addressLocality": "Iserlohn", "addressRegion": "NRW", "postalCode": "58636", "addressCountry": "DE" },
           "areaServed": [
             { "@type": "Country", "name": "Germany" },
             { "@type": "Country", "name": "Austria" },
             { "@type": "Country", "name": "Switzerland" }
           ],
           "serviceType": ["Performance Recruiting", "Neukundengewinnung", "E-Commerce", "Social Media Management", "Content Produktion", "Web Development"],
+          "knowsAbout": ["Social Media Recruiting", "Performance Marketing", "Employer Branding", "Leadgenerierung", "Conversion Optimierung"],
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "bestRating": "5", "ratingCount": "50" },
+          "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 15 },
+          "foundingDate": "2023",
           "sameAs": [
             "https://www.instagram.com/talentsuite.io/",
             "https://www.facebook.com/profile.php?id=100095016041438",
-            "https://www.linkedin.com/company/talentsuiteio/"
+            "https://www.linkedin.com/company/talentsuiteio/",
+            "https://www.tiktok.com/@talentsuite",
+            "https://www.youtube.com/@talentsuite"
           ]
         }) }} />
         {/* Bootstrap Icons */}

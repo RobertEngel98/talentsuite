@@ -9,41 +9,41 @@ import Traditional from "../components/traditional";
 import Appointment from "../components/appointment";
 
 const socialData = [
-  { img: "/assets/review-img.png", name: "Unregelmäßige oder unstrukturierte Content-Planung" },
-  { img: "/assets/review-img.png", name: "Keine klare Markenpositionierung" },
-  { img: "/assets/review-img.png", name: "Geringe Reichweite trotz hohem Aufwand" },
-  { img: "/assets/review-img.png", name: "Keine Verknüpfung mit Recruiting, Sales oder Kampagnen" },
+  { img: "/assets/review-img.png", name: "Planloses Posten — 10+ Stunden pro Woche ohne messbaren Return" },
+  { img: "/assets/review-img.png", name: "Kein klares Profil — deine Marke geht im Feed unter" },
+  { img: "/assets/review-img.png", name: "Reichweite stagniert trotz regelmäßiger Inhalte" },
+  { img: "/assets/review-img.png", name: "Social Media läuft isoliert — kein Beitrag zu Umsatz oder Recruiting" },
 ];
 
 const socialSolutions = [
   {
     number: "01",
     title: "Social Audit & Strategieentwicklung",
-    desc: "Wir analysieren Status quo, Zielgruppe und Kanäle – und definieren klare Ziele.",
+    desc: "Wir decken auf, was funktioniert und was nicht — und bauen eine Strategie, die in 90 Tagen messbare Ergebnisse liefert.",
   },
   {
     number: "02",
     title: "Redaktionsplanung & Content-Produktion",
-    desc: "Planung, Text, Bild & Video – abgestimmt auf Plattform, Zielgruppe und Tonalität.",
+    desc: "30+ fertige Posts pro Monat — strategisch geplant, professionell produziert und plattformgerecht ausgespielt.",
   },
   {
     number: "03",
     title: "Community Management & Monitoring",
-    desc: "Aktiver Dialog mit deiner Zielgruppe – inklusive Reporting & Optimierung.",
+    desc: "Aktiver Dialog, der aus Followern Fans macht — mit monatlichem Reporting und datenbasierter Optimierung.",
   },
   {
     number: "04",
     title: "Verknüpfung mit Business-Zielen",
-    desc: "Ob Recruiting, Leadgenerierung oder Branding – wir denken Social Media ganzheitlich.",
+    desc: "Social Media, das Leads bringt, Bewerber anzieht und Umsatz steigert — nicht nur Likes sammelt.",
   },
 ];
 
 const pageTitle = "Was du von uns bekommst";
 const steps = [
-  { image: "/assets/step1.svg", desc: "Klare Social-Media-Strategie, abgestimmt auf deine Ziele" },
-  { image: "/assets/step2.svg", desc: "Kreative Inhalte mit Wiedererkennungswert" },
-  { image: "/assets/step3.svg", desc: "Regelmäßige Posts, professionelles Community Management" },
-  { image: "/assets/step4.svg", desc: "Analyse & Reporting mit Fokus auf Impact" },
+  { image: "/assets/step1.svg", desc: "Eine Strategie, die Reichweite in Ergebnisse verwandelt" },
+  { image: "/assets/step2.svg", desc: "30+ professionelle Posts pro Monat mit Wiedererkennungswert" },
+  { image: "/assets/step3.svg", desc: "Community Management, das Vertrauen aufbaut und Leads generiert" },
+  { image: "/assets/step4.svg", desc: "Monatliches Reporting mit klaren KPIs — kein Vanity-Metrics-Raten" },
 ];
 
 const socialTestimonials = [
@@ -103,8 +103,8 @@ const SocialMediaManagement = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       <MainSection
-        title={<>Social Media, das konvertiert –<br />mehr Sichtbarkeit,<br />mehr Wirkung.</>}
-        description="Wir managen deine Social-Media-Kanäle strategisch, kreativ und datengetrieben – damit aus Reichweite echte Ergebnisse werden."
+        title={<>Social Media, das Kunden bringt —<br />nicht nur Likes.</>}
+        description="Wir übernehmen deine Social-Media-Kanäle komplett — strategisch, kreativ und datengetrieben. Damit aus Followern zahlende Kunden und aus Reichweite planbarer Umsatz wird."
         buttonText="Jetzt Social-Media-Beratung buchen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
         imageSrc="/assets/services-img.png"
@@ -112,29 +112,29 @@ const SocialMediaManagement = () => {
       />
 
       <Traditional
-        title="Social Media ist voll – aber oft leer an Wirkung."
-        description="Viele Unternehmen posten regelmäßig – aber ohne Strategie, klare Botschaft oder Plan. So verpufft das Potenzial von Social Media: keine Community, kein Engagement, kein messbarer Return."
+        title="Du postest regelmäßig — aber dein Umsatz merkt davon nichts."
+        description="90 % der Unternehmen investieren Zeit und Budget in Social Media, ohne einen Euro zurückzubekommen. Ohne Strategie, ohne klare Botschaft und ohne Anbindung an deine Geschäftsziele ist Social Media ein teures Hobby."
         data={socialData}
       />
 
       <Solution
-        title="Deine Kanäle professionell gemanagt. Deine Marke messbar gestärkt."
-        description="Wir übernehmen die komplette Betreuung deiner Social-Media-Kanäle oder begleiten dein Team strategisch. Dabei sorgen wir dafür, dass deine Marke nicht nur sichtbar ist, sondern konvertiert."
+        title="Social Media, das arbeitet — nicht nur unterhält."
+        description="Wir übernehmen deine Kanäle komplett oder begleiten dein Team strategisch. In beiden Fällen sorgen wir dafür, dass jeder Post einem klaren Ziel dient: mehr Kunden, mehr Bewerber, mehr Umsatz."
         items={socialSolutions}
       />
 
       <Steps title={pageTitle} stepsData={steps} />
 
       <Testimonials
-        title="Kundenstimmen"
-        description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse aus dem Social Media Bereich."
+        title="50+ Unternehmen setzen auf unser Social Media Management"
+        description="Keine Vanity Metrics — echte Ergebnisse von Unternehmen, die mit professionellem Social Media wachsen."
         link="https://calendar.app.google/QFoADWcRwwuYUoky8"
-        linkText="Auch mehr Reichweite? Jetzt Termin sichern"
+        linkText="Auch echte Ergebnisse? Jetzt Termin sichern"
         testimonialData={socialTestimonials}
       />
 
       <Appointment
-        heading="Lass uns deine Marke in den sozialen Medien sichtbar, spürbar und erfolgreich machen."
+        heading="In 30 Minuten zeigen wir dir, wie dein Social Media endlich Kunden bringt — kostenlos und unverbindlich."
         buttonText="Jetzt Strategiegespräch vereinbaren"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
       />

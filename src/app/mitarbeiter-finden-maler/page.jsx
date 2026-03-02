@@ -63,12 +63,12 @@ export default function Page() {
         }
 
         /* === HERO (dark bg) === */
-        #bp-root .bp-hero { background: linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%) !important; }
+        #bp-root .bp-hero { background: linear-gradient(135deg, #091622 0%, #0d1f30 50%, #122a3e 100%) !important; }
         #bp-root .bp-hero h1 { color: #ffffff !important; }
         #bp-root .bp-hero p { color: rgba(255,255,255,0.8) !important; }
         #bp-root .bp-hero span { color: #ffffff !important; }
         #bp-root .bp-hero .bp-hero-hint { color: rgba(255,255,255,0.5) !important; font-size: 13px !important; }
-        #bp-root .bp-hero a { color: #023B5B !important; background: #ffffff !important; font-size: 17px !important; font-weight: 800 !important; }
+        #bp-root .bp-hero a { color: #ffffff !important; background: #1B98E0 !important; border-radius: 100px !important; font-size: 17px !important; font-weight: 800 !important; }
 
         /* === STATS === */
         #bp-root .bp-stat-n { font-weight: 800 !important; font-size: 28px !important; }
@@ -99,12 +99,12 @@ export default function Page() {
         #bp-root .bp-seo p { color: #4A5568 !important; }
 
         /* === CTA (dark bg) === */
-        #bp-root .bp-cta { background: linear-gradient(135deg, #011E2F, #023B5B) !important; }
+        #bp-root .bp-cta { background: linear-gradient(135deg, #091622, #0d1f30) !important; }
         #bp-root .bp-cta h2 { color: #ffffff !important; font-size: 22px !important; }
         #bp-root .bp-cta p { color: rgba(255,255,255,0.7) !important; }
         #bp-root .bp-cta .bp-cta-hint { color: rgba(255,255,255,0.5) !important; font-size: 13px !important; }
         #bp-root .bp-cta .bp-cta-fine { color: rgba(255,255,255,0.35) !important; font-size: 12px !important; }
-        #bp-root .bp-cta a { color: #023B5B !important; background: #ffffff !important; font-size: 17px !important; font-weight: 800 !important; }
+        #bp-root .bp-cta a { color: #ffffff !important; background: #1B98E0 !important; border-radius: 100px !important; font-size: 17px !important; font-weight: 800 !important; }
         #bp-root .bp-cta button { color: #ffffff !important; font-size: 15px !important; border: 1px solid rgba(255,255,255,0.3) !important; }
         #bp-root .bp-cta label { color: rgba(255,255,255,0.5) !important; font-size: 12px !important; }
         #bp-root .bp-cta label a { color: #1B98E0 !important; background: none !important; font-size: 12px !important; font-weight: 400 !important; }
@@ -128,7 +128,7 @@ export default function Page() {
       `}</style>
 
       {/* HERO */}
-      <div className="bp-hero" data-track-section="hero" data-track-section-name="Hero" style={{ background: "linear-gradient(135deg, #011E2F 0%, #023B5B 50%, #0A4D72 100%)", padding: mob ? "48px 16px 56px" : "80px 24px 88px", position: "relative", overflow: "hidden" }}>
+      <div className="bp-hero" data-track-section="hero" data-track-section-name="Hero" style={{ background: "linear-gradient(135deg, #091622 0%, #0d1f30 50%, #122a3e 100%)", padding: mob ? "48px 16px 56px" : "80px 24px 88px", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
           <span style={{ fontSize: 56, display: "block", marginBottom: 12 }}>🎨</span>
           <h1 style={{ color: "#ffffff", fontSize: mob ? 26 : 42, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
@@ -138,7 +138,7 @@ export default function Page() {
             18.000+ offene Stellen · Ø 135 Tage Vakanzzeit · 72% der Fachkräfte nicht auf Jobbörsen
           </p>
           <a href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer"
-            style={{ display: "inline-block", padding: "18px 44px", background: "#ffffff", borderRadius: 12, color: "#023B5B", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}>
+            style={{ display: "inline-block", padding: "18px 44px", background: "#1B98E0", borderRadius: 100, color: "#ffffff", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}>
             Kostenlose Recruiting-Analyse →
           </a>
           <p className="bp-hero-hint" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, marginTop: 10 }}>20 Min. · Unverbindlich · Konkrete Strategie für Maler- und Lackiererhandwerk</p>
@@ -244,7 +244,7 @@ export default function Page() {
           </div>
 
           {/* CTA */}
-          <div className="bp-cta" data-track-section="cta-form" data-track-section-name="Kontaktformular" style={{ background: "linear-gradient(135deg, #011E2F, #023B5B)", borderRadius: 16, padding: mob ? "32px 18px" : "44px 32px", textAlign: "center" }}>
+          <div className="bp-cta" data-track-section="cta-form" data-track-section-name="Kontaktformular" style={{ background: "linear-gradient(135deg, #091622, #0d1f30)", borderRadius: 16, padding: mob ? "32px 18px" : "44px 32px", textAlign: "center" }}>
             <h2 style={{ color: "#ffffff", fontSize: mob ? 22 : 30, fontWeight: 800, margin: "0 0 10px" }}>Maler oder Lackierer gesucht?</h2>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: mob ? 15 : 17, margin: "0 0 24px", lineHeight: 1.6 }}>
               In 20 Minuten zeigen wir Ihnen, wie viele passende Fachkräfte in Ihrer Region über Social Media erreichbar sind — und was eine Kampagne kosten würde.
@@ -252,7 +252,7 @@ export default function Page() {
             {!showForm && !sent ? (
               <>
                 <a href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer"
-                  style={{ display: "inline-block", padding: "18px 44px", background: "#ffffff", borderRadius: 12, color: "#023B5B", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", marginBottom: 12 }}>
+                  style={{ display: "inline-block", padding: "18px 44px", background: "#1B98E0", borderRadius: 100, color: "#ffffff", fontSize: 17, fontWeight: 800, textDecoration: "none", fontFamily: "inherit", marginBottom: 12 }}>
                   Jetzt Termin wählen →
                 </a>
                 <p className="bp-cta-hint" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, margin: "8px 0 16px" }}>Oder lassen Sie sich zurückrufen:</p>
@@ -289,8 +289,8 @@ export default function Page() {
                   </span>
                 </label>
                 <button onClick={submit} disabled={!canSubmit} className="bp-submit" style={{
-                  width: "100%", padding: "16px", background: canSubmit ? "#ffffff" : "rgba(255,255,255,0.2)", border: "none", borderRadius: 10,
-                  color: canSubmit ? "#023B5B" : "rgba(255,255,255,0.5)", fontSize: 16, fontWeight: 700, cursor: canSubmit ? "pointer" : "default", fontFamily: "inherit",
+                  width: "100%", padding: "16px", background: canSubmit ? "#1B98E0" : "rgba(27,152,224,0.3)", border: "none", borderRadius: 10,
+                  color: canSubmit ? "#ffffff" : "rgba(255,255,255,0.5)", fontSize: 16, fontWeight: 700, cursor: canSubmit ? "pointer" : "default", fontFamily: "inherit",
                 }}>
                   Rückruf anfordern →
                 </button>

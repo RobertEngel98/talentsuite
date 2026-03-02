@@ -12,17 +12,14 @@ const MainSection = ({ title, description, buttonText, buttonLink = "https://cal
               <h1>{title}</h1>
               <p>{description}</p>
               <div className="hero_buttons">
-                <Link className="btns web_btns" href={buttonLink} target="_blank" rel="noopener noreferrer" data-track-click={buttonText} data-track-location="service-hero">
+                <Link className="btn-primary" href={buttonLink} target="_blank" rel="noopener noreferrer" data-track-click={buttonText} data-track-location="service-hero">
                   {buttonText}
-                  <span className="btn_arrows">
-                    <i className="bi bi-arrow-up-right"></i>
-                    <i className="bi bi-arrow-up-right"></i>
-                  </span>
+                  <i className="bi bi-arrow-up-right" style={{ fontSize: "14px" }}></i>
                 </Link>
               </div>
               {trustBadges && (
-                <p className="hero-trust-signals" style={{ fontSize: "14px", opacity: 0.6, marginTop: "12px" }}>
-                  ✓ Kostenlos & unverbindlich &nbsp; ✓ Erste Ergebnisse in 30 Tagen &nbsp; ✓ Kein Risiko
+                <p className="hero-trust-signals" style={{ fontSize: "14px", color: "var(--text-muted)", marginTop: "12px" }}>
+                  Kostenlos & unverbindlich · Erste Ergebnisse in 30 Tagen · Kein Risiko
                 </p>
               )}
             </div>

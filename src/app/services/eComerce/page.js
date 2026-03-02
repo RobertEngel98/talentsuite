@@ -9,41 +9,41 @@ import Traditional from "../components/traditional";
 import Appointment from "../components/appointment";
 
 const ecommerceData = [
-  { img: "/assets/review-img.png", name: "Keine klare E-Commerce-Strategie" },
-  { img: "/assets/review-img.png", name: "Hohe Abbruchraten im Bestellprozess" },
-  { img: "/assets/review-img.png", name: "Fehlende Verzahnung von Marketing und Technik" },
-  { img: "/assets/review-img.png", name: "Mangelnde Skalierbarkeit und Performance" },
+  { img: "/assets/review-img.png", name: "Kein roter Faden — Shop, Marketing und Logistik laufen getrennt" },
+  { img: "/assets/review-img.png", name: "Bis zu 70 % Warenkorbabbrüche durch schlechte UX" },
+  { img: "/assets/review-img.png", name: "Werbebudget fließt — aber die Conversion stimmt nicht" },
+  { img: "/assets/review-img.png", name: "Technik hält mit dem Wachstum nicht Schritt" },
 ];
 
 const ecommerceSolutions = [
   {
     number: "01",
     title: "E-Commerce Strategie & Consulting",
-    desc: "Marktanalyse, Zielgruppendefinition und Wettbewerbspositionierung.",
+    desc: "Marktanalyse, Positionierung und Pricing — damit dein Shop vom ersten Tag profitabel läuft.",
   },
   {
     number: "02",
     title: "Shop-Entwicklung & Technik",
-    desc: "Performante, skalierbare und sichere Plattformen auf Basis von Shopify.",
+    desc: "Conversion-optimierte Shopify-Shops mit unter 2 Sekunden Ladezeit — gebaut für Umsatz, nicht für Schönheit.",
   },
   {
     number: "03",
     title: "Logistik & Automatisierung",
-    desc: "Verbindung moderner Fulfillment- und Logistikprozesse für maximale Effizienz.",
+    desc: "Automatisierte Fulfillment-Prozesse, die dir ab 100+ Bestellungen pro Tag den Rücken freihalten.",
   },
   {
     number: "04",
     title: "Content & Marketing",
-    desc: "Produkttexte, SEO, Paid Ads und Social Media – alles aus einer Hand.",
+    desc: "SEO-optimierte Produkttexte, Paid Ads und Social Media — für planbaren Traffic und wiederkehrende Kunden.",
   },
 ];
 
 const pageTitle = "Deine Vorteile";
 const steps = [
-  { image: "/assets/step1.svg", desc: "Maßgeschneiderte Shop-Lösung für dein Business" },
-  { image: "/assets/step2.svg", desc: "Optimierte Nutzererfahrung für höhere Umsätze" },
-  { image: "/assets/step3.svg", desc: "Mehr Sichtbarkeit und Traffic durch gezieltes Marketing" },
-  { image: "/assets/step4.svg", desc: "Skalierbarkeit und Stabilität für nachhaltiges Wachstum" },
+  { image: "/assets/step1.svg", desc: "Ein Shop, der auf dein Geschäftsmodell zugeschnitten ist — nicht von der Stange" },
+  { image: "/assets/step2.svg", desc: "Bis zu 35 % weniger Warenkorbabbrüche durch optimierte UX" },
+  { image: "/assets/step3.svg", desc: "Planbarer Traffic durch SEO, Paid Ads und Social Media" },
+  { image: "/assets/step4.svg", desc: "Technik, die mit dir skaliert — von 10 auf 10.000 Bestellungen pro Tag" },
 ];
 
 const ecommerceTestimonials = [
@@ -103,8 +103,8 @@ const ECommerce = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       <MainSection
-        title={<>Dein E-Commerce braucht<br />mehr als nur einen Shop.</>}
-        description="Wir begleiten dich von der Strategie über Technik bis hin zu Marketing – damit dein Onlinehandel nachhaltig wächst."
+        title={<>Dein Online-Shop verdient<br />mehr Umsatz —<br />nicht mehr Arbeit.</>}
+        description="Wir bauen dir einen E-Commerce, der verkauft: Strategie, Shopify-Entwicklung, Marketing und Logistik aus einer Hand — damit du skalierst, ohne im Tagesgeschäft unterzugehen."
         buttonText="Jetzt Beratungsgespräch anfragen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
         imageSrc="/assets/services-img.png"
@@ -112,29 +112,29 @@ const ECommerce = () => {
       />
 
       <Traditional
-        title="Viele E-Commerce Projekte scheitern an fehlender Strategie."
-        description="Ein Onlineshop allein reicht heute nicht aus. Komplexe technische Anforderungen, wechselnde Kundenbedürfnisse und ein dynamisches Wettbewerbsumfeld stellen viele Händler vor große Herausforderungen."
+        title="80 % aller Online-Shops bleiben unter ihrem Umsatzpotenzial — deiner auch?"
+        description="Ein Onlineshop allein verkauft nicht. Ohne durchdachte UX, ohne Performance-Marketing und ohne saubere Prozesse verlierst du jeden Tag Kunden an Wettbewerber, die das verstanden haben."
         data={ecommerceData}
       />
 
       <Solution
-        title="Unsere Lösung: Fullservice E-Commerce aus einer Hand"
-        description="Wir entwickeln für dich eine individuelle E-Commerce-Strategie und setzen sie technisch und marketingseitig konsequent um."
+        title="Dein Fullservice-Partner für E-Commerce, der Umsatz liefert — nicht nur einen Shop."
+        description="Wir verbinden Strategie, Technik und Marketing zu einem System, das planbar Umsatz generiert — von der ersten Produktseite bis zur letzten Automatisierung."
         items={ecommerceSolutions}
       />
 
       <Steps title={pageTitle} stepsData={steps} />
 
       <Testimonials
-        title="Kundenstimmen"
-        description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse aus dem E-Commerce."
+        title="Erfolgreiche Shops, die mit uns gewachsen sind"
+        description="Von Startups bis etablierten Marken — echte Ergebnisse von Unternehmen, die heute profitabler verkaufen."
         link="https://calendar.app.google/QFoADWcRwwuYUoky8"
-        linkText="Auch so wachsen? Jetzt Termin sichern"
+        linkText="Auch mehr Umsatz? Jetzt Termin sichern"
         testimonialData={ecommerceTestimonials}
       />
 
       <Appointment
-        heading="Lass uns gemeinsam deine E-Commerce-Potenziale entfesseln. Vereinbare jetzt ein kostenloses Erstgespräch."
+        heading="In 30 Minuten analysieren wir dein E-Commerce-Potenzial und zeigen dir, wo du Umsatz liegen lässt — kostenlos und unverbindlich."
         buttonText="Jetzt Termin anfragen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
       />

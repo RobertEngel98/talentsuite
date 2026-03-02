@@ -9,41 +9,41 @@ import Traditional from "../components/traditional";
 import Appointment from "../components/appointment";
 
 const webDevData = [
-  { img: "/assets/review-img.png", name: "Veraltetes Design, das nicht mehr überzeugt" },
-  { img: "/assets/review-img.png", name: "Keine mobile Optimierung" },
-  { img: "/assets/review-img.png", name: "Langsame Ladezeiten und schlechte Performance" },
-  { img: "/assets/review-img.png", name: "Keine Conversion-Optimierung" },
+  { img: "/assets/review-img.png", name: "Veraltetes Design — Besucher verlassen die Seite in unter 3 Sekunden" },
+  { img: "/assets/review-img.png", name: "Nicht mobiloptimiert — 70 % deines Traffics sehen eine kaputte Seite" },
+  { img: "/assets/review-img.png", name: "Langsame Ladezeiten kosten dich bis zu 40 % deiner Conversions" },
+  { img: "/assets/review-img.png", name: "Kein Funnel, kein CTA — Besucher kommen und gehen, ohne zu kaufen" },
 ];
 
 const webDevSolutions = [
   {
     number: "01",
     title: "UX/UI Design & Konzeption",
-    desc: "Nutzerzentriertes Design, das überzeugt und konvertiert – auf jedem Gerät.",
+    desc: "Conversion-optimiertes Design, das Besucher zu Kunden macht — auf Desktop, Tablet und Mobile.",
   },
   {
     number: "02",
     title: "Webentwicklung & Programmierung",
-    desc: "Moderne Technologien (React, Next.js, Shopify) für maximale Performance und Skalierbarkeit.",
+    desc: "React, Next.js oder Shopify — unter 2 Sekunden Ladezeit und gebaut für Wachstum.",
   },
   {
     number: "03",
     title: "SEO & Performance-Optimierung",
-    desc: "Technisches SEO, Core Web Vitals und schnelle Ladezeiten für bessere Rankings.",
+    desc: "Technisches SEO und Core Web Vitals im grünen Bereich — für Top-10-Rankings bei Google.",
   },
   {
     number: "04",
     title: "Wartung & Weiterentwicklung",
-    desc: "Kontinuierliche Optimierung, Updates und Support – damit deine Website immer aktuell bleibt.",
+    desc: "Kontinuierliche Updates, Sicherheits-Patches und neue Features — damit deine Website nie stillsteht.",
   },
 ];
 
 const pageTitle = "Was du von uns bekommst";
 const steps = [
-  { image: "/assets/step1.svg", desc: "Professionelle Website, die Vertrauen schafft" },
-  { image: "/assets/step2.svg", desc: "Bessere Rankings durch technisches SEO" },
-  { image: "/assets/step3.svg", desc: "Höhere Conversion durch optimierte User Experience" },
-  { image: "/assets/step4.svg", desc: "Zukunftssichere Technologie, die mitwächst" },
+  { image: "/assets/step1.svg", desc: "Eine Website, die innerhalb von 3 Sekunden Vertrauen aufbaut" },
+  { image: "/assets/step2.svg", desc: "Top-10-Rankings bei Google durch technisches SEO" },
+  { image: "/assets/step3.svg", desc: "Bis zu 3x höhere Conversion Rate durch optimierte UX" },
+  { image: "/assets/step4.svg", desc: "Zukunftssichere Technologie, die mit deinem Business skaliert" },
 ];
 
 const webDevTestimonials = [
@@ -103,8 +103,8 @@ const WebDevelopment = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       <MainSection
-        title={<>Deine Website ist dein<br />bester Vertriebler –<br />24/7.</>}
-        description="Wir entwickeln performante, SEO-optimierte Websites, die Vertrauen schaffen und Besucher in Kunden verwandeln."
+        title={<>Deine Website ist dein<br />bester Vertriebler —<br />24/7, 365 Tage.</>}
+        description="Wir bauen dir eine Website, die nicht nur gut aussieht, sondern messbar verkauft — SEO-optimiert, blitzschnell und gebaut, um aus Besuchern zahlende Kunden zu machen."
         buttonText="Jetzt Web-Beratung buchen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
         imageSrc="/assets/services-img.png"
@@ -112,29 +112,29 @@ const WebDevelopment = () => {
       />
 
       <Traditional
-        title="Deine Website verliert Kunden – jeden Tag."
-        description="Eine veraltete, langsame oder schlecht strukturierte Website kostet dich täglich potenzielle Kunden. Besucher entscheiden in Sekunden, ob sie bleiben oder gehen. Ohne moderne Technik und klare Nutzerführung verlierst du Umsatz."
+        title="Deine Website kostet dich jeden Tag Kunden — und du merkst es nicht."
+        description="53 % der mobilen Nutzer verlassen eine Seite, die länger als 3 Sekunden lädt. Jede Sekunde Ladezeit kostet dich 7 % Conversion. Ohne moderne Technik, klare Nutzerführung und mobile Optimierung verlierst du täglich Umsatz an schnellere Wettbewerber."
         data={webDevData}
       />
 
       <Solution
-        title="Unsere Lösung: Webentwicklung, die konvertiert"
-        description="Wir entwickeln Websites, die nicht nur gut aussehen, sondern messbar performen – von der Konzeption über die Entwicklung bis zur SEO-Optimierung."
+        title="Websites, die verkaufen — nicht nur existieren."
+        description="Wir bauen dir eine Website, die Besucher in Kunden verwandelt — von der Konzeption über die Entwicklung bis zur SEO-Optimierung. Messbar, schnell und auf Wachstum ausgelegt."
         items={webDevSolutions}
       />
 
       <Steps title={pageTitle} stepsData={steps} />
 
       <Testimonials
-        title="Kundenstimmen"
-        description="Was unsere Kunden über die Web-Zusammenarbeit sagen – echte Ergebnisse aus verschiedenen Branchen."
+        title="50+ Unternehmen vertrauen auf unsere Webentwicklung"
+        description="Keine Template-Websites — maßgeschneiderte Lösungen, die messbar mehr Kunden bringen."
         link="https://calendar.app.google/QFoADWcRwwuYUoky8"
-        linkText="Auch eine bessere Website? Jetzt Termin sichern"
+        linkText="Auch eine Website, die verkauft? Jetzt Termin sichern"
         testimonialData={webDevTestimonials}
       />
 
       <Appointment
-        heading="Lass uns gemeinsam eine Website bauen, die Vertrauen schafft und Kunden gewinnt."
+        heading="In 30 Minuten zeigen wir dir, wie deine neue Website zum stärksten Vertriebskanal wird — kostenlos und unverbindlich."
         buttonText="Jetzt Termin anfragen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
       />

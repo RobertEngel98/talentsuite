@@ -17,9 +17,9 @@ const Traditional = ({ title, description, data }) => {
             </div>
           </div>
           <div className="col-12 col-md-12 col-lg-5 col-xl-5">
+            <span className="section-label">Herausforderung</span>
             <h2 className="mt-4">{title}</h2>
-            <img src="/assets/btm-bdr.svg" width={100} height={4} className="btm_bdr" alt="" aria-hidden="true" />
-            <p className="traditional_text" style={{ fontSize: "18px", lineHeight: 1.7, opacity: 0.8 }}>{description}</p>
+            <p className="traditional_text" style={{ fontSize: "18px", lineHeight: 1.7, color: "var(--text-muted)" }}>{description}</p>
           </div>
         </div>
       </div>

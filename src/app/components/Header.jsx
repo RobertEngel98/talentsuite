@@ -70,8 +70,9 @@ export default function Header() {
               </ul>
             </li>
           </ul>
-          <Link href="https://calendar.app.google/QFoADWcRwwuYUoky8" className="btns" aria-label="Erstgespräch vereinbaren" data-track-click="Erstgespräch vereinbaren" data-track-location="header">
+          <Link href="https://calendar.app.google/QFoADWcRwwuYUoky8" className="btn-primary" aria-label="Erstgespräch vereinbaren" data-track-click="Erstgespräch vereinbaren" data-track-location="header" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", padding: "10px 24px" }}>
             Erstgespräch vereinbaren
+            <i className="bi bi-arrow-right" style={{ fontSize: "14px" }}></i>
           </Link>
         </div>
       </nav>

@@ -116,17 +116,14 @@ const HeroSection = () => {
                 </p>
                 <div className="hero_buttons">
                   {/* Verkaufspsychologie: Ergebnis-orientierter CTA + Risikoumkehr */}
-                  <Link className="btns web_btns" href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer">
+                  <Link className="btn-primary" href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer">
                     Kostenlose Potenzialanalyse sichern
-                    <span className="btn_arrows">
-                      <i className="bi bi-arrow-up-right"></i>
-                      <i className="bi bi-arrow-up-right"></i>
-                    </span>
+                    <i className="bi bi-arrow-up-right" style={{ fontSize: "16px" }}></i>
                   </Link>
                 </div>
                 {/* Verkaufspsychologie: Risikoumkehr + Micro-Commitment */}
-                <p style={{ fontSize: "14px", opacity: 0.5, marginTop: "12px", marginBottom: "8px" }}>
-                  ✓ Kostenlos & unverbindlich &nbsp; ✓ Erste Ergebnisse in 30 Tagen &nbsp; ✓ Kein Risiko
+                <p style={{ fontSize: "14px", color: "var(--text-muted)", marginTop: "12px", marginBottom: "8px" }}>
+                  Kostenlos & unverbindlich · Erste Ergebnisse in 30 Tagen · Kein Risiko
                 </p>
                 <div className="trusted_partner">
                   <img src="/assets/meta-logo.svg" alt="Offizieller Meta Business Partner" width="120" height="60" />
@@ -160,20 +157,20 @@ const HeroSection = () => {
           <div className="row justify-content-end">
             <div className="col-12 col-md-12 col-lg-7">
               {/* SEO: Stats als spans statt h3 (semantisch korrekt) */}
-              <div className="stats_section" aria-label="Unsere Ergebnisse in Zahlen">
+              <div className="stats_section card-glass" aria-label="Unsere Ergebnisse in Zahlen">
                 <div className="stats">
                   <div className="text-center">
-                    <span className="stat-number" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, letterSpacing: "1px", fontSize: "50px", display: "block", color: "rgba(255,255,255,0.9)" }}>50+</span>
+                    <h3 className="stat-number">50+</h3>
                     <span>Unternehmen aus DACH</span>
                   </div>
                   <span className="bdr"></span>
                   <div className="text-center">
-                    <span className="stat-number" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, letterSpacing: "1px", fontSize: "50px", display: "block", color: "rgba(255,255,255,0.9)" }}>5M+</span>
+                    <h3 className="stat-number">5M+</h3>
                     <span>Ausgelieferte Impressionen</span>
                   </div>
                   <span className="bdr"></span>
                   <div className="text-center">
-                    <span className="stat-number" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, letterSpacing: "1px", fontSize: "50px", display: "block", color: "rgba(255,255,255,0.9)" }}>6M+ €</span>
+                    <h3 className="stat-number">6M+ €</h3>
                     <span>Verwaltetes Werbebudget</span>
                   </div>
                 </div>

@@ -13,15 +13,13 @@ const Testimonials = ({ title, description, link, linkText, testimonialData }) =
         <div className="row justify-content-center mb-5">
           <div className="col-12 col-lg-8 text-center">
             <div className="about_content" style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <span className="section-label" style={{ justifyContent: "center" }}>Kundenstimmen</span>
               <h2>{title}</h2>
               <p style={{ maxWidth: "600px" }}>{description}</p>
               <div className="hero_buttons">
-                <Link className="btns web_btns" href={link || "https://calendar.app.google/QFoADWcRwwuYUoky8"} target="_blank" rel="noopener noreferrer">
+                <Link className="btn-primary" href={link || "https://calendar.app.google/QFoADWcRwwuYUoky8"} target="_blank" rel="noopener noreferrer">
                   {linkText || "Jetzt Termin sichern"}
-                  <span className="btn_arrows">
-                    <i className="bi bi-telephone"></i>
-                    <i className="bi bi-telephone"></i>
-                  </span>
+                  <i className="bi bi-telephone" style={{ fontSize: "14px" }}></i>
                 </Link>
               </div>
             </div>

@@ -9,16 +9,13 @@ const Appointment = ({ heading, buttonText, buttonLink = "https://calendar.app.g
             <div className="appointment_content">
               <h2>{heading}</h2>
               <div className="hero_buttons">
-                <Link className="btns web_btns" href={buttonLink} target="_blank" rel="noopener noreferrer" data-track-click={buttonText} data-track-location="appointment-section">
+                <Link className="btn-primary" href={buttonLink} target="_blank" rel="noopener noreferrer" data-track-click={buttonText} data-track-location="appointment-section">
                   {buttonText}
-                  <span className="btn_arrows">
-                    <i className="bi bi-arrow-up-right"></i>
-                    <i className="bi bi-arrow-up-right"></i>
-                  </span>
+                  <i className="bi bi-arrow-up-right" style={{ fontSize: "14px" }}></i>
                 </Link>
               </div>
-              <p style={{ fontSize: "14px", opacity: 0.5, marginTop: "16px" }}>
-                ✓ 100% kostenlos &nbsp; ✓ Unverbindlich &nbsp; ✓ Nächster Termin in 48h
+              <p style={{ fontSize: "14px", color: "var(--text-muted)", marginTop: "16px" }}>
+                100% kostenlos · Unverbindlich · Nächster Termin in 48h
               </p>
             </div>
           </div>

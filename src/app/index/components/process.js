@@ -31,8 +31,8 @@ const Process = () => {
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-5">
             <div className="titles text-center">
+              <span className="section-label" style={{ justifyContent: "center" }}>So funktioniert&apos;s</span>
               <h2 className="text-white mb-4">In 4 Schritten zu messbarem Wachstum</h2>
-              <img src="/assets/btm-bdr.svg" alt="" aria-hidden="true" className="btm_bdr" />
             </div>
           </div>
         </div>
@@ -42,6 +42,9 @@ const Process = () => {
             <div className="process_steps">
               {processData.map((process, index) => (
                 <div key={index} className="process">
+                  <span className="stat-number" style={{ fontSize: "clamp(2.5rem, 3vw, 3rem)", color: "rgba(27, 152, 224, 0.12)", fontWeight: 900, display: "block", marginBottom: "8px" }}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <div className="process_icon">
                     <img src={process.image} alt={`Schritt ${index + 1}: ${process.heading}`} />
                   </div>

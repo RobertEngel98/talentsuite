@@ -29,9 +29,10 @@ const ServiceFaqs = ({ title, description, faqData, accordionId }) => {
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-8">
             <div className="titles text-center">
+              <span className="section-label" style={{ justifyContent: "center" }}>FAQ</span>
               <h2 className="text-white mb-3">{title || "Häufig gestellte Fragen"}</h2>
               {description && (
-                <p className="text-white mb-4" style={{ opacity: 0.8, fontSize: "1.05rem", lineHeight: "1.7" }}>
+                <p className="text-white mb-4" style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: "1.7" }}>
                   {description}
                 </p>
               )}

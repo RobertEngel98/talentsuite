@@ -6,22 +6,22 @@ const serviceData = [
   {
     id: 1,
     reading: "5 Min. Lesezeit",
-    title: "Wie eine Digitalagentur Ihr Unternehmen voranbringen kann",
-    desc: "Unsere Digitalagentur unterstützt Branding-Unternehmen mit ganzheitlichen Strategien. Wir liefern maßgeschneiderte Lösungen, die Sichtbarkeit, Reichweite und Wachstum messbar steigern.",
+    title: "Warum 72% der Unternehmen mit ihrer Agentur unzufrieden sind",
+    desc: "Die häufigsten Fehler im digitalen Marketing — und wie du sie vermeidest. Ganzheitliche Strategien, die Sichtbarkeit, Reichweite und Wachstum messbar steigern.",
     link: "blog/marketing",
   },
   {
     id: 2,
     reading: "5 Min. Lesezeit",
-    title: "Die neuesten Trends und Strategien mit einer Digitalagentur",
-    desc: "Unsere Agentur bleibt stets am Puls der Zeit. Mit innovativen Methoden und fundierter Marktkenntnis entwickeln wir digitale Strategien, die exakt auf Ihr Business zugeschnitten sind.",
+    title: "Die 5 Marketing-Trends, die 2025 den Unterschied machen",
+    desc: "Von KI-gestütztem Targeting bis Social Commerce: Die Strategien, die Top-Unternehmen jetzt einsetzen — und wie du davon profitierst.",
     link: "blog/trends",
   },
   {
     id: 3,
     reading: "5 Min. Lesezeit",
-    title: "Maximierung des ROI mit der Expertise einer Digitalagentur",
-    desc: "Durch transparente Prozesse und enge Zusammenarbeit erzielen wir messbare Ergebnisse. Unsere Experten sorgen dafür, dass jede Maßnahme den maximalen Nutzen für Ihr Unternehmen bringt.",
+    title: "ROI verdreifachen: So maximierst du dein Werbebudget",
+    desc: "Transparente Prozesse, datenbasierte Entscheidungen und enge Zusammenarbeit — der Weg zu messbaren Ergebnissen mit maximalem Return.",
     link: "blog/roi",
   },
 ];
@@ -34,7 +34,8 @@ const Blogs = () => {
           <div className="row align-items-center justify-content-between mb-5">
             <div className="col-12 col-md-6 col-lg-5">
               <div className="about_content">
-                <h2>Online-Marketing & SEO, die dich messbar und nachhaltig nach vorn bringen.</h2>
+                <span className="section-label">Blog</span>
+                <h2>Wissen, das dein Marketing auf das nächste Level bringt.</h2>
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-5">
@@ -43,12 +44,9 @@ const Blogs = () => {
                 Sichtbarkeit. Mehr Reichweite. Mehr Wachstum. Und das nachhaltig.
               </p>
               <div className="hero_buttons mt-4">
-                <Link className="btns web_btns" href="/blog">
-                  Mehr anzeigen
-                  <span className="btn_arrows">
-                    <i className="bi bi-arrow-up-right"></i>
-                    <i className="bi bi-arrow-up-right"></i>
-                  </span>
+                <Link className="btn-outline-v3" href="/blog">
+                  Alle Artikel
+                  <i className="bi bi-arrow-right" style={{ fontSize: "14px" }}></i>
                 </Link>
               </div>
             </div>

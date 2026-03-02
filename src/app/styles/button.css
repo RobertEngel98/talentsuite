@@ -1,53 +1,55 @@
 .social_icons a,
 .btns {
   padding: 10px 32px 10px 10px;
-  background-color: var(--text-color);
-  border: 1px solid var(--text-color);
-  color: var(--primmary-color);
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  color: #fff;
   border-radius: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  transition: all 0.5s;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: .5px;
+  gap: 12px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .btns:hover {
-  background-color: var(--text-color);
-  border: 1px solid #ffffff2e;
-  color: var(--secondary-color);
+  background-color: var(--accent-hover);
+  border: 1px solid var(--accent-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27, 152, 224, 0.35);
 }
 .btns .btn_arrows {
-  width: 40px;
-  min-width: 40px;
-  height: 40px;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
   position: relative;
   display: flex;
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  background-color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 100px;
 }
 header .btns .btn_arrows {
-  background-color: var(--primmary-color);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .btns:hover .btn_arrows {
-  background-color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 header .btns:hover .btn_arrows {
-  background-color: var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .btns i {
-  transition: all 0.4s;
+  transition: all 0.3s;
   position: absolute;
-  color: var(--secondary-color);
+  color: #fff;
 }
 header .btns i {
-  color: var(--text-color);
+  color: #fff;
 }
 .btns i:first-child {
   transform: translate(-0px, -0px);
@@ -65,19 +67,26 @@ header .btns i {
 /* .hero_buttons */
 .hero_buttons {
   display: flex;
-  gap: 25px;
+  gap: 16px;
 }
 .social_icons a,
 .hero_buttons .web_btns {
-  border: 1px solid var(--secondary-color);
-  background-color: var(--secondary-color);
-  color: white;
-  backdrop-filter: blur(50px);
+  border: 1px solid var(--border-light);
+  background-color: transparent;
+  color: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 .hero_buttons .web_btns:first-child {
   padding: 10px 10px 10px 32px;
 }
+.hero_buttons .web_btns:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(27, 152, 224, 0.08);
+}
 .social_icons a,
 .hero_buttons .web_btns:last-child {
-  background-color: #023b5b2e;
+  background-color: transparent;
+  border: 1px solid var(--border-light);
 }

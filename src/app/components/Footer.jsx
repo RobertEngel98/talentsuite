@@ -9,29 +9,33 @@ const Footer = () => {
     <>
       {/* Pre-Footer CTA Section */}
       <section aria-label="Jetzt starten" className="pre-footer-cta-section" data-track-section="pre-footer-cta" data-track-section-name="Pre-Footer CTA">
-        <div className="container pre-footer-cta">
-          <h2>Bereit für messbares Wachstum?</h2>
+        {/* Glow decoration */}
+        <div className="glow" style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "600px", height: "600px", background: "radial-gradient(circle, rgba(27, 152, 224, 0.12) 0%, transparent 70%)" }}></div>
+        <div className="container pre-footer-cta" style={{ position: "relative", zIndex: 2, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div style={{ width: "60px", height: "2px", background: "var(--accent-color)", marginBottom: "32px", borderRadius: "2px" }}></div>
+          <h2>Bereit für <span style={{ color: "var(--accent-color)" }}>messbares Wachstum?</span></h2>
           <p className="pre-footer-cta-text">
-            In einem kostenlosen Erstgespräch analysieren wir deine Situation und zeigen dir,
-            welche Hebel für dein Unternehmen den größten Impact haben.
+            In einem kostenlosen 20-Minuten-Gespräch analysieren wir deine Situation und zeigen dir konkret,
+            welche Hebel für dein Unternehmen den größten Impact haben — mit einer individuellen Roadmap.
           </p>
           <Link
-            className="btns web_btns"
+            className="btn-primary"
             href="https://calendar.app.google/QFoADWcRwwuYUoky8"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ display: "inline-flex", margin: "0 auto" }}
+            style={{ margin: "0 auto" }}
             data-track-click="Kostenlose Potenzialanalyse buchen"
             data-track-location="footer"
           >
             Kostenlose Potenzialanalyse buchen
-            <span className="btn_arrows">
-              <i className="bi bi-arrow-up-right"></i>
-              <i className="bi bi-arrow-up-right"></i>
-            </span>
+            <i className="bi bi-arrow-up-right" style={{ fontSize: "16px" }}></i>
           </Link>
-          <p className="pre-footer-cta-small">
-            ✓ 100% kostenlos &nbsp; ✓ Unverbindlich &nbsp; ✓ Nächster Termin in 48h
+          <p className="pre-footer-cta-small" style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+            <span>100% kostenlos</span>
+            <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(255,255,255,0.2)", display: "inline-block" }}></span>
+            <span>Unverbindlich</span>
+            <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "rgba(255,255,255,0.2)", display: "inline-block" }}></span>
+            <span>Nächster Termin in 48h</span>
           </p>
         </div>
       </section>

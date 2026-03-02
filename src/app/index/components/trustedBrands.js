@@ -40,8 +40,8 @@ export default function TrustedBrands() {
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-10">
             <div className="titles text-center">
-              <h2 className="text-center text-white mb-4">Diese Brands setzen auf uns.</h2>
-              <img src="/assets/btm-bdr.svg" className="btm_bdr" alt="" aria-hidden="true" />
+              <span className="section-label" style={{ justifyContent: "center" }}>Vertrauen</span>
+              <h2 className="text-center text-white mb-4">Über 50 Unternehmen wachsen mit uns.</h2>
             </div>
           </div>
           <div className="col-12">

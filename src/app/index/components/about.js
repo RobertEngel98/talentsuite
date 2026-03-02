@@ -10,9 +10,10 @@ const About = () => {
           <div className="row align-items-center justify-content-between">
             <div className="col-12 col-md-12 col-lg-6">
               <div className="about_content">
+                <span className="section-label">Über uns</span>
                 {/* Verkaufspsychologie: Neugier wecken + Differenzierung */}
                 <h2>Warum Unternehmen von anderen Agenturen zu uns wechseln</h2>
-                <h3>Weil wir nicht bunt präsentieren, sondern messbar liefern.</h3>
+                <h3 style={{ color: "var(--text-muted)", fontWeight: 400 }}>Weil wir nicht bunt präsentieren, sondern messbar liefern.</h3>
                 <p>
                   In den letzten 24 Monaten haben wir für über 50 Unternehmen im DACH-Raum
                   nachweislich Fachkräfte gewonnen, Neukunden-Pipelines aufgebaut und
@@ -24,12 +25,9 @@ const About = () => {
                   klare KPIs und echte Performance – statt leere Versprechen.
                 </p>
                 <div className="hero_buttons">
-                  <Link className="btns web_btns" href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer">
-                    Jetzt kennenlernen
-                    <span className="btn_arrows">
-                      <i className="bi bi-arrow-up-right"></i>
-                      <i className="bi bi-arrow-up-right"></i>
-                    </span>
+                  <Link className="btn-primary" href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer">
+                    Unverbindliches Erstgespräch sichern
+                    <i className="bi bi-arrow-right" style={{ fontSize: "16px" }}></i>
                   </Link>
                 </div>
               </div>

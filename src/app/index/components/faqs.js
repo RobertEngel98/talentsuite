@@ -6,37 +6,37 @@ const faqData = [
   {
     question: "Was kostet die Zusammenarbeit mit TalentSuite?",
     answer:
-      "Unsere Preise richten sich nach dem Leistungsumfang und deinen Zielen. In einem kostenlosen Erstgespräch analysieren wir deine Situation und erstellen ein individuelles Angebot – transparent, ohne versteckte Kosten. Die Investition rechnet sich in der Regel innerhalb der ersten Wochen durch messbare Ergebnisse.",
+      "Unsere Preise richten sich nach dem Leistungsumfang und deinen Zielen. In einem kostenlosen 20-Minuten-Erstgespräch analysieren wir deine Situation und erstellen ein individuelles Angebot — transparent, ohne versteckte Kosten. Bei über 90% unserer Kunden hat sich die Investition bereits innerhalb der ersten 4 Wochen durch messbare Ergebnisse amortisiert.",
   },
   {
     question: "Wie schnell sehen wir erste Ergebnisse?",
     answer:
-      "Erste Ergebnisse – etwa qualifizierte Bewerbungen oder Kundenanfragen – sind bei den meisten Projekten bereits in den ersten 2–4 Wochen sichtbar. Unsere Systeme sind auf schnelle Umsetzung ausgelegt. Die volle Performance entfaltet sich erfahrungsgemäß nach 6–8 Wochen, wenn die Kampagnen durchoptimiert sind.",
+      "Erste Ergebnisse — etwa qualifizierte Bewerbungen oder Kundenanfragen — sind bei den meisten Projekten bereits in den ersten 2–4 Wochen sichtbar. Bei Recruiting-Kampagnen generieren wir durchschnittlich 40+ Bewerbungen pro Monat, bei Neukunden-Kampagnen 15–40 qualifizierte Leads. Die volle Performance entfaltet sich nach 6–8 Wochen, wenn die Kampagnen durchoptimiert sind.",
   },
   {
     question: "Warum sollten wir mit einer Agentur arbeiten, statt eine Inhouse-Lösung aufzubauen?",
     answer:
-      "Eine Inhouse-Marketingabteilung bedeutet hohe Fixkosten, lange Einarbeitungszeiten und Abhängigkeit von einzelnen Personen. Mit TalentSuite bekommt ihr sofort Zugriff auf ein komplettes, eingespieltes Team aus Experten – ohne Vorlaufzeit. Unsere Prozesse sind erprobt, skalierbar und liefern ab Woche 1 Ergebnisse.",
+      "Eine Inhouse-Marketingabteilung kostet ab 120.000 € pro Jahr (Gehalt, Tools, Einarbeitung) — und liefert frühestens nach 3–6 Monaten erste Ergebnisse. Mit TalentSuite bekommt ihr sofort Zugriff auf ein eingespieltes Team aus 10+ Experten — ohne Vorlaufzeit, ab Woche 1 mit messbaren Ergebnissen. Und das zu einem Bruchteil der Kosten.",
   },
   {
     question: "Funktioniert das auch in unserer Branche?",
     answer:
-      "Ja – unsere Systeme funktionieren branchenübergreifend. Wir betreuen Unternehmen aus Handwerk, Gastronomie, Immobilien, E-Commerce, Gesundheitswesen und vielen weiteren Branchen. Die Strategie wird immer individuell auf deine Zielgruppe und dein Geschäftsmodell zugeschnitten.",
+      "Ja — unsere Systeme funktionieren branchenübergreifend. Wir betreuen über 50 Unternehmen aus Handwerk, Gastronomie, Immobilien, E-Commerce, Pflege, KFZ, Bau und vielen weiteren Branchen. Die Strategie wird immer individuell auf deine Zielgruppe und dein Geschäftsmodell zugeschnitten — kein Standardkonzept von der Stange.",
   },
   {
     question: "Wie stellt ihr sicher, dass die Maßnahmen zu unserem Unternehmen passen?",
     answer:
-      "Wir arbeiten datenbasiert, nicht nach Bauchgefühl. Vor jedem Projekt analysieren wir Zielgruppe, Marktposition und Schwachstellen. Daraus entwickeln wir eine individuelle Strategie mit klaren KPIs – kein Copy-Paste, sondern maßgeschneiderte Umsetzung.",
+      "Wir arbeiten datenbasiert, nicht nach Bauchgefühl. Vor jedem Projekt analysieren wir Zielgruppe, Marktposition und Schwachstellen. Daraus entwickeln wir eine individuelle Strategie mit klaren KPIs und wöchentlichen Reports — kein Copy-Paste, sondern maßgeschneiderte Umsetzung mit voller Transparenz.",
   },
   {
     question: "Können wir die Ergebnisse wirklich messen?",
     answer:
-      "Absolut. Unsere Arbeit ist voll durchgetrackt – von der ersten Anzeige bis zur Bewerbung oder Kundenanfrage. Ihr seht in Echtzeit, welche Kampagnen performen, wie viele Leads generiert werden und was eine Conversion kostet. Volle Transparenz, keine Blackbox.",
+      "Absolut. Unsere Arbeit ist voll durchgetrackt — von der ersten Anzeige bis zur Bewerbung oder Kundenanfrage. Ihr seht in Echtzeit, welche Kampagnen performen, wie viele Leads generiert werden und was eine Conversion kostet. Volle Transparenz, keine Blackbox. Dazu bekommt ihr ein Live-Dashboard mit allen relevanten KPIs.",
   },
   {
     question: "Was, wenn wir schon mit einer Agentur schlechte Erfahrungen gemacht haben?",
     answer:
-      "Genau deshalb wurde TalentSuite gegründet. Bei uns läuft alles über strukturierte Prozesse, klare Projektpläne und transparente Kommunikation – mit einem festen Ansprechpartner und definierten Zielen. Unser Anspruch ist es, genau das zu bieten, was andere Agenturen versprechen – aber nicht halten.",
+      "Genau deshalb wurde TalentSuite gegründet. Über 60% unserer Kunden kommen von anderen Agenturen, die nicht geliefert haben. Bei uns läuft alles über strukturierte Prozesse, klare Projektpläne und transparente Kommunikation — mit einem festen Ansprechpartner und definierten Zielen. Kein Bullshit, nur Ergebnisse.",
   },
 ];
 
@@ -68,8 +68,8 @@ const Faqs = () => {
         <div className="row justify-content-center">
           <div className="col-12 col-md-12 col-lg-5">
             <div className="titles text-center">
-              <h2 className="text-white mb-4">Häufig gestellte Fragen</h2>
-              <Image src="/assets/btm-bdr.svg" width={100} height={100} className="btm_bdr" alt="" aria-hidden="true" />
+              <span className="section-label" style={{ justifyContent: "center" }}>FAQ</span>
+              <h2 className="text-white mb-4">Deine Fragen — unsere Antworten</h2>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ const Faqs = () => {
                 const headingId = `heading${index}`;
                 return (
                   <div key={index} className="accordion-item" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                    <h2 className="accordion-header" id={headingId}>
+                    <h3 className="accordion-header" id={headingId}>
                       <button
                         className={`accordion-button ${index !== 0 ? "collapsed" : ""}`}
                         type="button"
@@ -94,7 +94,7 @@ const Faqs = () => {
                       >
                         {faq.question}
                       </button>
-                    </h2>
+                    </h3>
                     <div
                       id={collapseId}
                       className={`accordion-collapse collapse ${index === 0 ? "show" : ""}`}

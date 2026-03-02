@@ -9,41 +9,41 @@ import Traditional from "../components/traditional";
 import Appointment from "../components/appointment";
 
 const customerAcquisitionData = [
-  { img: "/assets/review-img.png", name: "Fehlende Leadstrategie" },
-  { img: "/assets/review-img.png", name: "Abhängigkeit von persönlichen Kontakten" },
-  { img: "/assets/review-img.png", name: "Teure oder ineffiziente Maßnahmen" },
-  { img: "/assets/review-img.png", name: "Vertrieb arbeitet mit unqualifizierten Leads" },
+  { img: "/assets/review-img.png", name: "Kein planbarer Leadflow — Umsatz bleibt Zufall" },
+  { img: "/assets/review-img.png", name: "Abhängigkeit von Empfehlungen und persönlichen Kontakten" },
+  { img: "/assets/review-img.png", name: "Werbebudget verbrennt ohne messbare Ergebnisse" },
+  { img: "/assets/review-img.png", name: "Vertrieb verschwendet 60 % seiner Zeit mit unqualifizierten Leads" },
 ];
 
 const customerSolutions = [
   {
     number: "01",
     title: "Zielgruppen- & Marktanalyse",
-    desc: "Wer ist dein perfekter Kunde – und wie denken, sprechen, handeln sie?",
+    desc: "Wir identifizieren deine profitabelsten Kundensegmente — damit jeder Euro Werbebudget wirkt.",
   },
   {
     number: "02",
     title: "Positionierung & Messaging",
-    desc: "Was macht dich einzigartig – und warum sollte man bei dir kaufen?",
+    desc: "Klare Botschaften, die dich vom Wettbewerb abheben — und Kaufentscheidungen beschleunigen.",
   },
   {
     number: "03",
     title: "Digitale Kampagnen",
-    desc: "Meta, Google, TikTok oder LinkedIn – dort, wo deine Kunden sind.",
+    desc: "Meta, Google, TikTok oder LinkedIn — datengetrieben optimiert für 15–40 qualifizierte Leads pro Monat.",
   },
   {
     number: "04",
     title: "Landingpages & Funnelaufbau",
-    desc: "Mit klarer Nutzerführung zur qualifizierten Anfrage – messbar und skalierbar.",
+    desc: "Conversion-optimierte Funnels, die aus Klicks zahlende Kunden machen — messbar bis zum Abschluss.",
   },
 ];
 
 const pageTitle = "Was du erreichst";
 const steps = [
-  { image: "/assets/step1.svg", desc: "Planbarer Leadflow mit hoher Abschlusswahrscheinlichkeit" },
-  { image: "/assets/step2.svg", desc: "Höhere Conversion Rates durch optimierte Funnel" },
-  { image: "/assets/step3.svg", desc: "Weniger Kaltakquise, mehr echte Interessenten" },
-  { image: "/assets/step4.svg", desc: "Klar messbare KPIs vom Klick bis zum Abschluss" },
+  { image: "/assets/step1.svg", desc: "Planbarer Leadflow — 15–40 qualifizierte Anfragen pro Monat" },
+  { image: "/assets/step2.svg", desc: "Bis zu 3x höhere Conversion Rate durch optimierte Funnels" },
+  { image: "/assets/step3.svg", desc: "Null Kaltakquise — nur echte Interessenten im Postfach" },
+  { image: "/assets/step4.svg", desc: "Transparente KPIs vom Klick bis zum unterschriebenen Vertrag" },
 ];
 
 const customerAcquisitionTestimonials = [
@@ -103,8 +103,8 @@ const CustomerAcquisition = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       <MainSection
-        title={<>Kunden gewinnen geht nicht<br />mehr über Kaltakquise.</>}
-        description="Wir entwickeln digitale Kundengewinnungsstrecken, die genau deine Zielgruppe ansprechen – messbar, automatisiert und planbar skalierbar."
+        title={<>Neue Kunden gewinnen —<br />planbar, automatisiert<br />und ohne Kaltakquise.</>}
+        description="Wir bauen dir eine digitale Kundengewinnungsmaschine, die jeden Monat 15–40 qualifizierte Anfragen liefert — messbar, skalierbar und unabhängig von Empfehlungen."
         buttonText="Jetzt Strategiegespräch vereinbaren"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
         imageSrc="/assets/services-img.png"
@@ -112,29 +112,29 @@ const CustomerAcquisition = () => {
       />
 
       <Traditional
-        title="Deine Wunschkunden sind online – aber nicht auf deinem Radar."
-        description="Viele Unternehmen haben starke Produkte, aber keine funktionierende Pipeline für neue Kundenanfragen. Ohne Sichtbarkeit, ohne klare Botschaft und ohne digitalen Funnel bleibt Wachstum Zufall."
+        title="Jeden Tag verlierst du Kunden an Wettbewerber, die digital sichtbar sind."
+        description="87 % der Kaufentscheidungen beginnen heute online. Ohne funktionierende Pipeline, ohne klare Botschaft und ohne digitalen Funnel bleibt dein Wachstum Zufall — während deine Konkurrenz die Anfragen einsammelt."
         data={customerAcquisitionData}
       />
 
       <Solution
-        title="Unsere Lösung: Performancebasierte Neukundengewinnung"
-        description="Wir entwickeln skalierbare Prozesse zur Kundengewinnung, die auf Daten, Psychologie und digitaler Sichtbarkeit basieren."
+        title="Dein System für planbare Neukundengewinnung — ab dem ersten Monat."
+        description="Wir bauen dir einen datenbasierten Prozess, der automatisiert qualifizierte Leads generiert — ohne Kaltakquise, ohne Streuverluste, ohne Rätselraten."
         items={customerSolutions}
       />
 
       <Steps title={pageTitle} stepsData={steps} />
 
       <Testimonials
-        title="Kundenstimmen"
-        description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse aus verschiedenen Branchen."
+        title="50+ Unternehmen wachsen bereits mit unserem System"
+        description="Keine leeren Versprechen — echte Ergebnisse von Unternehmen, die heute planbar Kunden gewinnen."
         link="https://calendar.app.google/QFoADWcRwwuYUoky8"
-        linkText="Auch so wachsen? Jetzt Termin sichern"
+        linkText="Auch planbar wachsen? Jetzt Termin sichern"
         testimonialData={customerAcquisitionTestimonials}
       />
 
       <Appointment
-        heading="Wir zeigen dir in einem unverbindlichen Gespräch, wie du neue Kunden mit System gewinnst – ganz ohne Kaltakquise."
+        heading="In 30 Minuten zeigen wir dir, wie du ab nächsten Monat planbar neue Kunden gewinnst — kostenlos und unverbindlich."
         buttonText="Jetzt Erstgespräch buchen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
       />

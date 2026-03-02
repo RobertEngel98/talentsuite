@@ -9,41 +9,41 @@ import Traditional from "../components/traditional";
 import Appointment from "../components/appointment";
 
 const performanceAcquisitionData = [
-  { img: "/assets/review-img.png", name: "Hohe Streuverluste bei Stellenanzeigen" },
-  { img: "/assets/review-img.png", name: "Keine oder unqualifizierte Bewerbungen" },
-  { img: "/assets/review-img.png", name: "Leerläufe in der HR-Abteilung" },
-  { img: "/assets/review-img.png", name: "Fehlbesetzungen kosten Zeit und Geld" },
+  { img: "/assets/review-img.png", name: "80% Streuverluste bei Stellenanzeigen" },
+  { img: "/assets/review-img.png", name: "Keine oder unqualifizierte Bewerbungen seit Wochen" },
+  { img: "/assets/review-img.png", name: "HR-Abteilung wartet — Stellen bleiben Ø 155 Tage offen" },
+  { img: "/assets/review-img.png", name: "Fehlbesetzungen kosten dich 30.000–50.000 € pro Fall" },
 ];
 
 const performanceSolutions = [
   {
     number: "01",
     title: "Zielgruppenanalyse",
-    desc: "Wer sind deine Wunschbewerber:innen und wo halten sie sich digital auf?",
+    desc: "Wir identifizieren exakt, wo sich deine Wunschkandidaten digital aufhalten — und wie wir sie ansprechen.",
   },
   {
     number: "02",
     title: "Social Performance Kampagnen",
-    desc: "Meta, TikTok & Co: Performance Ads, die Aufmerksamkeit erzeugen und qualifizierte Bewerbungen generieren.",
+    desc: "Meta, TikTok & LinkedIn: Performance Ads, die Ø 40+ qualifizierte Bewerbungen pro Monat generieren.",
   },
   {
     number: "03",
-    title: "Landingpages mit Pre-Qualifikation",
-    desc: "Bewerben in unter 60 Sekunden – mobiloptimiert & automatisch filterbar.",
+    title: "60-Sekunden-Bewerbungsfunnel",
+    desc: "Mobiloptimierte Landingpages mit Pre-Qualifikation — 10–14% Conversion-Rate statt branchenüblicher 2%.",
   },
   {
     number: "04",
-    title: "Automatisierte Bewerberweiterleitung",
-    desc: "Direkt in dein E-Mail-Postfach oder Bewerber-Tool – ohne manuellen Aufwand.",
+    title: "Automatisierte Weiterleitung",
+    desc: "Qualifizierte Bewerbungen landen direkt in deinem Postfach oder ATS — ohne manuellen Aufwand.",
   },
 ];
 
-const pageTitle = "Was du bekommst";
+const pageTitle = "Deine Ergebnisse mit Performance Recruiting";
 const steps = [
-  { image: "/assets/step1.svg", desc: "Mehr qualifizierte Bewerbungen" },
-  { image: "/assets/step2.svg", desc: "Kürzere Time-to-Hire" },
-  { image: "/assets/step3.svg", desc: "Kandidat:innen, die wirklich passen" },
-  { image: "/assets/step4.svg", desc: "Planbare Recruiting-Kosten" },
+  { image: "/assets/step1.svg", desc: "Ø 40+ qualifizierte Bewerbungen pro Monat" },
+  { image: "/assets/step2.svg", desc: "Time-to-Hire von 155 auf unter 30 Tage reduziert" },
+  { image: "/assets/step3.svg", desc: "Nur Kandidaten, die wirklich zu dir passen" },
+  { image: "/assets/step4.svg", desc: "Planbare Kosten: 16–24 € pro Bewerbung" },
 ];
 
 const performanceAcquisitionTestimonials = [
@@ -124,30 +124,30 @@ const PerformanceRecruiting = () => {
       />
 
       <Traditional
-        title="Klassisches Recruiting ist tot."
-        description="Die Zeiten, in denen man mit einem Stelleninserat auf die richtigen Kandidat:innen warten konnte, sind vorbei. Heute konkurrierst du um Talente – vor allem auf Social Media, nicht auf Jobbörsen."
+        title="Klassisches Recruiting verbrennt dein Budget."
+        description="72% der Fachkräfte sind nicht auf Jobbörsen aktiv. Stellenanzeigen erreichen nur 20% des Marktes — zu hohen Kosten und mit Ø 155 Tagen Vakanzzeit. Die Lösung: Geh dorthin, wo deine Kandidaten wirklich sind."
         data={performanceAcquisitionData}
       />
 
       <Solution
-        title="Unsere Lösung: Performance Recruiting"
-        description="Wir bringen deine Jobs dorthin, wo sich deine Zielgruppe täglich bewegt – in Social Feeds und auf mobilen Geräten. Mit einem Recruiting-Funnel, der funktioniert."
+        title="Performance Recruiting: Dein System für planbare Bewerbungen"
+        description="Wir bringen deine Jobs dorthin, wo sich 80% deiner Zielgruppe täglich aufhält — in Social Feeds und auf mobilen Geräten. Mit einem Recruiting-Funnel, der nachweislich 10–14% konvertiert."
         items={performanceSolutions}
       />
 
       <Steps title={pageTitle} stepsData={steps} />
 
       <Testimonials
-        title="Kundenstimmen"
-        description="Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse, echte Stimmen aus verschiedenen Branchen."
+        title="So bewerten uns unsere Recruiting-Kunden"
+        description="Echte Ergebnisse von echten Unternehmen — 5.0 Sterne Durchschnitt aus über 50 Kundenprojekten."
         link="https://calendar.app.google/QFoADWcRwwuYUoky8"
         linkText="Auch so recruitern? Jetzt Termin sichern"
         testimonialData={performanceAcquisitionTestimonials}
       />
 
       <Appointment
-        heading="Wir zeigen dir in einem kostenlosen Gespräch, wie dein Unternehmen von Performance Recruiting profitieren kann."
-        buttonText="Jetzt Termin buchen"
+        heading="In 20 Minuten zeigen wir dir, wie viele qualifizierte Bewerber in deiner Region über Social Media erreichbar sind."
+        buttonText="Kostenlose Recruiting-Analyse sichern"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
       />
     </>

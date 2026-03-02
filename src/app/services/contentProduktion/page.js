@@ -9,41 +9,41 @@ import Traditional from "../components/traditional";
 import Appointment from "../components/appointment";
 
 const contentData = [
-  { img: "/assets/review-img.png", name: "Kein konsistentes Markenbild" },
-  { img: "/assets/review-img.png", name: "Content ohne Strategie oder Zielgruppe" },
-  { img: "/assets/review-img.png", name: "Keine professionellen Video- oder Foto-Assets" },
-  { img: "/assets/review-img.png", name: "Interne Ressourcen überfordert" },
+  { img: "/assets/review-img.png", name: "Kein einheitliches Markenbild — Vertrauen geht verloren" },
+  { img: "/assets/review-img.png", name: "Content ohne Strategie verbrennt Budget und Zeit" },
+  { img: "/assets/review-img.png", name: "Stock-Fotos und Handy-Videos wirken unprofessionell" },
+  { img: "/assets/review-img.png", name: "Interne Teams sind überlastet — Content bleibt liegen" },
 ];
 
 const contentSolutions = [
   {
     number: "01",
     title: "Content-Strategie & Redaktionsplanung",
-    desc: "Klare Themen, Formate und Kanäle – abgestimmt auf deine Business-Ziele.",
+    desc: "Ein klarer Plan für 30+ Tage Content — abgestimmt auf deine Zielgruppe und deine Umsatzziele.",
   },
   {
     number: "02",
     title: "Professionelle Video-Produktion",
-    desc: "Employer Branding Videos, Imagefilme, Social Clips und Produktvideos in Kinoqualität.",
+    desc: "Employer Branding, Imagefilme und Social Clips — in einer Qualität, die Vertrauen aufbaut und Reichweite erzeugt.",
   },
   {
     number: "03",
     title: "Fotografie & Bildsprache",
-    desc: "Authentische Team-, Produkt- und Eventfotos, die deine Marke greifbar machen.",
+    desc: "Authentische Team-, Produkt- und Eventfotos, die deine Marke greifbar machen — kein Stock, kein Fake.",
   },
   {
     number: "04",
     title: "Social Media Content",
-    desc: "Plattformgerechte Reels, Stories und Posts – optimiert für Reichweite und Engagement.",
+    desc: "Plattformgerechte Reels, Stories und Posts — optimiert für bis zu 5x mehr Engagement als Branchendurchschnitt.",
   },
 ];
 
 const pageTitle = "Was du von uns bekommst";
 const steps = [
-  { image: "/assets/step1.svg", desc: "Professionelle Inhalte, die deine Marke stärken" },
-  { image: "/assets/step2.svg", desc: "Mehr Engagement durch authentischen Content" },
-  { image: "/assets/step3.svg", desc: "Konsistente Bildsprache über alle Kanäle" },
-  { image: "/assets/step4.svg", desc: "Zeitersparnis durch Full-Service-Produktion" },
+  { image: "/assets/step1.svg", desc: "Premium-Content, der Vertrauen aufbaut und verkauft" },
+  { image: "/assets/step2.svg", desc: "Bis zu 5x mehr Engagement durch authentische Inhalte" },
+  { image: "/assets/step3.svg", desc: "Ein durchgängiges Markenbild auf allen Kanälen" },
+  { image: "/assets/step4.svg", desc: "20+ Stunden Zeitersparnis pro Monat durch Full-Service" },
 ];
 
 const contentTestimonials = [
@@ -103,8 +103,8 @@ const ContentProduktion = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       <MainSection
-        title={<>Content, der wirkt –<br />nicht nur gefällt.</>}
-        description="Wir produzieren Videos, Fotos und Social Media Content, der deine Marke authentisch zeigt und messbare Ergebnisse liefert."
+        title={<>Content, der verkauft —<br />nicht nur gefällt.</>}
+        description="Wir produzieren Videos, Fotos und Social Media Content, der deine Marke zur ersten Wahl macht — messbar mehr Reichweite, mehr Vertrauen, mehr Abschlüsse."
         buttonText="Jetzt Content-Beratung buchen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
         imageSrc="/assets/services-img.png"
@@ -112,29 +112,29 @@ const ContentProduktion = () => {
       />
 
       <Traditional
-        title="Ohne starken Content bleibt deine Marke unsichtbar."
-        description="In einer Welt voller Reize und kurzer Aufmerksamkeitsspannen entscheidet die Qualität deines Contents über Sichtbarkeit, Vertrauen und Conversions. Generischer Stock-Content reicht nicht mehr."
+        title="Durchschnittlicher Content kostet dich Kunden — jeden einzelnen Tag."
+        description="Nutzer scrollen in 1,7 Sekunden an deinem Post vorbei. Wer mit Stock-Fotos und planlosen Inhalten arbeitet, verliert gegen Marken mit professioneller Präsenz — egal wie gut das Produkt ist."
         data={contentData}
       />
 
       <Solution
-        title="Unsere Lösung: Content Produktion mit Strategie"
-        description="Wir entwickeln und produzieren Content, der auf deine Zielgruppe und deine Business-Ziele zugeschnitten ist – von der Konzeption bis zur fertigen Auslieferung."
+        title="Content, der deine Marke zur Branchenreferenz macht."
+        description="Von der Strategie bis zum fertigen Asset — wir liefern dir Content, der deine Zielgruppe stoppt, überzeugt und konvertiert. Alles aus einer Hand, ohne internen Aufwand."
         items={contentSolutions}
       />
 
       <Steps title={pageTitle} stepsData={steps} />
 
       <Testimonials
-        title="Kundenstimmen"
-        description="Was unsere Kunden über die Content-Zusammenarbeit sagen – echte Ergebnisse aus verschiedenen Branchen."
+        title="50+ Unternehmen vertrauen auf unsere Content-Produktion"
+        description="Keine Stockfotos, keine leeren Versprechen — echte Ergebnisse von Unternehmen, die mit professionellem Content wachsen."
         link="https://calendar.app.google/QFoADWcRwwuYUoky8"
-        linkText="Auch besseren Content? Jetzt Termin sichern"
+        linkText="Auch Premium-Content? Jetzt Termin sichern"
         testimonialData={contentTestimonials}
       />
 
       <Appointment
-        heading="Lass uns gemeinsam Content produzieren, der deine Marke auf das nächste Level hebt."
+        heading="In 30 Minuten zeigen wir dir, welcher Content deine Marke sichtbar macht und Kunden überzeugt — kostenlos und unverbindlich."
         buttonText="Jetzt Termin anfragen"
         buttonLink="https://calendar.app.google/QFoADWcRwwuYUoky8"
       />

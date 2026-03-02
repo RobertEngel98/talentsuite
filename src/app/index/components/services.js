@@ -6,39 +6,39 @@ import Image from "next/image";
 const serviceData = [
   {
     title: "Performance Recruiting",
-    desc: "Innerhalb von 30 Tagen qualifizierte Bewerbungen auf deinem Tisch – ohne Headhunter, ohne Stellenbörsen. Über Social Media Funnels, die funktionieren.",
+    desc: "Ø 40+ qualifizierte Bewerbungen in 30 Tagen — ohne Headhunter, ohne Stellenbörsen. Über bewährte Social Media Funnels, die nachweislich funktionieren.",
     link: "/services/performanceRecruiting",
-    badge: "ø 40+ Bewerbungen",
+    badge: "ø 40+ Bewerbungen / Monat",
   },
   {
     title: "Neukundengewinnung",
-    desc: "Planbar 15–40 qualifizierte Kundenanfragen pro Monat – automatisiert über Ads, Funnels und intelligente Follow-Up-Systeme.",
+    desc: "Planbar 15–40 qualifizierte Kundenanfragen pro Monat — automatisiert über Ads, Funnels und intelligente Follow-Up-Systeme. Messbar ab Woche 1.",
     link: "/services/customerAcquisition",
-    badge: "Planbar skalierbar",
+    badge: "15–40 Leads / Monat",
   },
   {
     title: "Fullservice E-Commerce",
-    desc: "Von 0 auf Shop oder vom Shop zum Umsatzrekord – wir bauen, optimieren und skalieren deinen Online-Handel. Strategie bis Technik.",
+    desc: "Von 0 auf Shop oder vom Shop zum Umsatzrekord — wir bauen, optimieren und skalieren deinen Online-Handel. Strategie bis Technik aus einer Hand.",
     link: "/services/ecommerce",
-    badge: "Ganzheitlich",
+    badge: "Ø 3x ROI",
   },
   {
     title: "Social Media Management",
-    desc: "Deine Marke auf Autopilot: Strategie, Content & Community-Management, das Engagement und Reichweite messbar steigert.",
+    desc: "Deine Marke auf Autopilot: Strategie, Content & Community-Management, das Reichweite und Engagement nachweislich steigert.",
     link: "/services/socialMediaManagement",
-    badge: "Kanalübergreifend",
+    badge: "5+ Plattformen",
   },
   {
     title: "Content Produktion",
-    desc: "Videos, Ads & Social Formate, die konvertieren – professionell produziert und auf deine Zielgruppe zugeschnitten.",
+    desc: "Videos, Ads & Social Formate, die konvertieren — professionell produziert und exakt auf deine Zielgruppe zugeschnitten.",
     link: "/services/contentProduktion",
-    badge: "Conversionstark",
+    badge: "Ø 3x mehr Engagement",
   },
   {
     title: "Web & App Development",
-    desc: "Individuelle Websites, Plattformen und Apps, die verkaufen – schnell, skalierbar und auf Conversion optimiert.",
+    desc: "Individuelle Websites und Plattformen, die verkaufen — schnell, skalierbar und auf maximale Conversion optimiert.",
     link: "/services/webDevelopment",
-    badge: "Maßgeschneidert",
+    badge: "Conversion-optimiert",
   },
 ];
 
@@ -51,8 +51,8 @@ const Services = () => {
         <div className="row justify-content-center">
           <div className="col-12 col-md-8 col-lg-5">
             <div className="titles text-center">
-              <h2 className="text-white mb-4">Unsere Kernleistungen</h2>
-              <Image src="/assets/btm-bdr.svg" width={100} height={100} className="btm_bdr" alt="" aria-hidden="true" />
+              <span className="section-label" style={{ justifyContent: "center" }}>Dienstleistungen</span>
+              <h2 className="text-white mb-4">Alles aus einer Hand — für planbares Wachstum</h2>
             </div>
           </div>
         </div>
@@ -62,31 +62,15 @@ const Services = () => {
             <div key={index} className="col-12 col-md-6 col-lg-6 col-xl-4">
               <div className="service_card h-100 p-4">
                 {/* Verkaufspsychologie: Ergebnis-Badge */}
-                <span
-                  style={{
-                    display: "inline-block",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    backgroundColor: "rgba(2, 59, 91, 0.5)",
-                    border: "1px solid rgba(2, 59, 91, 0.8)",
-                    color: "#4da6d9",
-                    padding: "4px 12px",
-                    borderRadius: "100px",
-                    marginBottom: "12px",
-                    opacity: 1,
-                  }}
-                >
+                <span className="badge-v3">
                   {service.badge}
                 </span>
                 <h3 className="mb-2">{service.title}</h3>
                 <p>{service.desc}</p>
                 <div className="hero_buttons mt-3">
-                  <Link className="btns web_btns" href={service.link || "#"}>
+                  <Link className="btn-outline-v3" href={service.link || "#"} style={{ width: "100%", justifyContent: "space-between" }}>
                     So funktioniert&apos;s
-                    <span className="btn_arrows ms-2">
-                      <i className="bi bi-arrow-up-right"></i>
-                      <i className="bi bi-arrow-up-right"></i>
-                    </span>
+                    <i className="bi bi-arrow-right" style={{ fontSize: "14px" }}></i>
                   </Link>
                 </div>
               </div>

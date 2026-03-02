@@ -80,18 +80,15 @@ const Testimonials = () => {
         <div className="row justify-content-center mb-5">
           <div className="col-12 col-lg-8 text-center">
             <div className="about_content" style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <h2>Kundenstimmen</h2>
+              <span className="section-label" style={{ justifyContent: "center" }}>Kundenstimmen</span>
+              <h2>5.0 Sterne — das sagen unsere Kunden</h2>
               <p style={{ maxWidth: "600px" }}>
-                Was unsere Kunden über die Zusammenarbeit sagen – echte Ergebnisse,
-                echte Stimmen aus Handwerk, E-Commerce und Dienstleistung.
+                Echte Ergebnisse, echte Stimmen — von Handwerk über E-Commerce bis Dienstleistung. 50+ Unternehmen vertrauen auf TalentSuite.
               </p>
               <div className="hero_buttons">
-                <Link className="btns web_btns" href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer">
+                <Link className="btn-primary" href="https://calendar.app.google/QFoADWcRwwuYUoky8" target="_blank" rel="noopener noreferrer">
                   Auch so wachsen? Jetzt Termin sichern
-                  <span className="btn_arrows">
-                    <i className="bi bi-telephone"></i>
-                    <i className="bi bi-telephone"></i>
-                  </span>
+                  <i className="bi bi-telephone" style={{ fontSize: "16px" }}></i>
                 </Link>
               </div>
             </div>
