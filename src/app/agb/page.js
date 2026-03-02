@@ -1,13 +1,8 @@
 "use client";
-import Head from "next/head";
 
 export default function AGB() {
   return (
     <>
-      <Head>
-        <title>AGB | TalentSuite</title>
-        <meta name="description" content="Allgemeine Geschäftsbedingungen der TalentSuite — Engel & Mühlhof GbR." />
-      </Head>
       <section className="appointment_section">
         <div className="container">
           <div className="row">
