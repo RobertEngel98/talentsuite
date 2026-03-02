@@ -27,8 +27,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" className={`${poppins.variable} ${rajdhani.variable} ${inter.variable}`}>
       <head>
-        <title>TalentSuite | Performance Recruiting, Neukundengewinnung & E-Commerce Agentur</title>
-        <meta name="description" content="TalentSuite ist deine Fullservice-Agentur für Performance Recruiting, Neukundengewinnung, E-Commerce & Social Media. 50+ Unternehmen vertrauen uns. Jetzt kostenlose Potenzialanalyse sichern." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         {/* Schema.org JSON-LD */}

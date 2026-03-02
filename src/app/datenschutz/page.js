@@ -1,8 +1,13 @@
 "use client";
+import Head from "next/head";
 
 export default function Datenschutz() {
   return (
     <>
+      <Head>
+        <title>Datenschutzerklärung | TalentSuite</title>
+        <meta name="description" content="Datenschutzerklärung der TalentSuite. Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO." />
+      </Head>
       <section className="appointment_section">
         <div className="container">
           <div className="row">

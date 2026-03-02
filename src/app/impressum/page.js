@@ -1,8 +1,13 @@
 "use client";
+import Head from "next/head";
 
 export default function Impressum() {
   return (
     <>
+      <Head>
+        <title>Impressum | TalentSuite</title>
+        <meta name="description" content="Impressum der TalentSuite — Engel & Mühlhof GbR, Iserlohn. Angaben gemäß § 5 TMG." />
+      </Head>
       <section className="appointment_section">
         <div className="container">
           <div className="row">
